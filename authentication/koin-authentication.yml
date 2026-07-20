@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/docs/security-scheme
+docs: https://api-docs.koin.com.br/docs/security-scheme
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows: []
+  model: single private key (bearer-style) shared across every Koin API — payments, antifraud and BNPL
+  key_issuance: issued by the Koin team as part of merchant onboarding; not self-service
+notes:
+- Koin documents one credential for the whole platform. A client/store needs only the private key to
+  reach payments, antifraud and BNPL services.
+- The private key is sent in the HTTP Authorization header as `Authorization: Bearer <private key>`.
+- Documented key format is a fixed `sk_` prefix followed by a 32-character mixed-case alphanumeric
+  string.
+- The BNPL Payment Request API additionally exposes a token-minting operation
+  (`generate-by-rest`, POST /access/token/resource) that returns an authorization token used by the
+  `check` and `include` operations on the legacy sp-api host.
+- No OAuth 2.0 or OpenID Connect surface is documented; `scopes/` is intentionally not produced.
+schemes:
+- name: PrivateKey
+  type: http
+  scheme: bearer
+  parameter: Authorization
+  description: Koin private key sent as a bearer credential, format `sk_` + 32 alphanumeric characters.
+  docs: https://api-docs.koin.com.br/docs/security-scheme
+  applies_to:
+  - openapi/koin-payments-openapi.json
+  - openapi/koin-antifraud-evaluations-openapi.json
+  - openapi/koin-antifraud-ecommerce-openapi.json
+  - openapi/koin-antifraud-lifecycle-openapi.json
+  - openapi/koin-antifraud-wire-transfer-openapi.json
+  - openapi/koin-antifraud-ato-openapi.json
+  - openapi/koin-onboarding-openapi.json
+- name: sec0
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Authorization header declared in the BNPL Payment Request contract; carries the token
+    minted by the Generate Authorization Token operation.
+  sources:
+  - openapi/koin-bnpl-openapi.json
+client_side:
+- name: clientKey
+  used_by: Koin Checkout SDK (browser tokenization)
+  description: Publishable client key used to initialize the browser tokenization SDK; distinct from
+    the server-side private key.
+  docs: https://api-docs.koin.com.br/reference/koin-checkout-sdk
