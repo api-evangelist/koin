@@ -1,0 +1,986 @@
+openapi: 3.0.3
+info:
+  title: Antifraud Access Payout Services API
+  description: Antifraud services
+  license:
+    name: Apache License Version 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api-sandbox.koin.com.br
+  description: Sandbox domain url
+tags:
+- name: Payout Services
+paths:
+  /v1/payment/payouts/currencies:
+    post:
+      tags:
+      - Payout Services
+      summary: Available Cryptocurrencies
+      description: Service only for crypto payout. It will return the possible cryptocurrencies that the account is allowed to transact.
+      operationId: getCurrenciesPOST
+      parameters:
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutCryptoCurrencies'
+      responses:
+        '200':
+          description: Available cryptocurrencies response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/CryptocurrenciesResponse'
+              examples:
+                Successful cryptocurrencies:
+                  value:
+                    currencies:
+                    - code: btc
+                      desc: Bitcoin
+                      price: '23524.3339968278'
+                      var: '853.29'
+                    - code: xrp
+                      desc: Ripple
+                      price: '0.3719827981'
+                      var: '0.0128'
+  /v1/payment/payouts/quotation:
+    post:
+      tags:
+      - Payout Services
+      summary: Cryptocurrency Quotations
+      description: Service only for crypto payout. It will return the quote for the selected cryptocurrency
+      operationId: getQuotationsPOST
+      parameters:
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutQuotation'
+      responses:
+        '200':
+          description: Cryptocurrencies quote.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/QuoteResponse'
+              examples:
+                Successful quotation:
+                  value:
+                    quotation:
+                      amount:
+                        currency: btc
+                        value: 250.89024957
+                      id: cictoqrp
+                      expiration_date: '2022-09-14T15:11:18Z'
+                    transaction:
+                      reference_id: REF0000001
+  /v1/payment/payouts:
+    post:
+      tags:
+      - Payout Services
+      summary: Create Payout
+      description: In the payout service creation, all the required fields will be validated at first, after that, business validation rules will be run. The next table shows the information about the API.
+      operationId: createPayoutPOST
+      parameters:
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/Payout'
+              - $ref: '#/components/schemas/PayoutCrypto'
+      responses:
+        '200':
+          description: Create payout response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/PayoutResponse'
+                - $ref: '#/components/schemas/CryptoPayoutResponse'
+              examples:
+                Successful pix payout by payment_key:
+                  value:
+                    status:
+                      type: Opened
+                      date: '2021-09-03T15:27:28.000Z'
+                    store:
+                      code: SBXSTORE
+                    descriptor: From Mike to Maria's birthday present
+                    transaction:
+                      reference_id: REF0000001
+                      business_id: BIZ0000001
+                      account: SBX000PO
+                      amount:
+                        currency_code: BRL
+                        value: 1500.56
+                    payment_method:
+                      code: PAYOUTS
+                      recipient:
+                        payment_key: 12345678000112
+                    payout_id: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+                Successful pix payout by account:
+                  value:
+                    status:
+                      type: Opened
+                      date: '2021-09-03T15:27:28.000Z'
+                    store:
+                      code: SBXSTORE
+                    descriptor: From Mike to Maria's birthday present
+                    transaction:
+                      reference_id: REF0000001
+                      business_id: BIZ0000001
+                      account: SBX000PO
+                      amount:
+                        currency_code: BRL
+                        value: 1500.56
+                    payment_method:
+                      code: PAYOUTS
+                      recipient:
+                        account:
+                          ispb: 12345678
+                          agency: 1500
+                          code: 123456789
+                          type: CC
+                    payout_id: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+                Successful crypto payout:
+                  value:
+                    status:
+                      type: Published
+                      date: '2022-09-14T15:15:02.419Z'
+                    store:
+                      code: STORECODE
+                    descriptor: Payout - Test Crypto Payout
+                    transaction:
+                      reference_id: 001fcf0ba-ee3a-4f21-b112
+                      business_id: REF17b77949-d416-4f49-bf01-c504f65abc12342
+                      account: accountcrypto
+                      amount:
+                        currency_code: btc
+                        value: 250.89024957
+                    method:
+                      code: CRYPTO
+                      quotation_id: m1gtqkwg
+                    payout_id: 5f59a4fd-d8db-413c-8e8c-90ec22c58051
+                Failed pix payout:
+                  value:
+                    status:
+                      type: Failed
+                      reason: Rejected
+                      message: Payout failed
+                      date: '2021-09-03T15:27:28.000Z'
+                    store:
+                      code: SBXSTORE
+                    descriptor: From Mike to Maria's birthday present
+                    transaction:
+                      reference_id: REF0000001
+                      business_id: BIZ0000001
+                      account: SBX000PO
+                      amount:
+                        currency_code: BRL
+                        value: 1500.56
+                    payment_method:
+                      code: PAYOUTS
+                      recipient:
+                        payment_key: sbx.po@paymentKey
+                    payout_id: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+                Failed crypto payout:
+                  value:
+                    status:
+                      type: Failed
+                      reason: Rejected
+                      message: Payout failed
+                      date: '2021-09-03T15:27:28.000Z'
+                    store:
+                      code: SBXSTORE
+                    descriptor: From Mike to Maria's birthday present
+                    transaction:
+                      reference_id: REF0000001
+                      business_id: BIZ0000001
+                      account: SBX000PO
+                      amount:
+                        currency: btc
+                        value: 1500.56
+                    method:
+                      code: CRYPTO
+                      quotation_id: m1gtqkwg
+                    payout_id: 5f59a4fd-d8db-413c-8e8c-90ec22c58051
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Validation failed:
+                  value:
+                    code: 400
+                    message: Validation failed
+                    causes:
+                    - store must not be null
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    get:
+      tags:
+      - Payout Services
+      summary: Get Payout by Reference ID
+      description: Payout details service.
+      operationId: payoutByReferenceIdGET
+      parameters:
+      - name: reference_id
+        in: query
+        example: REF0000001
+        description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction)
+        schema:
+          type: string
+        required: true
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Payout details response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutDetailResponse'
+              examples:
+                Payout:
+                  $ref: '#/components/examples/GetPayoutResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Bad Request:
+                  value:
+                    code: 400
+                    message: Required String parameter 'reference_id' is not present
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Not Found:
+                  value:
+                    code: 404
+                    message: Payout not found by reference_id {reference_id}
+        '500':
+          description: Internal Server Error
+  /v1/payment/payouts/{payout_id}:
+    get:
+      tags:
+      - Payout Services
+      summary: Get Payout
+      description: Payout details service.
+      operationId: payoutByPayoutId
+      parameters:
+      - name: payout_id
+        in: path
+        description: Payout ID returned by Create Payout api.
+        example: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+        schema:
+          type: string
+        required: true
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Payout details response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutDetailResponse'
+              examples:
+                Payout:
+                  $ref: '#/components/examples/GetPayoutResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Not Found:
+                  value:
+                    code: 404
+                    message: Payout not found by payout_id {payout_id}
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    PayoutTransaction:
+      title: Payout Transaction
+      required:
+      - reference_id
+      - account
+      - amount
+      type: object
+      properties:
+        reference_id:
+          type: string
+          pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+          description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
+          example: REF0000001
+        business_id:
+          type: string
+          description: Business ID. The ID of the transaction related with this payment. (Maximum of 50 characters - Unique per transaction)
+          example: BIZ0000001
+        account:
+          type: string
+          description: Client account number provided by Koin.
+          example: SBX000PO
+        amount:
+          required:
+          - currency_code
+          - value
+          type: object
+          properties:
+            currency_code:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Payout currency code (ISO 4217)
+              example: BRL
+            value:
+              type: number
+              pattern: d{1,10}.d{2}
+              description: Payout total amount.
+              example: '1500.56'
+    PayoutTransactionCryptoQuotation:
+      title: Crypto Quotation Transaction
+      required:
+      - reference_id
+      - account
+      - amount
+      type: object
+      properties:
+        reference_id:
+          type: string
+          pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+          description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
+          example: REF0000001
+        account:
+          type: string
+          description: Client account number provided by Koin.
+          example: SBX000PO
+        amount:
+          required:
+          - value
+          - currency
+          - to_currency
+          type: object
+          properties:
+            value:
+              type: number
+              pattern: d{1,10}.d{8}
+              description: Payout total amount.
+              example: '100.12345678'
+            currency:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Quote currency code (ISO 4217)
+              example: usd
+            to_currency:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Quote to_currency code (ISO 4217)
+              example: btc
+    PayoutDetailResponse:
+      title: Payout Detail Response
+      type: object
+      properties:
+        status:
+          type: object
+          required:
+          - type
+          - date
+          properties:
+            type:
+              type: string
+              enum:
+              - Opened
+              - Transferred
+              - Failed
+              description: Payout status.
+            reason:
+              type: string
+              enum:
+              - Rejected
+              - ConnectionRefused
+              description: Reason status.
+            message:
+              type: string
+              description: Message associated with the reason
+            date:
+              type: string
+              format: date-time
+              description: Status change date (ISO 8601 date format)
+        store:
+          type: object
+          properties:
+            code:
+              type: string
+              example: SBXSTORE
+        descriptor:
+          type: string
+          example: From Mike to Maria's birthday present
+          description: Text send to client. Maximum of 140 characters.
+        transaction:
+          $ref: '#/components/schemas/PayoutTransaction'
+        payment_method:
+          $ref: '#/components/schemas/PayoutPaymentMethod'
+        payer:
+          type: object
+          properties:
+            agency:
+              type: string
+              description: Agency of the account.
+              example: 1500
+            account_code:
+              type: string
+              description: Number of the account.
+              example: 123456789
+            account_type:
+              description: Type of the account.
+              type: string
+              example: Current Account
+        payout_id:
+          type: string
+          example: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+          description: Payout Id returned by Create Payout API.
+        code:
+          type: string
+          description: Standardized error code (applies only for error cases)
+        message:
+          type: string
+          description: Message associated with the error code (applies only for error cases)
+    PayoutResponse:
+      title: Payout Response
+      type: object
+      properties:
+        status:
+          type: object
+          required:
+          - type
+          - date
+          properties:
+            type:
+              type: string
+              enum:
+              - Opened
+              - Transferred
+              - Failed
+              description: Payout status.
+            reason:
+              type: string
+              enum:
+              - Rejected
+              - ConnectionRefused
+              description: Reason status.
+            message:
+              type: string
+              description: Message associated with the reason
+            date:
+              type: string
+              format: date-time
+              description: Status change date (ISO 8601 date format)
+        store:
+          type: object
+          properties:
+            code:
+              type: string
+              example: SBXSTORE
+        descriptor:
+          type: string
+          example: From Mike to Maria's birthday present
+          description: Text send to client. Maximum of 140 characters.
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCrypto'
+        payment_method:
+          $ref: '#/components/schemas/PayoutPaymentMethod'
+        payout_id:
+          type: string
+          example: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+          description: Payout Id returned by Create Payout API.
+        code:
+          type: string
+          description: Standardized error code (applies only for error cases)
+        message:
+          type: string
+          description: Message associated with the error code (applies only for error cases)
+    PayoutQuotation:
+      title: Cryptocurrency Quotation
+      type: object
+      required:
+      - method
+      - transaction
+      properties:
+        method:
+          $ref: '#/components/schemas/PayoutMethodCryptoQuotation'
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCryptoQuotation'
+    PayoutMethodCrypto:
+      title: Crypto Payout Method
+      required:
+      - code
+      - quotation_id
+      type: object
+      properties:
+        code:
+          type: string
+          example: CRYPTO
+          description: Crypto Payout method code
+        quotation_id:
+          type: string
+          description: Value returned by the quote service. (quotation.id)
+          example:
+          - m1gtqkwg
+    PayoutTransactionCrypto:
+      title: Crypto Payout Transaction
+      required:
+      - reference_id
+      - account
+      - amount
+      type: object
+      properties:
+        reference_id:
+          type: string
+          pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+          description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
+          example: REF0000001
+        business_id:
+          type: string
+          description: Business ID. The ID of the transaction related with this payout. (Maximum of 50 characters - Unique per transaction)
+          example: BIZ0000001
+        account:
+          type: string
+          description: Client account number provided by Koin.
+          example: SBX000PO
+        amount:
+          required:
+          - currency
+          - value
+          type: object
+          properties:
+            currency:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Payout currency code (ISO 4217)
+              example: btc
+            value:
+              type: number
+              pattern: d{1,10}.d{8}
+              description: Payout total amount.
+              example: '100.12345678'
+    CryptocurrenciesResponse:
+      title: Cryptocurrencies Response
+      type: object
+      properties:
+        currencies:
+          type: array
+          description: Available cryptocurrencies options (for the provided account).
+          items:
+            required:
+            - code
+            - desc
+            - price
+            - var
+            type: object
+            properties:
+              code:
+                type: string
+                description: Cryptocurrency code.
+                example: btc
+              desc:
+                type: string
+                description: Cryptocurrency description.
+                example: BITCOIN
+              price:
+                type: string
+                description: Cryptocurrency price.
+                example: '23524.3339968278'
+              var:
+                type: string
+                description: Cryptocurrency variation.
+                example: '853.29'
+    PayoutCryptoCurrencies:
+      title: Payout Cryptocurrencies
+      type: object
+      required:
+      - transaction
+      properties:
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCryptoCurrencies'
+        currency:
+          type: string
+          description: Currency code (ISO 4217)
+    Payout:
+      title: Pix Payout
+      type: object
+      required:
+      - store
+      - transaction
+      - payment_method
+      - notification_url
+      properties:
+        store:
+          type: object
+          required:
+          - code
+          properties:
+            code:
+              type: string
+              example: SBXSTORE
+        transaction:
+          $ref: '#/components/schemas/PayoutTransaction'
+        payment_method:
+          $ref: '#/components/schemas/PayoutPaymentMethod'
+        notification_url:
+          type: array
+          description: List of urls to which notifications will be sent
+          items:
+            type: string
+            example: https://www.providerApi.com/notificationPayouts
+        descriptor:
+          type: string
+          description: Text send to client. Maximum of 140 characters.
+          example: From Mike to Maria's birthday present
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
+    PayoutMethodCryptoQuotation:
+      title: Crypto Quote method
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+          example: CRYPTO
+          description: Crypto Payout method code
+    PayoutCrypto:
+      title: Crypto Payout
+      type: object
+      required:
+      - store
+      - transaction
+      - method
+      - payer
+      - notification_url
+      properties:
+        store:
+          type: object
+          required:
+          - code
+          properties:
+            code:
+              type: string
+              example: STORECODE
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCrypto'
+        method:
+          $ref: '#/components/schemas/PayoutMethodCrypto'
+        notification_url:
+          type: array
+          description: List of urls to which notifications will be sent
+          items:
+            type: string
+            example: https://www.providerApi.com/notificationPayouts
+        descriptor:
+          type: string
+          description: Text send to client. Maximum of 140 characters.
+          example: From Mike to Maria's birthday present
+        payer:
+          required:
+          - email
+          properties:
+            email:
+              type: string
+              description: Payer email
+              example: jhon_doe@domain.com
+    CryptoPayoutResponse:
+      title: Crypto Payout Response
+      type: object
+      properties:
+        status:
+          type: object
+          required:
+          - type
+          - date
+          properties:
+            type:
+              type: string
+              enum:
+              - Opened
+              - Transferred
+              - Failed
+              description: Payout status.
+            date:
+              type: string
+              format: date-time
+              description: Status change date (ISO 8601 date format)
+        store:
+          type: object
+          properties:
+            code:
+              type: string
+              example: STORECODE
+              description: Store identifier.
+        descriptor:
+          type: string
+          example: From Mike to Maria's birthday present
+          description: Text send to client. Maximum of 140 characters.
+        transaction:
+          $ref: '#/components/schemas/PayoutTransaction'
+        method:
+          $ref: '#/components/schemas/PayoutMethodCrypto'
+        payout_id:
+          type: string
+          example: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+          description: Payout Id returned by Create Payout API.
+        code:
+          type: string
+          description: Standardized error code (applies only for error cases)
+        message:
+          type: string
+          description: Message associated with the error code (applies only for error cases)
+    PayoutTransactionCryptoCurrencies:
+      title: Payout Cryptocurrencies Transaction
+      required:
+      - account
+      type: object
+      properties:
+        account:
+          type: string
+          description: Client account number provided by Koin.
+          example: ACCOUNTCODE
+    QuoteResponse:
+      title: Crypto Quote Response
+      type: object
+      properties:
+        quotation:
+          type: object
+          required:
+          - amount
+          - id
+          - expiration_date
+          properties:
+            amount:
+              required:
+              - currency
+              - value
+              type: object
+              properties:
+                currency:
+                  type: string
+                  pattern: '[A-Z]{3}'
+                  description: Quote currency code (ISO 4217)
+                  example: btc
+                value:
+                  type: number
+                  pattern: d{1,10}.d{8}
+                  description: Payout total amount.
+                  example: 250.89024957
+            id:
+              type: string
+              description: Quote id.
+            expiration_date:
+              type: string
+              format: date-time
+              description: Quote expiration (ISO 8601 date format)
+        transaction:
+          type: object
+          properties:
+            reference_id:
+              type: string
+              pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+              description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
+              example: REF0000001
+    PayoutPaymentMethod:
+      title: Payout Payment Method
+      required:
+      - code
+      - recipient
+      type: object
+      properties:
+        code:
+          type: string
+          example: PAYOUTS
+          description: Payment method code
+        recipient:
+          type: object
+          properties:
+            id:
+              type: string
+              pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+              description: Identifier search recipient.
+            payment_key:
+              type: string
+              pattern: ^[0-9]{11}$ ,^[0-9]{14}$, ^\+[1-9][0-9]\d{1,14}$ ,[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+              description: Receiver pix key. Options are CNPJ, CPF, telephone, email, or random payment key (max 100 characters).
+              example:
+              - '12345678000112'
+              - '54672396002'
+              - '+5561912346578'
+              - jhon_doe@domain.com
+              - 123e4567-e12b-12d1-a456-426655440000
+            full_name:
+              type: string
+              maxLength: 100
+              description: Full name. If the length of the field exceeds 100 characters it will be truncated.
+              example: Box Jhon
+            document:
+              required:
+              - type
+              - number
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - cpf
+                  - cnpj
+                  description: Receiver document type (cpf, cnpj).
+                number:
+                  type: string
+                  pattern: (^[0-9]{11}$)|(^[0-9]{14}$)
+                  description: Receiver document number.
+            account:
+              type: object
+              properties:
+                ispb:
+                  type: string
+                  description: Brazilian Payment System Identifier (eight-number length).
+                  example: 12345678
+                agency:
+                  type: string
+                  description: Receiver account Agency.
+                  example: 1500
+                code:
+                  type: string
+                  description: Receiver account number.
+                  example: 123456789
+                type:
+                  type: string
+                  enum:
+                  - CA
+                  - CC
+                  - CS
+                  description: Receiver account type.
+                  example: CC
+  examples:
+    GetPayoutResponse:
+      value:
+        status:
+          type: Transferred
+          date: '2021-09-03T15:27:28.000Z'
+        store:
+          code: SBXSTORE
+        descriptor: From Mike to Maria's birthday present
+        transaction:
+          reference_id: REF0000001
+          business_id: BIZ0000001
+          account: SBX000PO
+          amount:
+            currency_code: BRL
+            value: 1500.56
+        payer:
+          agency: '1500'
+          account_code: 00800550
+          account_type: CC
+        payment_method:
+          code: PAYOUTS
+          payment_key: sbx.po@paymentKey
+        payout_id: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6

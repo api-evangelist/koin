@@ -1,0 +1,325 @@
+openapi: 3.0.3
+info:
+  title: Antifraud Access Refund Services API
+  description: Antifraud services
+  license:
+    name: Apache License Version 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api-sandbox.koin.com.br
+  description: Sandbox domain url
+tags:
+- name: Refund Services
+paths:
+  /v1/payment/orders/{order_id}/refund:
+    put:
+      tags:
+      - Refund Services
+      summary: Create Refund
+      description: Service responsible for requesting the return of an approved payment. The refund may be total or partial.
+      operationId: createRefundPUTbyOrderId
+      parameters:
+      - in: path
+        name: order_id
+        description: Order ID returned by create payment service
+        schema:
+          type: string
+        example: 9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f
+        required: true
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+            examples:
+              Create refund example:
+                value:
+                  transaction:
+                    reference_id: REF0000001
+                  amount:
+                    currency_code: BRL
+                    value: 100
+      responses:
+        '200':
+          description: Create refund response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponse'
+              examples:
+                Successful refund:
+                  value:
+                    refund_id: 6efddc33-c023-24b9-a3f3-d6ca6087f2b0
+                    amount:
+                      currency_code: BRL
+                      value: 111.11
+                    status:
+                      type: Refunded
+                      date: '2022-02-10T17:54:48.304Z'
+                Error:
+                  $ref: '#/components/examples/UnknownError'
+                R02 Error:
+                  value:
+                    code: R02
+                    message: Payment not found
+                R03 Error:
+                  value:
+                    code: R03
+                    message: Refund Denied
+                R04 Error:
+                  value:
+                    code: R04
+                    message: The return currency does not match the original payment currency
+                R05 Error:
+                  value:
+                    code: R05
+                    message: The payment is not collected
+                R06 Error:
+                  value:
+                    code: R06
+                    message: The amount you are trying to return exceeds the total amount returned
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Validation failed:
+                  value:
+                    code: 400
+                    message: Validation failed
+                    causes:
+                    - amount.currency_code is not a supported ISO 4217 currency code
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /v1/payment/orders/{order_id}/refunds/{refund_id}:
+    get:
+      tags:
+      - Refund Services
+      summary: Get Refund
+      description: Service to get a previously generated refund.
+      operationId: consultRefundGET
+      parameters:
+      - in: path
+        name: order_id
+        description: Order ID returned by create payment service
+        example: 455e9a73-37f6-464c-b09c-334545
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: refund_id
+        description: Refund ID returned by create refund service
+        example: 455e9a73-37f6-464c-b09c-9c0048fdafef
+        schema:
+          type: string
+        required: true
+      - name: Content-Type
+        in: header
+        example: application/json
+        description: The Media type of the body of the request. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      - name: Accept
+        in: header
+        example: application/json
+        description: Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Refund information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRefundResponse'
+              examples:
+                Refund:
+                  value:
+                    amount:
+                      value: 100
+                      currency_code: BRL
+                    status:
+                      type: Refunded
+                      date: '2021-01-01T10:22:27.000Z'
+                    order_id: 9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    RefundResponse:
+      title: Refund Response
+      required:
+      - refund_id
+      - amount
+      - status
+      type: object
+      properties:
+        refund_id:
+          type: string
+          description: Refund ID returned by create refund service
+          example: 455e9a73-37f6-464c-b09c-9c0048fdafef
+        amount:
+          type: object
+          required:
+          - currency_code
+          - value
+          properties:
+            currency_code:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Currency code (ISO 4217)
+              example: BRL
+            value:
+              type: number
+              pattern: d{1,10}.d{2}
+              description: Refund amount (cannot exceed the payment amount)
+              example: 1500.56
+        status:
+          type: object
+          required:
+          - type
+          - date
+          properties:
+            type:
+              type: string
+              description: Refund status
+              enum:
+              - InProgress
+              - Refunded
+              - Failed
+            date:
+              type: string
+              format: date-time
+              description: Status change date (ISO 8601 date format)
+        code:
+          type: string
+          description: Standardized error code (applies only for error cases)
+        message:
+          type: string
+          description: Message associated with the error code (applies only for error cases)
+    RefundRequest:
+      title: Refund Request
+      required:
+      - amount
+      type: object
+      properties:
+        transaction:
+          type: object
+          required:
+          - reference_id
+          properties:
+            reference_id:
+              type: string
+              pattern: utf-8
+              description: Refund identifier, generated by client. (Maximum of 50 characters - Unique per refund). Used as idempotence.
+              example: REF0000001
+        amount:
+          type: object
+          required:
+          - value
+          - currency_code
+          properties:
+            currency_code:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Currency Code (ISO 4217)
+              example: BRL
+            value:
+              type: number
+              pattern: d{1,10}.d{2}
+              description: Refund amount (cannot exceed the payment amount)
+              example: 1500.56
+    GetRefundResponse:
+      title: Get Refund Response
+      required:
+      - amount
+      - status
+      - order_id
+      type: object
+      properties:
+        amount:
+          type: object
+          required:
+          - currency_code
+          - value
+          properties:
+            currency_code:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Currency code (ISO 4217)
+              example: BRL
+            value:
+              type: number
+              pattern: d{1,10}.d{2}
+              description: Refund amount (cannot exceed the payment amount)
+              example: 100.56
+        status:
+          type: object
+          required:
+          - type
+          - date
+          properties:
+            type:
+              type: string
+              description: Refund status
+              enum:
+              - InProgress
+              - Refunded
+              - Failed
+            date:
+              type: string
+              format: date-time
+              description: Status change date (ISO 8601 date format)
+        order_id:
+          type: string
+          description: Order ID returned by create payment service
+          example: 9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f
+        code:
+          type: string
+          description: Standardized error code (applies only for error cases)
+        message:
+          type: string
+          description: Message associated with the error code (applies only for error cases)
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
+  examples:
+    UnknownError:
+      value:
+        code: '01'
+        message: Error unknown

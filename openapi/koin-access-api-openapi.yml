@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Antifraud Access API
+  description: Antifraud services
+  license:
+    name: Apache License Version 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+servers:
+- url: https://api-sandbox.koin.com.br
+  description: Sandbox domain url
+tags:
+- name: Access
+paths:
+  /access/token/resource:
+    post:
+      summary: Generate Authorization Token
+      description: ''
+      operationId: generate-by-rest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  default: https://sp-api.koin.com.br/V1/TransactionService.svc/Request
+                consumerKey:
+                  type: string
+                  default: <CONSUMER KEY>
+                secretKey:
+                  type: string
+                  default: <SECRET KEY>
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"Authorization\": \"06497EEC06624XXXXX1CA995A58D11C36,cEKjWCGZnu3BqWIzjh86kDqkUK5Kn1Tqk1Um0CRvb/zypnnzxJ+Ck51g7OgzSt+cnrPYBqWDHZa+0lQHpsDbGA==,1655995847441\"\n}"
+              schema:
+                type: object
+                properties:
+                  Authorization:
+                    type: string
+                    example: 06497EEC06624XXXXX1CA995A58D11C36,cEKjWCGZnu3BqWIzjh86kDqkUK5Kn1Tqk1Um0CRvb/zypnnzxJ+Ck51g7OgzSt+cnrPYBqWDHZa+0lQHpsDbGA==,1655995847441
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Not Authorized:
+                  value: ''
+        '404':
+          description: '404'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+        5XX:
+          description: 5XX
+          content:
+            text/plain:
+              examples:
+                Unexpected Error:
+                  value: ''
+      deprecated: false
+      tags:
+      - Access
