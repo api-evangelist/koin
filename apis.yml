@@ -1,22 +1,507 @@
 aid: koin
 name: Koin
-description: Koin is a company surfaced as a portfolio company of speedinvest and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Koin is a Brazilian payments and fraud-prevention provider operating across Latin America,
+  offering merchants a single private-key API for BNPL ("Pix Parcelado" / installment payments without
+  a card), instant Pix, card payments with anti-fraud, crypto and Pix payouts, refunds, cancellations
+  and account-validation. Its Antifraud API scores e-commerce, wire-transfer and account-takeover events
+  with device fingerprinting, 3-D Secure and strategy-based recovery, while an Onboarding API registers
+  merchants. Koin publishes a ReadMe-hosted developer portal with OpenAPI 3 contracts, first-party
+  Magento 2, WooCommerce, VTEX, Shopify, Wake, Nuvemshop and Tiendanube plugins, and iOS/Android
+  checkout SDKs. Founded in Brazil and backed by Speedinvest (2018), Koin was acquired by Despegar in 2020.
 url: https://raw.githubusercontent.com/api-evangelist/koin/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/images/PkgidZslCNXkKXqoQ6oHqtcYHo.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - speedinvest
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
+- Payments
+- Fraud Prevention
+- Buy Now Pay Later
+- Pix
+- E-Commerce
+- Financial Services
+- Brazil
+- Latin America
+- Anti-Fraud
+- Checkout
 - Company
-apis: []
+apis:
+- aid: koin:koin-access-api
+  name: Koin Access API
+  description: The Access API from Koin — 1 operation(s) for access.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Access
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-access-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-account-take-over-services-api
+  name: Koin Account Take Over Services API
+  description: >-
+    The Account Take Over Services API from Koin — 2 operation(s) for account take over services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Account Take Over Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-account-take-over-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-availability-services-api
+  name: Koin Availability Services API
+  description: The Availability Services API from Koin — 1 operation(s) for availability services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Availability Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-availability-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-communication-services-api
+  name: Koin Communication Services API
+  description: The Communication Services API from Koin — 1 operation(s) for communication services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Communication Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-communication-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-ecommerce-api
+  name: Koin Ecommerce API
+  description: The Ecommerce API from Koin — 2 operation(s) for ecommerce.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Ecommerce
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-ecommerce-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-notification-services-sales-api
+  name: Koin Notification Services Sales API
+  description: >-
+    The Notification Services Sales API from Koin — 1 operation(s) for notification services sales.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Notification Services Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-notification-services-sales-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-onboarding-services-api
+  name: Koin Onboarding Services API
+  description: Onboarding Service
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Onboarding Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-onboarding-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-payment-service-provider-api
+  name: Koin Payment Service Provider API
+  description: >-
+    The Payment Service Provider API from Koin — 1 operation(s) for payment service provider.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Payment Service Provider
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-payment-service-provider-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-payment-services-api
+  name: Koin Payment Services API
+  description: The Payment Services API from Koin — 5 operation(s) for payment services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Payment Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-payment-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-paymentrequest-api
+  name: Koin PaymentRequest API
+  description: The PaymentRequest API from Koin — 2 operation(s) for paymentrequest.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - PaymentRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-paymentrequest-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-payout-services-api
+  name: Koin Payout Services API
+  description: The Payout Services API from Koin — 4 operation(s) for payout services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Payout Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-payout-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-recipient-services-account-api
+  name: Koin Recipient Services Account API
+  description: >-
+    The Recipient Services Account API from Koin — 1 operation(s) for recipient services account.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Recipient Services Account
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-recipient-services-account-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-refund-services-api
+  name: Koin Refund Services API
+  description: The Refund Services API from Koin — 2 operation(s) for refund services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Refund Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-refund-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-support-services-api
+  name: Koin Support Services API
+  description: The Support Services API from Koin — 3 operation(s) for support services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Support Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-support-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-tokenize-services-api
+  name: Koin Tokenize Services API
+  description: The Tokenize Services API from Koin — 1 operation(s) for tokenize services.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Tokenize Services
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-tokenize-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-wiretransfer-api
+  name: Koin WireTransfer API
+  description: The WireTransfer API from Koin — 1 operation(s) for wiretransfer.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - WireTransfer
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-wiretransfer-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+common:
+- type: DeveloperPortal
+  url: https://api-docs.koin.com.br/
+- type: Documentation
+  url: https://api-docs.koin.com.br/docs/security-scheme
+- type: APIReference
+  url: https://api-docs.koin.com.br/reference/introduction
+- type: GettingStarted
+  url: https://api-docs.koin.com.br/docs/integration-requirements
+- type: Website
+  url: https://www.koin.com.br/
+- type: Support
+  url: https://www.koin.com.br/atendimento
+- type: HelpCenter
+  url: https://www.koin.com.br/faq-b2b
+- type: Blog
+  url: https://www.koin.com.br/conteudos
+- type: GitHubOrganization
+  url: https://github.com/koinlatam
+- type: Pricing
+  url: https://www.koin.com.br/plataforma-de-pagamentos-b2b
+- type: SignUp
+  url: https://koin-prod.us.auth0.com/u/login
+- type: TermsOfService
+  url: https://termos.koin.com.br/
+- type: PrivacyPolicy
+  url: https://www.koin.com.br/politica-de-privacidade
+- type: Authentication
+  url: authentication/koin-authentication.yml
+- type: Conventions
+  url: conventions/koin-conventions.yml
+- type: Idempotency
+  url: conventions/koin-conventions.yml
+- type: ErrorCatalog
+  url: errors/koin-problem-types.yml
+- type: DeclineCodes
+  url: errors/koin-decline-codes.yml
+- type: Webhooks
+  url: asyncapi/koin-payments-webhooks.yml
+- type: Lifecycle
+  url: lifecycle/koin-lifecycle.yml
+- type: StatusPage
+  url: https://koin.statuspage.io/
+- type: ChangeLog
+  url: changelog/koin-changelog.yml
+- type: Sandbox
+  url: sandbox/koin-sandbox.yml
+- type: Packages
+  url: packages/koin-packages.yml
+- type: SDKs
+  url: packages/koin-packages.yml
+- type: Components
+  url: components/koin-components.yml
+- type: DataModel
+  url: data-model/koin-data-model.yml
+- type: Conformance
+  url: conformance/koin-conformance.yml
+- type: MCPServer
+  url: mcp/koin-mcp.yml
+- type: LLMsTxt
+  url: llms/koin-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/koin-domain-security.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
