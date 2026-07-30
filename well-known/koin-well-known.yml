@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: probed
+source: live probes of every Koin API and web host
+summary: Koin publishes no /.well-known/ discovery documents on any probed host. Recorded as a
+  verified negative — absence is valid data, not a gap in this harvest.
+hosts:
+- host: https://api-sandbox.koin.com.br
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://www.koin.com.br
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://api-docs.koin.com.br
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://www.sp-api.koin.com
+  documents:
+  - {path: /.well-known/security.txt, status: 0, note: host did not resolve/connect from the probe}
+  - {path: /.well-known/openid-configuration, status: 0}
+  - {path: /.well-known/oauth-authorization-server, status: 0}
+  - {path: /.well-known/api-catalog, status: 0}
+  - {path: /.well-known/ai-plugin.json, status: 0}
+related:
+- note: api-docs.koin.com.br DOES publish /llms.txt (200) — captured verbatim at llms/koin-llms.txt.

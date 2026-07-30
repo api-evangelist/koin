@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/changelog/22
+docs: https://api-docs.koin.com.br/
+scheme:
+  style: developer-portal release branches
+  format: MAJOR.MINOR
+  current: '2.2'
+  published_branches: ['1.9', '2.0', '2.1', '2.2']
+  note: Koin versions its developer portal, not its API URI (which remains /v1). Changelog entries
+    describe documentation releases and the API capabilities they document. Dates are not published on
+    the changelog entries themselves.
+  window: Only the two most recent entries are published with content; earlier branches (1.9, 2.0)
+    exist as portal versions without changelog posts.
+entries:
+- version: '2.2'
+  url: https://api-docs.koin.com.br/changelog/22
+  title: Payments — Google Pay Support
+  breaking: false
+  additions:
+  - Google Pay support in the Create Payment API.
+  - Google Pay guide added to the wallets section of the documentation.
+  highlights: Extends the wallet payment methods available on
+    openapi/koin-payments-openapi.json#createPayment alongside Apple Pay, Click to Pay, PayPal,
+    AstroPay, MODO and DEBIN.
+- version: '2.1'
+  url: https://api-docs.koin.com.br/changelog/21
+  title: Antifraud — Visual Documentation Restructure
+  breaking: false
+  additions:
+  - Complete visual restructuring of the fraud documentation.
+  - Antifraud requests regrouped by integration type.
+  highlights: Explicitly documentation-only. Koin states the changes are purely visual and do not
+    affect the structure of API calls or existing integrations; no merchant action required.
+related:
+- lifecycle/koin-lifecycle.yml

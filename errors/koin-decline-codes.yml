@@ -1,0 +1,135 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/reference/messages-and-codes
+docs: https://api-docs.koin.com.br/reference/messages-and-codes
+summary:
+  description: Koin publishes a "Messages and Codes" registry of business decision codes returned for
+    BNPL / installment orders. These are distinct from HTTP-level errors (errors/koin-problem-types.yml)
+    — they carry the outcome of the credit and identity decision and the buyer-facing message.
+  scope: BNPL / installment payment requests
+  buyer_facing: true
+  note: Koin publishes each code together with the exact consumer-facing wording. Decline reasons are
+    deliberately generic to the buyer ("use another payment method"); the specific reason is only
+    disclosed by Koin's SAC support channel (sac@koin.com.br).
+  families:
+    '1xxxx': Registration / duplicate-identity conflicts and reversals
+    2xx: Approval
+    3xx: Decline and pending-verification states
+    4xx: Awaiting payment
+    5xx: Configuration and processing errors on the store or Koin side
+    6xx: Order-payload validation errors
+    7xx: Credit-limit and discount-rule declines
+    9xx: Cancellation and duplicate-submission states
+decline_codes:
+- code: '10101'
+  meaning: CPF already registered with Koin
+  buyer_message: We identified that the CPF informed is already registered with KOIN. Please complete
+    the order using the other data already registered. For more information, contact SAC KOIN.
+  action: Ask the buyer to complete the order with the data already registered, or direct them to SAC.
+- code: '10103'
+  meaning: E-mail already registered with Koin
+  buyer_message: We identified that the e-mail informed is already registered with KOIN. Please
+    complete the order using the other data already registered.
+  action: Ask the buyer to use the already-registered data, or direct them to SAC.
+- code: '10999'
+  meaning: Invalid email format
+  action: Validate the buyer e-mail client-side before submitting.
+- code: '12100'
+  meaning: Order reversed at Koin
+  action: Treat the order as reversed; do not fulfil.
+- code: '200'
+  meaning: Approved
+  buyer_message: Your purchase is APPROVED! Thank you for shopping with KOIN.
+  action: Proceed with fulfilment.
+- code: '300'
+  meaning: Not approved
+  buyer_message: Unfortunately your purchase was not approved. Please use another payment method.
+  action: Offer an alternative payment method. Specific reason is masked from the buyer.
+- code: '302'
+  meaning: Not approved
+  buyer_message: Unfortunately your purchase was not approved. Please use another payment method.
+  action: Offer an alternative payment method. Specific reason is masked from the buyer.
+- code: '304'
+  meaning: Not approved — contact support
+  buyer_message: Unfortunately your purchase was not approved. For more information, contact SAC KOIN.
+  action: Direct the buyer to SAC KOIN.
+- code: '312'
+  meaning: Awaiting e-mail activation, or under review
+  buyer_message: Your order has been received by KOIN and is awaiting Email activation. / Your order
+    has been received by KOIN and is under review. Please wait as you will soon receive the status
+    update via email.
+  action: Hold the order in a pending state and wait for the webhook status update.
+  note: Koin documents two distinct messages under the same code 312.
+- code: '400'
+  meaning: Awaiting payment for order activation
+  action: Hold as pending until the collection webhook arrives.
+- code: '500'
+  meaning: Processing error
+  buyer_message: Processing error! Please try again or contact KOIN.
+  action: Retry, then escalate to Koin.
+- code: '507'
+  meaning: PaymentType not authorized for this store
+  action: Contact Koin support to enable the payment type on the merchant contract.
+- code: '508'
+  meaning: The store has no current configuration for transactions
+  action: Merchant configuration issue — contact Koin.
+- code: '509'
+  meaning: Could not store buyer information
+  action: Re-check the buyer payload and retry.
+- code: '510'
+  meaning: Could not get delivery address
+  action: Verify the delivery-address fields are present and complete.
+- code: '511'
+  meaning: This order number has already been sent to Koin
+  action: Duplicate submission — look the order up instead of re-sending. See the idempotency section
+    in conventions/koin-conventions.yml.
+- code: '601'
+  meaning: Order value error
+  action: Verify the order total; contact the store.
+- code: '602'
+  meaning: No products found in the order
+  action: Ensure the items array is populated.
+- code: '603'
+  meaning: Order number is invalid
+  action: Verify the reference/order identifier format.
+- code: '701'
+  meaning: Declined — exceeds the buyer's Koin credit limit
+  buyer_message: Unfortunately your purchase was not approved as it exceeds your KOIN credit limit.
+  action: Offer an alternative payment method or a lower basket value.
+- code: '702'
+  meaning: Declined — credit decision
+  buyer_message: Unfortunately your purchase was not approved. Please use another method of payment.
+  action: Offer an alternative payment method.
+- code: '703'
+  meaning: Discount value not allowed (equal to or greater than the total order value)
+  action: Correct the discount amount so it is strictly less than the order total.
+- code: '704'
+  meaning: Not approved — contact support
+  buyer_message: Unfortunately your purchase was not approved. For more information, contact SAC KOIN.
+  action: Direct the buyer to SAC KOIN.
+- code: '901'
+  meaning: Order canceled at Koin
+  action: Treat the order as cancelled.
+- code: '902'
+  meaning: Order canceled at Koin
+  action: Treat the order as cancelled.
+- code: '903'
+  meaning: Processing cancellation / order canceled at Koin
+  action: Cancellation in flight or complete; wait for the terminal webhook.
+  note: Koin documents two messages under code 903.
+- code: '998'
+  meaning: Order already processed by Koin
+  buyer_message: Order already processed by KOIN. To check the status of the order, access your account
+    at www.koin.com.br or contact SAC Koin.
+  action: Duplicate submission — do not re-send.
+- code: '999'
+  meaning: Invalid request fields
+  variants:
+  - Invalid request fields
+  - 'Invalid Request: Invalid CPF'
+  - 'Invalid request: Incomplete name'
+  - 'Invalid Request: Invalid Phones'
+  action: Validate CPF, full name and phone numbers before submitting.
+related:
+- errors/koin-problem-types.yml
+- asyncapi/koin-payments-webhooks.yml

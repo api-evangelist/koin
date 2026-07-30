@@ -1,0 +1,66 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/reference/koin-checkout-sdk
+summary: Koin ships browser- and app-side embeddable surfaces rather than a general UI component
+  library — a hosted tokenization/checkout SDK that mounts into a merchant-supplied container, a
+  promotional installment banner, a redirect-hosted checkout, and mobile checkout SDKs.
+families:
+- name: Koin Checkout SDK (web)
+  kind: hosted script + mounted element
+  description: Browser SDK that renders the Koin checkout/card form into a merchant-supplied div and
+    returns a secure card token, keeping raw PAN off the merchant's servers. Initialized with a
+    publishable `clientKey`.
+  loader:
+    production: https://api-secure.koin.com.br/checkout/static/scripts/sdk/tokenize.js
+    sandbox: https://portal-dev.koin.com.br/checkout/static/scripts/sdk/tokenize.js
+  mount_target: '<div id="koin-checkout-container"></div>'
+  credentials: clientKey (publishable, distinct from the server-side sk_ private key)
+  docs: https://api-docs.koin.com.br/reference/koin-checkout-sdk
+- name: Installment banner
+  kind: embedded widget
+  description: Drop-in banner that advertises Koin installment / BNPL options on product and cart
+    pages.
+  loader: https://banner-checkout.koin.com.br/index.js
+  source: koinlatam/magento2 plugin source
+  docs: https://api-docs.koin.com.br/docs/banner
+- name: Koin popup checkout
+  kind: embedded overlay
+  description: Popup checkout script used by the transparent BNPL integration.
+  loader: https://checkout.koin.com.br/scripts/koin-popup.js
+  source: koinlatam/magento2 plugin source
+- name: Hosted redirect checkout
+  kind: hosted page
+  description: Koin-hosted checkout where the buyer selects an installment plan and completes the BNPL
+    order, then returns to the merchant. The URL is returned as `return_url` on BNPL notifications.
+  url_pattern: https://payments.koin.com.br/checkout/{order_uuid}
+  docs: https://api-docs.koin.com.br/docs/bnpl-redirect
+- name: Device fingerprint snippet
+  kind: hosted script
+  description: Mandatory JavaScript snippet that collects device/session signal on the pages where the
+    payer starts or completes payment; the returned identifier is sent in the `device` object on
+    antifraud pre-evaluation and evaluation.
+  docs: https://api-docs.koin.com.br/reference/javascript-integration
+  variants:
+  - Plain JavaScript
+  - VTEX plain JavaScript
+  - VTEX via Google Tag Manager
+  required: true
+- name: Mobile checkout SDKs
+  kind: native UI
+  description: Native checkout surfaces for Pix, credit card and BNPL. Android exposes an
+    ActivityResultLauncher contract usable from Jetpack Compose or classic Views; iOS ships as a
+    binary xcframework.
+  packages:
+  - br.com.koin:payment-checkout (Android)
+  - KoinPaymentCheckout (iOS)
+  artifact: packages/koin-packages.yml
+  docs: https://api-docs.koin.com.br/reference/koin-checkout-sdk
+platform_plugins:
+  note: Koin's largest client-side surface is prebuilt e-commerce platform plugins rather than
+    components. Catalogued in packages/koin-packages.yml and documented per platform.
+  platforms: [VTEX, Magento 2, Magento 1, WooCommerce, Shopify, Nuvemshop, Tiendanube, Wake, Uappi]
+  docs: https://docs.koin.com.br/
+content_security_policy:
+  note: Koin publishes the domains merchants must allow in their CSP for wallet flows (PayPal, Apple
+    Pay, Click to Pay) to work.
+  docs: https://api-docs.koin.com.br/docs/content-security-policy

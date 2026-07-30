@@ -1,0 +1,188 @@
+# Koin Documentation
+
+> Documentation for Koin
+
+## Guides
+- [Security Scheme](https://api-docs.koin.com.br/docs/security-scheme.md)
+- [Introduction](https://api-docs.koin.com.br/docs/introduction-card.md)
+- [Card with checkout](https://api-docs.koin.com.br/docs/card-with-checkout.md)
+- [Card without checkout](https://api-docs.koin.com.br/docs/card-without-checkout.md)
+- [Refunds](https://api-docs.koin.com.br/docs/refunds-and-cancellations.md)
+- [Void](https://api-docs.koin.com.br/docs/void.md)
+- [Wallets](https://api-docs.koin.com.br/docs/wallets.md)
+- [Introduction](https://api-docs.koin.com.br/docs/introduction-bnpl.md)
+- [BNPL Redirect](https://api-docs.koin.com.br/docs/bnpl-redirect.md): Each BNPL checkout option has its own workflow. Here you can find more information on the redirect scenarios.
+- [Embedded integration examples](https://api-docs.koin.com.br/docs/embedded-integration-examples.md)
+- [BNPL Transparent checkout](https://api-docs.koin.com.br/docs/bnpl-transparent-checkout.md)
+- [Interface Guideline](https://api-docs.koin.com.br/docs/interface-guideline.md)
+- [Introduction](https://api-docs.koin.com.br/docs/pix-copy.md)
+- [Workflows](https://api-docs.koin.com.br/docs/pix-workflows.md): In this section you can find information about pix workflow for different scenarios.
+- [PIX](https://api-docs.koin.com.br/docs/pix-3.md): Payout with Pix
+- [Crypto](https://api-docs.koin.com.br/docs/payout-crypto.md): Payout with cryptocurrency
+- [Antifraud Services Flow](https://api-docs.koin.com.br/docs/antifraud-services-flow-1.md)
+- [Integration Requirements](https://api-docs.koin.com.br/docs/integration-requirements.md)
+- [3DS (3-D Secure) in Koin Antifraud Integration](https://api-docs.koin.com.br/docs/antifraud-with-3ds-integration.md)
+- [Strategies](https://api-docs.koin.com.br/docs/strategies-1.md)
+- [Apple Pay](https://api-docs.koin.com.br/docs/apple-pay.md): This page will help you get started with Apple Pay.
+- [Astro Pay](https://api-docs.koin.com.br/docs/astropay.md): This page will help you get started with Astro Pay.
+- [Card](https://api-docs.koin.com.br/docs/card.md): This page will help you get started with the Card checkout (tarjeta de crédito/débito).
+- [Click to Pay](https://api-docs.koin.com.br/docs/click-to-pay.md): This page will help you get started with Click to Pay.
+- [Content Security Policy (CSP)](https://api-docs.koin.com.br/docs/content-security-policy.md): Dominios que debés incluir en tu Content Security Policy para que las wallets (PayPal, Apple Pay, Click to Pay) funcionen correctamente.
+- [DEBIN](https://api-docs.koin.com.br/docs/debin.md): This page will help you get started with DEBIN.
+- [MODO](https://api-docs.koin.com.br/docs/modo.md): This page will help you get started with the MODO.
+- [Paypal](https://api-docs.koin.com.br/docs/paypal.md): This page will help you get started with Paypal.
+- [PIX](https://api-docs.koin.com.br/docs/pix.md): This page will help you get started with the PIX checkout (pago instantáneo brasileño vía QR / copy & paste).
+- [Safety Pay](https://api-docs.koin.com.br/docs/safety-pay.md): This page will help you get started with Safety Pay.
+- [URLs](https://api-docs.koin.com.br/docs/urls.md): This page will help you get started with the URLs.
+- [Introdução](https://api-docs.koin.com.br/docs/plugins-e-plataformas.md): Instale nosso checkout no seu site e configure a experiência de pagamento do seu jeito. Abaixo você encontra o passo a passo para instalar nosso plugin no seu checkout.
+- [Vtex](https://api-docs.koin.com.br/docs/vtex.md)
+- [⚙️Configuração geral](https://api-docs.koin.com.br/docs/configuração.md)
+- [💳 Provedor: Koin-Payments-V2](https://api-docs.koin.com.br/docs/koin-payments-v2.md)
+- [🔒 Provedor: Koin-Antifraud](https://api-docs.koin.com.br/docs/koin-antifraud.md)
+- [🧩 Ativar o Device Fingerprint Koin](https://api-docs.koin.com.br/docs/ativar-o-device-fingerprint-koin.md)
+- [💳 Cartão + Antifraude](https://api-docs.koin.com.br/docs/cartão-antifraude-copy.md)
+- [🔒 Antifraude](https://api-docs.koin.com.br/docs/antifraude.md)
+- [# 🔧 Componente de Estratégias Online em VTEX](https://api-docs.koin.com.br/docs/componente-de-estratégias-online-em-vtex.md): Manual de Instalação
+- [💸 PIX parcelado](https://api-docs.koin.com.br/docs/pix-parcelado.md)
+- [Recuperação de carrinho](https://api-docs.koin.com.br/docs/recuperação-de-carrinho.md)
+- [⚡ PIX à Vista](https://api-docs.koin.com.br/docs/pix-à-vista.md)
+- [Vtex - ES](https://api-docs.koin.com.br/docs/vtex-copy.md)
+- [⚙️Configuración general - ES](https://api-docs.koin.com.br/docs/️configuração-geral-copy.md)
+- [💳 Proveedor: Koin-Payments-V2](https://api-docs.koin.com.br/docs/provedor-koin-payments-v2-copy.md)
+- [🧩 Activar el Device Fingerprint de Koin](https://api-docs.koin.com.br/docs/ativar-o-device-fingerprint-koin-copy.md)
+- [🔒 Proveedor: Koin-Antifraud](https://api-docs.koin.com.br/docs/proveedor-koin-antifraud.md)
+- [💳 Tarjeta + Antifraude](https://api-docs.koin.com.br/docs/cartão-antifraude.md)
+- [🔒 Antifraude](https://api-docs.koin.com.br/docs/antifraude-1.md)
+- [# 🔧 Instalación de Estrategias](https://api-docs.koin.com.br/docs/instalación-componente-de-estrategias-online-en-vtex.md): Manual de Usuario - Instalación Componente de Estrategias Online en VTEX
+- [Magento 2](https://api-docs.koin.com.br/docs/magento2.md)
+- [🔌Instalação](https://api-docs.koin.com.br/docs/magento2-instalacao.md)
+- [⚙️Configurações Gerais](https://api-docs.koin.com.br/docs/️magento2-configuracoes_gerais.md): **Caminho:** Outros Métodos de Pagamento> Koin > Geral
+- [💳Cartão de Crédito com Anti-fraude](https://api-docs.koin.com.br/docs/magento2-cartao_credito_antifraude.md): **Caminho:** Outros Métodos de Pagamento > Koin > Cartão de Crédito com Anti-fraude
+- [🧩Funcionalidades](https://api-docs.koin.com.br/docs/magento2-cartao_credito_funcionalidades.md): Aqui apresentaremos as funcionalidades específicas do método de pagamento Cartão de Crédito.
+- [⚡PIX](https://api-docs.koin.com.br/docs/magento2-pix.md): **Caminho**: Outros Métodos de Pagamento > Koin > PIX
+- [💸BNPL (Buy Now, Pay Later)](https://api-docs.koin.com.br/docs/magento2-bnpl.md): **Caminho**: Outros Métodos de Pagamento > Koin > BNPL
+- [🔒Antifraude - Outros Métodos de Pagamento](https://api-docs.koin.com.br/docs/magento2-antifraude.md): **Caminho**: Outros Métodos de Pagamento > Koin > Antifraude (Outros métodos de pagamento)
+- [👀Gerenciar Análise de Fraude](https://api-docs.koin.com.br/docs/magento2-gerenciar_fraude.md): **Caminho**: Vendas > Koin > Análise de Fraude
+- [✨Funcionalidades Adicionais](https://api-docs.koin.com.br/docs/magento2-funcionalidades_adicionais.md)
+- [🔄Estorno](https://api-docs.koin.com.br/docs/magento2-estorno.md): Apresentamos aqui as características específicas do método de pagamento PIX.
+- [👀Gerenciar Fila](https://api-docs.koin.com.br/docs/magento2-gerenciar_fila.md): **Caminho**: Vendas > Koin > Gerenciar Fila
+- [🔍Buscar na Koin](https://api-docs.koin.com.br/docs/magento2-buscar_na_koin.md): **Caminho**: Vendas > Pedidos
+- [📋Logs](https://api-docs.koin.com.br/docs/magento2-logs.md): **Caminho**: pasta_raiz_do_magento/var/log
+- [💡Dicas](https://api-docs.koin.com.br/docs/magento2-dicas.md)
+- [✏️Exemplos de Regras de Parcelamento](https://api-docs.koin.com.br/docs/magento2-dicas-exemplos_regras.md): **Caminho para criar a regra de parcelamento**: Vendas > Koin > Regras de Parcelamento
+- [💰 Juros Simples vs Juros Compostos ](https://api-docs.koin.com.br/docs/juros-simples-vs-juros-compostos.md): Entenda a Diferença
+- [Magento 2 - ES](https://api-docs.koin.com.br/docs/m️agento2-es.md)
+- [🔌Instalación](https://api-docs.koin.com.br/docs/magento2-es-instalacion.md)
+- [⚙️Configuraciones generales](https://api-docs.koin.com.br/docs/magento2-es-configuraçiones-generales.md): **Camino:** Otros Métodos de Pago> Koin > General
+- [💳Tarjeta de crédito con antifraude](https://api-docs.koin.com.br/docs/magento2-es-tc_antifraude.md): **Camino:** Otros Métodos de Pago > Koin > Tarjeta de Crédito con Antifraude
+- [🧩Funcionalidades](https://api-docs.koin.com.br/docs/funcionalidades-copy.md): Aquí vamos a presentar las funcionalidades específicas del método de pago con tarjeta de crédito
+- [⚡PIX](https://api-docs.koin.com.br/docs/magento-2-es-pix.md): **Camino**: Otros Métodos de Pago > Koin > PIX
+- [💸BNPL (Buy Now, Pay Later)](https://api-docs.koin.com.br/docs/magento-2-es-bnpl.md): **Camino**: Otros Métodos de Pago > Koin > BNPL
+- [🔒Antifraude - Otros Métodos de Pago](https://api-docs.koin.com.br/docs/magento-2-es-antifraude.md): **Camino**: Otros Métodos de Pagamento > Koin > Antifraude (Otros métodos de pago)
+- [👀Gestionar el análisis de fraude ](https://api-docs.koin.com.br/docs/magento-2-es-analisis-fraude.md): **Camino:** Ventas > Koin > Análisis de Fraude
+- [✨Funciones adicionales](https://api-docs.koin.com.br/docs/magento-2-es-funciones-adicionales.md)
+- [🔄Reembolso](https://api-docs.koin.com.br/docs/magento-2-es-funciones-adicionales-reembolso.md): Aquí presentamos las características específicas del método de pago PIX.
+- [👀Administrar cola (Análisis de fraude)](https://api-docs.koin.com.br/docs/magento-2-es-funciones-adicionales-administrar-cola.md): **Camino**: Ventas > Koin > Administrar cola
+- [🔍Buscar en Koin](https://api-docs.koin.com.br/docs/magento-2-es-funciones-adicionales-buscar-en-koin.md): **Camino**: Ventas > Órdenes
+- [📋Registros](https://api-docs.koin.com.br/docs/logs-copy.md): **Camino**: carpeta_raiz_de_magento/var/log
+- [💡Consejos](https://api-docs.koin.com.br/docs/magento-2-es-consejos.md)
+- [✏️Ejemplos de reglas de cuotas](https://api-docs.koin.com.br/docs/magento-2-es-consejos-ejemplos-reglas-cuotas.md): **Camino para crear la regla de cuotas**: Ventas > Koin > Regras de Cuotas
+- [💰 Interés Simple vs Interés Compuesto](https://api-docs.koin.com.br/docs/interés-simple-vs-interés-compuesto.md): Entiende la Diferencia
+- [Shopify](https://api-docs.koin.com.br/docs/shopify.md)
+- [💸 APP - PIX parcelado](https://api-docs.koin.com.br/docs/app-pix-parcelado.md)
+- [⚡ APP - PIX à Vista](https://api-docs.koin.com.br/docs/app-pix-à-vista.md)
+- [💳APP Cartão - Antifraude](https://api-docs.koin.com.br/docs/app-tc-af.md)
+- [Woocommerce](https://api-docs.koin.com.br/docs/woocommerce.md): Introdução
+- [🔌Instalação](https://api-docs.koin.com.br/docs/instalação.md)
+- [📥Instalação via loja de plugins](https://api-docs.koin.com.br/docs/instalação-via-loja-de-plugins.md): Instalação recomendada pela Koin.
+- [📦Instalação Manual](https://api-docs.koin.com.br/docs/instalação-manual.md): Esta instalação é realizada subindo arquivo zipado do plugin Koin.
+- [⚙️Configuração Geral](https://api-docs.koin.com.br/docs/configuração-geral.md)
+- [💸Pix (a vista) - configuração](https://api-docs.koin.com.br/docs/pix-a-vista-configuração.md)
+- [💸Pix parcelado - configuração](https://api-docs.koin.com.br/docs/métodos-de-pagamento.md): (BNPL - Parcele sem cartão!)
+- [💳Cartão de Crédito com antifraude - configuração](https://api-docs.koin.com.br/docs/cartão-de-crédito-com-antifraude-configuração.md)
+- [🧩Funcionalidades](https://api-docs.koin.com.br/docs/woocommerce-tc-funcionalidades.md)
+- [✨Funcionalidades Adicionais](https://api-docs.koin.com.br/docs/funcionalidades-extras.md): Nesta página apresentaremos funcionalidades extras, independente do método de pagamento.
+- [💡Dicas](https://api-docs.koin.com.br/docs/dicas.md)
+- [Wake](https://api-docs.koin.com.br/docs/wake.md)
+- [💸BNPL (Transparente)](https://api-docs.koin.com.br/docs/wake-bnpl_transparente.md)
+- [🔑1. Criar Token Wake](https://api-docs.koin.com.br/docs/wake-criar_token.md)
+- [⚙️2. Configurar Conector de Pagamento](https://api-docs.koin.com.br/docs/wake-conector_pagamento.md)
+- [📅3. Criar Grupos e Parcelamentos](https://api-docs.koin.com.br/docs/wake-grupos_parcelamentos.md)
+- [🔀4. Criar Estrutura de Pagamento](https://api-docs.koin.com.br/docs/wake-estrutura-de-pagamento.md)
+- [📝5. Adicionar Script](https://api-docs.koin.com.br/docs/wake-adicionar_script.md)
+- [💡Dicas](https://api-docs.koin.com.br/docs/wake-dicas.md)
+- [💸BNPL (Redirect)](https://api-docs.koin.com.br/docs/wake-bnpl-redirect.md)
+- [⚙️1. Configuração](https://api-docs.koin.com.br/docs/wake-bnpl-redirect-configuração.md)
+- [📝2. Adicionar Script](https://api-docs.koin.com.br/docs/wake-bnpl-redirect-script.md)
+- [📅3. Criar Grupos e Parcelamentos](https://api-docs.koin.com.br/docs/wake-bnpl-redirect-grupos-e-parcelamentos.md)
+- [ 🔀4. Criar Estrutura de Pagamentos](https://api-docs.koin.com.br/docs/wake-bnpl-redirect-estrutura-de-pagamentos.md)
+- [🔑5. Adicionar Url´s Permitidas](https://api-docs.koin.com.br/docs/wake-bnpl-redirect-urls-permitidas.md)
+- [💡Dicas](https://api-docs.koin.com.br/docs/wake-bnpl-redirect-dicas.md)
+- [Uappi](https://api-docs.koin.com.br/docs/uappi.md)
+- [Portal do lojista](https://api-docs.koin.com.br/docs/onboarding-portal-do-lojista.md)
+- [Portal de Payments](https://api-docs.koin.com.br/docs/onboarding-portal-de-payments.md)
+- [Televendas](https://api-docs.koin.com.br/docs/onboarding-televendas.md)
+- [Autogestión de Reglas](https://api-docs.koin.com.br/docs/reglas.md)
+- [Acuerdos y Promociones](https://api-docs.koin.com.br/docs/es-acuerdos-y-promociones.md)
+- [Personalización del Checkout de Koin](https://api-docs.koin.com.br/docs/personalizacion-checkout-koin.md)
+
+## API Reference
+- [Authentication](https://api-docs.koin.com.br/reference/paymentauth.md)
+- [Tokenize Card](https://api-docs.koin.com.br/reference/tokenizecardpost.md): Create secure token from card.
+- [Buy Now Pay Later](https://api-docs.koin.com.br/reference/bnpl.md)
+- [Card](https://api-docs.koin.com.br/reference/card.md)
+- [Pix](https://api-docs.koin.com.br/reference/pix.md)
+- [Create Payment](https://api-docs.koin.com.br/reference/createpayment.md): Create payment service. Before required fields will validated and after will validated business rules. Below is a table with the information regarding said api.
+- [Get Payment by Reference ID](https://api-docs.koin.com.br/reference/paymentbyreferenceidget.md): Payment details service.
+- [Get Payments by Transaction ID](https://api-docs.koin.com.br/reference/paymentbytransactionidget.md): Payment orders.
+- [Capture Payment](https://api-docs.koin.com.br/reference/capturepayment.md): Service responsible for capturing a card payment
+- [Get Payment](https://api-docs.koin.com.br/reference/paymentbyorderidget.md): Payment details service.
+- [Cancel Payment](https://api-docs.koin.com.br/reference/cancelpaymentput.md): Cancellation payment. Card, Pix and BNPL payment method can be cancelled, for Pix payment method, you can only cancel dynamic QR payments; for the card payment method, you can cancel **Opened** or **Authorized** payments, which will remain with the status **Canceled** or **Voided** respectively.
+- [Pix](https://api-docs.koin.com.br/reference/pix-1.md)
+- [Crypto](https://api-docs.koin.com.br/reference/crypto.md): Payout with cryptocurrency
+- [Available Cryptocurrencies](https://api-docs.koin.com.br/reference/getcurrenciespost.md): Service only for crypto payout. It will return the possible cryptocurrencies that the account is allowed to transact.
+- [Cryptocurrency Quotations](https://api-docs.koin.com.br/reference/getquotationspost.md): Service only for crypto payout. It will return the quote for the selected cryptocurrency
+- [Create Payout](https://api-docs.koin.com.br/reference/createpayoutpost.md): In the payout service creation, all the required fields will be validated at first, after that, business validation rules will be run. The next table shows the information about the API.
+- [Get Payout by Reference ID](https://api-docs.koin.com.br/reference/payoutbyreferenceidget.md): Payout details service.
+- [Get Payout](https://api-docs.koin.com.br/reference/payoutbypayoutid.md): Payout details service.
+- [Create Refund](https://api-docs.koin.com.br/reference/createrefundputbyorderid.md): Service responsible for requesting the return of an approved payment. The refund may be total or partial.
+- [Get Refund](https://api-docs.koin.com.br/reference/consultrefundget.md): Service to get a previously generated refund.
+- [Availability](https://api-docs.koin.com.br/reference/availabilitypost.md): You can use this service to check if the customer is eligible for the "buy now pay later" payment method. The service will return the installment options in case of success. It is available for transparent checkout only.
+- [Payment Sale](https://api-docs.koin.com.br/reference/notificationpost.md): Receiving notifications of a sale finalized.
+- [Recipient Account](https://api-docs.koin.com.br/reference/recipientaccountpost.md): Service to obtain recipient account information.
+- [Notification webhooks](https://api-docs.koin.com.br/reference/webhook.md): Notified payment transactions
+- [Send notifications to Koin](https://api-docs.koin.com.br/reference/send-notifications.md): API to send notifications to Koin about an existing transaction.
+- [Koin Checkout SDK](https://api-docs.koin.com.br/reference/koin-checkout-sdk.md)
+- [Validate account](https://api-docs.koin.com.br/reference/validateaccountpost.md): Validate account for communications
+- [Use Cases](https://api-docs.koin.com.br/reference/use-cases.md): This section provides example use cases of how the API you create interacts with the Koin API and what the communication flow with acquirers (PSP) should look like.
+- [Create Pre-Evaluation](https://api-docs.koin.com.br/reference/createpreevaluationusingpost.md): Receives a new transaction for antifraud analysis, its meant to be used before payment authorization.
+- [Create Evaluation](https://api-docs.koin.com.br/reference/createevaluationusingpost.md): Receives a new transaction for antifraud analysis, if used with pre-evaluation it should be called after the payment authorization. Its mandatory to reuse the reference_id from pre-evaluation.
+- [Strategies](https://api-docs.koin.com.br/reference/strategies.md)
+- [Create Evaluation](https://api-docs.koin.com.br/reference/createevaluationusingpost-1.md): Receives a new transaction for antifraud analysis.
+- [Create Evaluation](https://api-docs.koin.com.br/reference/createwiretransferusingpost.md): Receives a new transaction for antifraud analysis.
+- [Create Evaluation](https://api-docs.koin.com.br/reference/atoevaluationusingpost-1.md): Receives a new transaction to evaluate Account Take Over request
+- [Send Notifications](https://api-docs.koin.com.br/reference/sendaccounttakeoverupdatesusingpatch.md): API to send updates about an existing case.
+- [Retrieve Evaluation Status](https://api-docs.koin.com.br/reference/evaluationstatususingget-1.md): API to retrieve the status of an antifraud evaluation.
+- [Cancel Evaluation](https://api-docs.koin.com.br/reference/cancelevaluationusingdelete-1.md): API to notify if the order was canceled either by the store or the buyer before completition of the Antifraud analysis. The query parameter in the URL :id Could be either Evaluation ID returned by api on evaluation :evaluationId or reference id sent by client on evaluation :store.referenceId
+- [Send Notifications](https://api-docs.koin.com.br/reference/sendevaluationupdatesusingpatch.md): API to send notifications about an evaluated transaction. The types of notifications: - RFI: Notify a request for information (internal, from a bank, or from any entity) - Chargeback: Notify a chargeback (internal, from a bank, or from any entity) - Status     - Collected: Transaction payment was settled    - Not Collected: Transaction payments was failed    - Cancelled: Transaction was cancelled    - Finalized: Transaction finalized OK    - Refunded: Transaction payment was refunded    - Authorized: Transaction payment was authorized    - Recovering: In case a strategy has been applied, informs the result. See [Strategies](https://api-koin.readme.io/reference/strategies) - Info: Other type of information
+- [Service Health Check](https://api-docs.koin.com.br/reference/healthcheckusingget-1.md): API to get information about the server health
+- [Introduction](https://api-docs.koin.com.br/reference/introduction.md)
+- [JavaScript Integration](https://api-docs.koin.com.br/reference/javascript-integration.md): The JavaScript snippet tracks user interactions with your website and collects device information.
+- [VTEX Plain Javascript Integration](https://api-docs.koin.com.br/reference/vtex-plain-javascript-integration.md): Device Fingerprint for VTEX Store
+- [VTEX Google Tag Manager Integration](https://api-docs.koin.com.br/reference/vtex-google-tag-manager-integration.md): Device Fingerprint for VTEX Store by GTM
+- [ios](https://api-docs.koin.com.br/reference/ios-sdk-for-mobile-fingerprinting.md): Koin's iOS SDK for Mobile Fingerprinting
+- [Android](https://api-docs.koin.com.br/reference/android.md)
+- [Flutter](https://api-docs.koin.com.br/reference/flutter.md)
+- [Payment Request](https://api-docs.koin.com.br/reference/payment-request.md)
+- [Generate Authorization Token](https://api-docs.koin.com.br/reference/generate-by-rest.md)
+- [Check](https://api-docs.koin.com.br/reference/check.md)
+- [Include](https://api-docs.koin.com.br/reference/include.md)
+- [Fields description](https://api-docs.koin.com.br/reference/includefields.md)
+- [Fraud ID](https://api-docs.koin.com.br/reference/fraud-id.md)
+- [Messages and Codes](https://api-docs.koin.com.br/reference/messages-and-codes.md)
+- [Send Data](https://api-docs.koin.com.br/reference/onboardingpost.md): Receives a new onboarding data.
+- [Get Status](https://api-docs.koin.com.br/reference/onboardinggetstatus.md): API to get the status of the onboarding
+
+## Changelog
+- [2.2](https://api-docs.koin.com.br/changelog/22.md)
+- [2.1](https://api-docs.koin.com.br/changelog/21.md)

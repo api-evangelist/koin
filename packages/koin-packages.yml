@@ -1,0 +1,92 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/koinlatam
+summary:
+  official_count: 6
+  registries: [github, maven (self-hosted), swift-package-manager, composer (vcs)]
+  note: Koin does not publish to npm, PyPI, Maven Central, Packagist or the WordPress.org plugin
+    directory. Every first-party library is distributed from the koinlatam GitHub organization or a
+    Koin-hosted Maven/binary repository. Third-party community ports exist (for example
+    docode/koin-php on Packagist) and are recorded separately below as unofficial.
+packages:
+- language: kotlin
+  platform: android
+  registry: maven
+  name: br.com.koin:payment-checkout
+  version: 0.2.0
+  url: https://github.com/koinlatam/koin-checkout-android
+  repository_url: https://koinlatam.github.io/koin-checkout-android/
+  metadata_url: https://koinlatam.github.io/koin-checkout-android/br/com/koin/payment-checkout/maven-metadata.xml
+  install: 'implementation("br.com.koin:payment-checkout:0.2.0")  # add maven { url = uri("https://koinlatam.github.io/koin-checkout-android/") }'
+  description: Koin Checkout Android SDK — launches the Koin checkout experience (Pix, credit card,
+    BNPL) from Jetpack Compose or classic Views via an ActivityResultLauncher contract.
+  official: true
+- language: swift
+  platform: ios
+  registry: swift-package-manager
+  name: KoinPaymentCheckout
+  version: 1.0.0-build.14
+  url: https://github.com/koinlatam/koin-checkout-ios
+  install: '.package(url: "https://github.com/koinlatam/koin-checkout-ios", from: "1.0.0")'
+  description: Koin Checkout iOS SDK — binary xcframework for Pix, credit card and BNPL payment flows;
+    requires iOS 15+, swift-tools 6.1.
+  official: true
+- language: kotlin
+  platform: android
+  registry: github
+  name: koinlatam/android-sdk
+  version: v1.2.0
+  url: https://github.com/koinlatam/android-sdk
+  description: Device-information gathering library for Android (device fingerprinting) used to
+    populate the `device` object on antifraud pre-evaluation and evaluation calls.
+  official: true
+- language: swift
+  platform: ios
+  registry: github
+  name: koinlatam/ios-sdk
+  version: '1.3.0'
+  url: https://github.com/koinlatam/ios-sdk
+  description: Koin iOS SDK for mobile device fingerprinting, feeding the antifraud `device` payload.
+  official: true
+- language: php
+  platform: magento2
+  registry: composer
+  name: koin/payment
+  version: 2.15.2
+  url: https://github.com/koinlatam/magento2
+  install: |
+    composer config repositories.koinlatam-magento git https://github.com/koinlatam/magento2.git
+    composer require koin/payment
+  description: Official Adobe Commerce / Magento 2.3.7+ module — installment boleto (BNPL), Pix,
+    credit card with anti-fraud, callback handling and refunds. Distributed via GitHub VCS, not
+    Packagist. Licensed OSL-3.0 / AFL-3.0.
+  official: true
+- language: php
+  platform: woocommerce
+  registry: github
+  name: koinlatam/woocommerce
+  url: https://github.com/koinlatam/woocommerce
+  docs: https://api-docs.koin.com.br/docs/woocommerce
+  description: Official WooCommerce integration plugin for Pix, installment Pix (BNPL) and credit card
+    with anti-fraud. Installed from the plugin store or by uploading the zipped plugin.
+  official: true
+- language: php
+  platform: magento1
+  registry: github
+  name: koinlatam/magento1
+  url: https://github.com/koinlatam/magento1
+  description: Legacy Magento 1 integration module (last updated 2025).
+  official: true
+  status: legacy
+unofficial:
+- language: php
+  registry: packagist
+  name: docode/koin-php
+  url: https://packagist.org/packages/docode/koin-php
+  description: Community PHP integration with the Koin payment API.
+  official: false
+hosted_scripts:
+- name: Koin Checkout SDK (tokenize.js)
+  production_url: https://api-secure.koin.com.br/checkout/static/scripts/sdk/tokenize.js
+  sandbox_url: https://portal-dev.koin.com.br/checkout/static/scripts/sdk/tokenize.js
+  note: Browser-loaded script rather than a registry package — catalogued in components/koin-components.yml.

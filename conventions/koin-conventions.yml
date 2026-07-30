@@ -1,0 +1,145 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/docs/integration-requirements
+docs:
+- https://api-docs.koin.com.br/docs/integration-requirements
+- https://api-docs.koin.com.br/docs/security-scheme
+- https://api-docs.koin.com.br/reference/webhook
+derived_from:
+- openapi/koin-payments-openapi.json
+- openapi/koin-antifraud-evaluations-openapi.json
+- openapi/koin-antifraud-lifecycle-openapi.json
+
+authentication:
+  style: bearer private key
+  header: 'Authorization: Bearer sk_<32 alphanumeric>'
+  scope: One key covers payments, antifraud and BNPL.
+  issuance: Provided by the Koin team during onboarding; no self-service key rotation is documented.
+  artifact: authentication/koin-authentication.yml
+
+idempotency:
+  supported: true
+  model: reference-id based (business key), not an Idempotency-Key header
+  key_field: reference_id
+  key_fields:
+  - transaction.reference_id
+  - store.reference_id
+  requirement: |
+    Koin's published integration requirements make idempotency mandatory in both directions:
+      COR1 — the merchant must define and maintain a STABLE reference_id per business transaction,
+             unique in the merchant's universe, and REUSE it between antifraud pre-evaluation and
+             full evaluation when both exist.
+      INF4 / CBK3 — inbound Koin notifications must be processed idempotently: the same event or a
+             replay must not cause duplicate side effects (a second capture, a duplicate order
+             release, etc.).
+      NOT1 — outbound notification calls to Koin must retry with backoff on transient 5xx/timeout
+             without semantic duplication (idempotency per notification or business key).
+  server_side_duplicate_detection:
+  - signal: HTTP 409 Conflict on createPayment
+    meaning: The order conflicts with existing state — typically a reference_id Koin has already
+      accepted. Look the order up rather than re-creating it.
+  - signal: business code 511 — "This order number has already been sent to Koin"
+    meaning: Duplicate submission of the same order number.
+  - signal: business code 998 — "Order already processed by Koin"
+    meaning: Terminal duplicate; do not re-send.
+  lookup_instead_of_retry:
+  - openapi/koin-payments-openapi.json#paymentByReferenceIdGET
+  - openapi/koin-payments-openapi.json#payoutByReferenceIdGET
+  header: null
+  retention: not documented
+
+pagination:
+  supported: false
+  note: No collection endpoint in any Koin contract exposes page/limit/offset/cursor parameters.
+    Reads are single-resource lookups by path id or by a required reference_id / transaction_id query
+    parameter. Get Payments by Transaction ID returns the orders for one transaction without paging.
+
+filtering_and_lookup:
+  query_parameters:
+  - name: reference_id
+    required: true
+    used_by: [paymentByReferenceIdGET, payoutByReferenceIdGET]
+    description: Merchant-side business key; the primary alternate lookup path.
+  - name: transaction_id
+    required: true
+    used_by: [paymentByTransactionIdGET]
+  - name: field
+    required: false
+    used_by: [sendEvaluationUpdatesUsingPATCH, sendAccountTakeOverUpdatesUsingPATCH]
+    description: Selects which identifier the {id} path segment carries, e.g. `?field=REFERENCE_ID`
+      to address a record by merchant reference instead of the Koin evaluation id.
+
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+  note: No free-form metadata object is documented. Merchant correlation is carried by reference_id.
+
+request_tracing:
+  request_id_header: null
+  note: No request-id / correlation header is documented. Correlation is by reference_id (COR1) and by
+    the Koin-issued order_id / evaluation id returned at creation.
+
+content_negotiation:
+  required_headers:
+  - name: Content-Type
+    required: true
+    value: application/json
+  - name: Accept
+    required: true
+    value: application/json
+  note: Both are declared as REQUIRED explicit header parameters on 16 operations across the contracts
+    — unusual, and worth sending explicitly rather than relying on client defaults.
+
+versioning:
+  scheme: uri-path
+  current: v1
+  pattern: /v1/<service>/<resource>  (e.g. /v1/payment/orders, /v1/antifraud/evaluations, /v1/onboarding)
+  legacy: The BNPL Payment Request contract on www.sp-api.koin.com is unversioned or /V1-prefixed
+    per-operation (/access/token/resource, /PaymentRequest/check, /V1/PaymentRequest/include).
+  documentation_versions: The developer portal is versioned separately (branches 1.9, 2.0, 2.1, 2.2);
+    2.2 is current. Docs versions track documentation releases, not the API URI version.
+  artifact: lifecycle/koin-lifecycle.yml
+
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  shape: '{code, message, causes[]}'
+  business_codes: Separate numeric decision codes are returned for BNPL orders.
+  artifacts:
+  - errors/koin-problem-types.yml
+  - errors/koin-decline-codes.yml
+
+rate_limiting:
+  documented: false
+  note: No rate-limit headers, quotas or throttling policy are published. Koin does require merchants
+    to implement retry with exponential backoff for transient failures (NOT1).
+
+retries:
+  policy: Merchant-side retry with backoff is REQUIRED for transient 5xx and timeouts on notification
+    calls, without semantic duplication.
+
+webhooks:
+  delivery: HTTPS callback to the URLs supplied in notification_url on Create Payment.
+  signature: not documented
+  merchant_requirements:
+  - Serve the callback URL over TLS and return 2xx.
+  - Persist the callback before returning 2xx.
+  - Process replays idempotently.
+  artifact: asyncapi/koin-payments-webhooks.yml
+
+device_fingerprint:
+  required: true
+  note: Web integrations MUST embed Koin's JavaScript device-fingerprint snippet on the pages where
+    the payer starts or completes payment, and pass the returned session/token into the `device`
+    object on antifraud pre-evaluation and evaluation. Substituting a non-approved library requires
+    written authorization from Koin.
+  docs: https://api-docs.koin.com.br/reference/javascript-integration
+
+certification:
+  required: true
+  note: Integrations must pass certification / UAT in sandbox — covering success, pending and decline
+    scenarios, plus strategies where applicable — before Koin promotes them to production.
+  artifact: sandbox/koin-sandbox.yml

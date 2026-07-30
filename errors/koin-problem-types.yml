@@ -1,0 +1,80 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/*.json (4xx/5xx responses across all eight harvested Koin contracts)
+format: koin-error-envelope
+rfc9457: false
+envelope:
+  description: Koin does not use RFC 9457 `application/problem+json`. Every error is returned as
+    `application/json` with a flat, consistent envelope shared by the Payments, Antifraud and
+    Onboarding contracts.
+  media_type: application/json
+  fields:
+  - name: code
+    type: string|integer
+    description: Standardized error code. Typed as string in the Payments contract (ErrorResponse)
+      and as an integer mirroring the HTTP status in the Antifraud contracts (BadResponse /
+      UnAuthorizedResponse).
+  - name: message
+    type: string
+    description: Human-readable error message, e.g. "Validation errors".
+  - name: causes
+    type: array[string]
+    description: List of specific validation causes, e.g. "[device.ip must not be blank]". Present on
+      400 and 500 responses; absent on 401.
+  schemas:
+  - openapi/koin-payments-openapi.json#/components/schemas/ErrorResponse
+  - openapi/koin-antifraud-lifecycle-openapi.json#/components/schemas/BadResponse
+  - openapi/koin-antifraud-lifecycle-openapi.json#/components/schemas/UnAuthorizedResponse
+problems:
+- status: 400
+  title: Bad Request
+  description: Request failed field validation or business-rule validation. The `causes` array names
+    the offending fields.
+  media_type: application/json
+  schema: ErrorResponse | BadResponse
+  occurrences: 28
+  remediation: Correct the named fields in `causes` and retry. Validation runs on required fields
+    first, then on business rules.
+- status: 401
+  title: Unauthorized
+  description: Missing, malformed or unrecognized private key on the Authorization header.
+  media_type: application/json
+  schema: UnAuthorizedResponse
+  occurrences: 14
+  remediation: >-
+    Send `Authorization: Bearer sk_<32 chars>` using the private key issued during
+    onboarding. See authentication/koin-authentication.yml.
+- status: 404
+  title: Not Found
+  description: The referenced order, payout, refund, evaluation or onboarding record does not exist.
+    The Payments contract also returns 404 with the description "Invalid order ID".
+  media_type: application/json
+  schema: ErrorResponse
+  occurrences: 20
+  remediation: Verify the path identifier (order_id, payout_id, refund_id, evaluation id) or the
+    reference_id query parameter against the identifier returned at creation time.
+- status: 409
+  title: Conflict
+  description: Returned by Create Payment when the request conflicts with existing state — typically a
+    duplicate reference_id for an order Koin has already accepted.
+  occurrences: 1
+  source_operation: openapi/koin-payments-openapi.json#createPayment
+  remediation: Treat as a duplicate submission. Look the order up with Get Payment by Reference ID
+    rather than re-creating it. See conventions/koin-conventions.yml for the idempotency contract.
+- status: 500
+  title: Internal Server Error
+  description: Unexpected processing failure on the Koin side.
+  media_type: application/json
+  schema: BadResponse
+  occurrences: 22
+  remediation: Retry with exponential backoff. Koin's integration requirements mandate retry with
+    backoff for transient 5xx and timeout conditions without semantic duplication.
+- status: 5XX
+  title: Server error (BNPL contract)
+  description: The legacy BNPL Payment Request contract declares a wildcard 5XX response rather than
+    discrete codes.
+  occurrences: 3
+  source_operation: openapi/koin-bnpl-openapi.json
+related:
+- errors/koin-decline-codes.yml    # business/decision code registry returned inside successful responses
+- conventions/koin-conventions.yml

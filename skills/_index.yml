@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/*.json + conventions/koin-conventions.yml + errors/ + sandbox/koin-sandbox.yml
+note: Koin publishes no AGENTS.md or first-party agent skills — searched the developer portal and the
+  koinlatam GitHub organization. These skills are generated from the harvested OpenAPI contracts and
+  Koin's own published integration requirements. Every operationId named below was verified verbatim
+  against the spec it references.
+skills:
+- file: koin-charge-card-with-antifraud.md
+  name: Charge a card with Koin anti-fraud
+  api: openapi/koin-payments-openapi.json
+  operations: [tokenizeCardPOST, createPreEvaluationUsingPOST, createPayment, capturePayment, paymentByOrderIdGET, createEvaluationUsingPOST]
+- file: koin-offer-bnpl-installments.md
+  name: Offer Koin BNPL installments at checkout
+  api: openapi/koin-payments-openapi.json
+  operations: [availabilityPOST, createPayment, paymentByReferenceIdGET, cancelPaymentPUT]
+- file: koin-collect-and-refund-pix.md
+  name: Collect a Pix payment and refund it
+  api: openapi/koin-payments-openapi.json
+  operations: [createPayment, paymentByOrderIdGET, createRefundPUTbyOrderId, consultRefundGET, cancelPaymentPUT]
+- file: koin-send-payout.md
+  name: Send a Koin payout by Pix or crypto
+  api: openapi/koin-payments-openapi.json
+  operations: [RecipientAccountPOST, validateAccountPOST, getCurrenciesPOST, getQuotationsPOST, createPayoutPOST, payoutByPayoutId, payoutByReferenceIdGET]
+- file: koin-run-antifraud-evaluation.md
+  name: Run a Koin anti-fraud evaluation
+  api: openapi/koin-antifraud-evaluations-openapi.json
+  operations: [createPreEvaluationUsingPOST, createEvaluationUsingPOST, evaluationStatusUsingGET, sendEvaluationUpdatesUsingPATCH, cancelEvaluationUsingDELETE, healthCheckUsingGET, createWireTransferUsingPOST, atoEvaluationUsingPOST]

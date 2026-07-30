@@ -1,0 +1,61 @@
+generated: '2026-07-19'
+method: searched
+source: https://koin.statuspage.io/
+versioning:
+  scheme: uri-path
+  current: v1
+  pattern: /v1/<service>/<resource>
+  evidence: Every operation in the Payments, Antifraud and Onboarding contracts is served under /v1/.
+  contract_versions:
+    payments-api: '1.0'
+    antifraud-api: '2.0'
+    onboarding-api: '2.0'
+  legacy:
+    name: BNPL Payment Request API
+    host: https://www.sp-api.koin.com
+    note: Unversioned / per-operation /V1 prefix; predates the /v1 platform contracts.
+  documentation_versions:
+    scheme: developer-portal branches
+    published: ['1.9', '2.0', '2.1', '2.2']
+    current: '2.2'
+    note: Portal doc branches track documentation releases, not API URI versions.
+status_page:
+  url: https://koin.statuspage.io/
+  provider: Atlassian Statuspage
+  api: https://koin.statuspage.io/api/v2/summary.json
+  time_zone: America/Sao_Paulo
+  components:
+  - Koin Antifraud
+  - Back Office
+  - BNPL
+  - Koin Pay
+  - Card
+  - PIX - Payin
+  - PIX - Payout
+deprecation:
+  policy_url: null
+  sunset_header: false
+  documented: false
+  note: >-
+    Koin publishes no deprecation or sunset policy, and no RFC 8594 Sunset/Deprecation header
+    support is documented. No operation in any harvested contract is marked `deprecated: true`.
+    Recorded as a verified absence — no `Deprecation` pointer is emitted in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+  documented: false
+  note: No public SLA or uptime commitment is published. Merchant terms live at https://termos.koin.com.br/.
+certification_gate:
+  description: Koin gates production access on a certification / UAT pass in sandbox covering success,
+    pending and decline scenarios (and strategies where contracted).
+  docs: https://api-docs.koin.com.br/docs/integration-requirements
+deprecated_operations: []
+support:
+  merchant: https://www.koin.com.br/atendimento
+  merchant_faq: https://www.koin.com.br/faq-b2b
+  consumer_faq: https://www.koin.com.br/faq-b2c
+  consumer_email: sac@koin.com.br
+  api_contact: payments-it@koin.com.br
+related:
+- changelog/koin-changelog.yml
+- conventions/koin-conventions.yml

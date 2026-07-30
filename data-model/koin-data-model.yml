@@ -1,0 +1,152 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/koin-payments-openapi.json, openapi/koin-antifraud-*-openapi.json, openapi/koin-onboarding-openapi.json
+summary:
+  schema_count: 396 across eight contracts (109 in Payments alone)
+  identifier_style: |
+    Two parallel identifier spaces. Koin issues opaque UUIDv4 identifiers (order_id, refund_id,
+    payout_id, evaluation id, provider_reference.order_id/payment_id). The merchant owns a stable,
+    unique business key — reference_id — which is the alternate lookup path on every read and the
+    correlation key across pre-evaluation, evaluation and notifications. Koin uses no typed
+    id-prefixes.
+  no_prefixes: true
+entities:
+- name: PaymentOrder
+  primary_key: order_id (uuid)
+  alternate_keys: [transaction.reference_id, transaction.business_id]
+  created_by: createPayment
+  read_by: [paymentByOrderIdGET, paymentByReferenceIdGET, paymentByTransactionIdGET]
+  description: The central resource. One order carries exactly one payment method (Pix, card or BNPL)
+    and moves through Authorized/Waiting/Pending to a terminal Collected, Cancelled, Voided, Refunded
+    or Failed state.
+  method_variants: [PaymentPIXApi, PaymentPIXCheckout, PaymentPixFull, PaymentCard, PaymentCardWithAntiFraud, PaymentCardWithCheckOut, PaymentCardGooglePayMethod, PaymentBNPL]
+  relationships:
+  - {type: has_one, target: Buyer, via: buyer}
+  - {type: has_one, target: Store, via: store}
+  - {type: has_one, target: Amount, via: transaction.amount}
+  - {type: has_many, target: Item, via: items}
+  - {type: has_one, target: Delivery, via: delivery}
+  - {type: has_one, target: Device, via: device}
+  - {type: has_many, target: Refund, via: refunds}
+  - {type: has_one, target: InstallmentOption, via: installment_option}
+  - {type: has_one, target: CardToken, via: payment_method.secure_token}
+- name: Buyer
+  schema: Buyer
+  description: The payer. Identified in Brazil by a CPF (individual) or CNPJ (company) document.
+  relationships:
+  - {type: has_one, target: Document, via: document}
+  - {type: has_many, target: Phone, via: phones}
+  - {type: has_one, target: Address, via: address}
+- name: Store
+  description: The merchant context on the order — code plus category (ISO 18245 MCC) and the
+    merchant's own reference_id.
+  relationships:
+  - {type: belongs_to, target: PaymentOrder, via: store}
+- name: Item
+  schema: Item
+  description: A line item on the order.
+  relationships:
+  - {type: has_one, target: Category, via: category}
+  - {type: has_one, target: Price, via: price}
+  - {type: belongs_to, target: PaymentOrder, via: items}
+- name: CardToken
+  schema: TokenizeCard / TokenizeCardResponse
+  primary_key: secure_token
+  created_by: tokenizeCardPOST
+  description: Single-use secure token created from raw card data, either server-side or via the
+    browser Checkout SDK, then referenced on the payment instead of the PAN.
+  relationships:
+  - {type: belongs_to, target: PaymentOrder, via: payment_method.secure_token}
+- name: Refund
+  schema: RefundRequest / RefundResponse / GetRefundResponse / RefundDetailResponse
+  primary_key: refund_id (uuid)
+  created_by: createRefundPUTbyOrderId
+  read_by: [consultRefundGET]
+  description: Full or partial return of an approved payment. Nested under its order.
+  relationships:
+  - {type: belongs_to, target: PaymentOrder, via: order_id}
+  - {type: has_one, target: Amount, via: refund_amount}
+  - {type: has_one, target: StatusRefund, via: status}
+- name: Payout
+  schema: Payout / PayoutResponse / PayoutDetailResponse
+  primary_key: payout_id (uuid)
+  alternate_keys: [transaction.reference_id]
+  created_by: createPayoutPOST
+  read_by: [payoutByPayoutId, payoutByReferenceIdGET]
+  description: Outbound transfer to a recipient, by Pix or cryptocurrency. Separate lifecycle from
+    PaymentOrder — Published then Transferred or Failed.
+  relationships:
+  - {type: has_one, target: RecipientAccount, via: recipient}
+  - {type: has_one, target: PayoutPaymentMethod, via: payment_method}
+  - {type: has_one, target: PayoutQuotation, via: quotation}
+  - {type: has_one, target: Amount, via: transaction.amount}
+- name: RecipientAccount
+  schema: RecipientAccount / RecipientResponse
+  read_by: [RecipientAccountPOST, validateAccountPOST]
+  description: The destination account for a payout, resolved from a payment key (Pix key) and
+    validatable before transfer.
+- name: CryptoQuotation
+  schema: PayoutQuotation / QuoteResponse / CryptocurrenciesResponse
+  read_by: [getCurrenciesPOST, getQuotationsPOST]
+  description: The set of cryptocurrencies an account may transact and the live quote for the chosen
+    one; consumed when creating a crypto payout.
+  relationships:
+  - {type: belongs_to, target: Payout, via: quotation}
+- name: InstallmentOption
+  description: BNPL plan — installments, installment_rate, installment_amount, total_amount,
+    currency_code, first_due_date. Offered by availabilityPOST and settled on the order.
+  read_by: [availabilityPOST]
+  relationships:
+  - {type: belongs_to, target: PaymentOrder, via: installment_option}
+- name: Evaluation
+  schema: antifraud evaluation request/response
+  primary_key: evaluation id (uuid)
+  alternate_keys: [store.reference_id]
+  created_by: [createPreEvaluationUsingPOST, createEvaluationUsingPOST, createWireTransferUsingPOST, atoEvaluationUsingPOST]
+  read_by: [evaluationStatusUsingGET]
+  description: A risk decision on a transaction. Pre-evaluation runs before acquirer authorization;
+    full evaluation reuses the SAME reference_id after authorization. Variants cover e-commerce, wire
+    transfer and account takeover.
+  relationships:
+  - {type: has_one, target: Device, via: device}
+  - {type: has_one, target: Buyer, via: buyer}
+  - {type: has_many, target: Strategy, via: strategies}
+  - {type: has_many, target: Notification, via: notifications}
+  - {type: references, target: PaymentOrder, via: reference_id}
+- name: Device
+  schema: Device
+  description: Device-fingerprint payload (session identifier, IP and collected signal) produced by
+    Koin's mandatory JavaScript snippet or mobile fingerprinting SDK. Required on evaluations.
+  relationships:
+  - {type: belongs_to, target: Evaluation, via: device}
+- name: Strategy
+  description: Additional fraud-prevention mechanism applied to an evaluation — verification codes,
+    liveness, manual review, authentication recovery. Koin may extend the type list.
+  docs: https://api-docs.koin.com.br/reference/strategies
+- name: Notification
+  schema: NotificationSale
+  description: Status/event message. Inbound to the merchant as a webhook, or outbound to Koin via
+    PATCH to report RFI, chargeback, collection, refund or cancellation on an existing transaction.
+  relationships:
+  - {type: belongs_to, target: PaymentOrder, via: order_id}
+  - {type: belongs_to, target: Evaluation, via: id}
+  artifact: asyncapi/koin-payments-webhooks.yml
+- name: Onboarding
+  primary_key: id
+  created_by: evaluationUsingPOST
+  read_by: [onboardingStatusUsingGET]
+  description: Merchant onboarding submission and its reviewable status.
+segment_extensions:
+  note: The Payments contract carries a large set of vertical-specific payload schemas used to enrich
+    risk analysis for travel and other regulated segments. These hang off the order rather than
+    forming independent entities.
+  segments:
+    airline: [Flight, Passenger, DepartureAirport, ArrivalAirport, BaseAirportData, Route, PassengersResume]
+    bus: [Bus, PassengerBus, DepartureBus, ArrivalBus, BaseBusData, RouteBus, PhoneBus]
+    car_rental: [CarRental, Car, CarDelivery, CarIdentifier, CarPenaltyFee, CarOwningTaxAmount, PickUp, DropOff, Fine, PenaltyAmount, LicesingAmount, Owner]
+    lodging: [Lodging, Lodger]
+    education: [Education, Course, Student]
+    insurance: [Insurance, InsuranceAmount, TravelInsurance, TravelInsuranceProvider, CellphoneInsurance]
+    destination_service: [DestinationService, Service, Tour, TransferDS, Segment]
+    other: [Financing, Subscription, Shipping, Generic, GenericLegacy]
+render: null

@@ -1,0 +1,128 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/reference/webhook
+docs: https://api-docs.koin.com.br/reference/webhook
+spec_type: Webhooks
+asyncapi_published: false
+note: Koin publishes no AsyncAPI document. It does document a real webhook (HTTPS callback) surface
+  for payment transactions, captured here verbatim from the provider's notification reference. No
+  event surface has been fabricated.
+transport:
+  protocol: https
+  direction: koin -> merchant
+  subscription: Per-payment. The merchant supplies the callback endpoint list in the `notification_url`
+    field on the Create Payment request (openapi/koin-payments-openapi.json#createPayment). There is no
+    separate webhook-registration API.
+  semantics: Notifications report status transitions that are FINAL and not modifiable.
+  security: No signature scheme is documented. Koin's integration requirements (INF4/CBK3) require the
+    merchant to process inbound notifications idempotently so replays cause no duplicate side effects,
+    and to serve the callback URL over TLS returning 2xx.
+terminal_states:
+- Collected
+- Transferred
+- Refunded
+- Cancelled
+- Voided
+- Failed
+events:
+- name: pix.collected
+  payment_method: Pix
+  status_type: Collected
+  description: Pix payment settled. Payload carries transaction.provider_reference.tx_id and
+    end_to_end_id plus provider.code (for example ITAU).
+- name: pix.refunded
+  payment_method: Pix
+  status_type: Refunded
+  description: Pix refunded. Adds refund_id and refund_amount to the payload.
+- name: pix.cancelled
+  payment_method: Pix
+  status_type: Cancelled
+  description: Pix cancelled (dynamic QR payments only).
+- name: pix.failed
+  payment_method: Pix
+  status_type: Failed
+  description: Pix payment failed.
+- name: bnpl.waiting
+  payment_method: BNPL
+  status_type: Waiting
+  reasons: [FirstPayment, EmailValidation, WhatsAppValidation]
+  description: BNPL order in progress awaiting a buyer action. Payload carries store.code,
+    store.category (MCC), installment_option and a return_url into the Koin checkout.
+- name: bnpl.pending
+  payment_method: BNPL
+  status_type: Pending
+  reasons: [ProviderReview]
+  description: BNPL order held for provider review.
+- name: bnpl.collected
+  payment_method: BNPL
+  status_type: Collected
+  description: BNPL order approved and collected, with the settled installment_option.
+- name: bnpl.cancelled
+  payment_method: BNPL
+  status_type: Cancelled
+  description: BNPL order cancelled.
+- name: card.authorized
+  payment_method: Card
+  status_type: Authorized
+  description: Card authorization succeeded. Payload includes status.expiration, authorization_code,
+    acquirer (for example FISERV), commerce_number and provider_reference {order_id, payment_id}.
+- name: card.collected
+  payment_method: Card
+  status_type: Collected
+  description: Card payment captured and collected.
+- name: card.voided
+  payment_method: Card
+  status_type: Voided
+  description: Card authorization voided before capture.
+- name: card.cancelled
+  payment_method: Card
+  status_type: Cancelled
+  description: Card payment cancelled.
+- name: card.refunded
+  payment_method: Card
+  status_type: Refunded
+  description: Card payment refunded.
+- name: card.failed
+  payment_method: Card
+  status_type: Failed
+  reasons: [Rejected]
+  description: Card payment failed.
+- name: payout.published
+  payment_method: Payout
+  status_type: Published
+  description: Payout accepted and published for transfer.
+- name: payout.transferred
+  payment_method: Payout
+  status_type: Transferred
+  description: Payout successfully transferred.
+- name: payout.failed
+  payment_method: Payout
+  status_type: Failed
+  reasons: [Rejected]
+  description: Payout rejected; payload carries status.message.
+payload_shape:
+  common_fields:
+  - status.type
+  - status.date
+  - status.reason (conditional)
+  - transaction.reference_id
+  - transaction.business_id
+  - transaction.account
+  - transaction.amount.currency_code
+  - transaction.amount.value
+  - order_id
+  method_specific:
+    pix: [transaction.provider_reference.tx_id, transaction.provider_reference.end_to_end_id, provider.code, refund_id, refund_amount]
+    bnpl: [store.code, store.category, installment_option, return_url]
+    card: [store.code, transaction.authorization_code, transaction.acquirer, transaction.commerce_number, transaction.provider_reference, country_code]
+    payout: [payout_id]
+outbound_from_merchant:
+- name: Send notifications to Koin
+  description: The merchant may PATCH notifications back to Koin about an existing transaction — RFI,
+    Chargeback, and Status events (Collected, Not Collected, Cancelled, Finalized, Refunded,
+    Authorized, Recovering, Info).
+  operations:
+  - openapi/koin-payments-openapi.json#notificationPOST
+  - openapi/koin-antifraud-lifecycle-openapi.json#sendEvaluationUpdatesUsingPATCH
+  - openapi/koin-antifraud-ato-openapi.json#sendAccountTakeOverUpdatesUsingPATCH
+  docs: https://api-docs.koin.com.br/reference/send-notifications

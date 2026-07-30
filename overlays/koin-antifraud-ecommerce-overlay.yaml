@@ -1,0 +1,40 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Koin Antifraud API
+  version: 1.0.0
+extends: openapi/koin-antifraud-ecommerce-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: koin
+    x-apievangelist-generated: '2026-07-19'
+    x-apievangelist-artifacts:
+      authentication: authentication/koin-authentication.yml
+      conventions: conventions/koin-conventions.yml
+      errors: errors/koin-problem-types.yml
+      decline_codes: errors/koin-decline-codes.yml
+      webhooks: asyncapi/koin-payments-webhooks.yml
+      sandbox: sandbox/koin-sandbox.yml
+      lifecycle: lifecycle/koin-lifecycle.yml
+      data_model: data-model/koin-data-model.yml
+- target: $.components
+  update:
+    securitySchemes:
+      KoinPrivateKey:
+        type: http
+        scheme: bearer
+        description: 'Koin private key, format sk_ + 32 alphanumeric characters, issued during merchant
+          onboarding. Sent as Authorization: Bearer <private key>. See https://api-docs.koin.com.br/docs/security-scheme'
+- target: $
+  update:
+    security:
+    - KoinPrivateKey: []
+- target: $.paths['/v1/antifraud/evaluations'].post
+  update:
+    x-idempotency:
+      model: reference-id
+      key_field: reference_id
+      note: Koin requires a stable unique reference_id per business transaction (integration requirement
+        COR1); replays must not produce duplicate side effects (INF4/CBK3). Duplicate submissions surface
+        as HTTP 409 or business codes 511/998.
+      artifact: conventions/koin-conventions.yml

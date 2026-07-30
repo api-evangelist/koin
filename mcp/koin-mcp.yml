@@ -1,0 +1,186 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/*.json
+note: Koin publishes no hosted or remote MCP server. Searched the developer portal, the koinlatam GitHub
+  organization and the public MCP registries — no result. This is a CANDIDATE tool surface derived mechanically
+  from the operationIds in the eight harvested Koin OpenAPI contracts; no MCP endpoint is implied to exist.
+  Every source_operation was verified against the spec it names.
+server:
+  name: koin
+  transport: http
+  url: null
+  base_url: https://api-sandbox.koin.com.br
+  auth:
+    type: bearer
+    header: Authorization
+    note: Koin private key (sk_ + 32 alphanumeric characters). One key covers payments, antifraud and
+      BNPL.
+    artifact: authentication/koin-authentication.yml
+tool_count: 33
+tools:
+- name: koin_antifraud_ato_ato_evaluation
+  description: Create Evaluation
+  method: POST
+  path: /v1/ato/evaluations
+  source_operation: openapi/koin-antifraud-ato-openapi.json#atoEvaluationUsingPOST
+- name: koin_antifraud_ato_send_account_take_over_updates
+  description: Send Notifications
+  method: PATCH
+  path: /v1/ato/notifications/{id}
+  source_operation: openapi/koin-antifraud-ato-openapi.json#sendAccountTakeOverUpdatesUsingPATCH
+- name: koin_antifraud_ecommerce_create_evaluation
+  description: Create Evaluation
+  method: POST
+  path: /v1/antifraud/evaluations
+  source_operation: openapi/koin-antifraud-ecommerce-openapi.json#createEvaluationUsingPOST
+- name: koin_antifraud_create_pre_evaluation
+  description: Create Pre-Evaluation
+  method: POST
+  path: /v1/antifraud/pre-evaluations
+  source_operation: openapi/koin-antifraud-evaluations-openapi.json#createPreEvaluationUsingPOST
+- name: koin_antifraud_create_evaluation
+  description: Create Evaluation
+  method: POST
+  path: /v1/antifraud/evaluations
+  source_operation: openapi/koin-antifraud-evaluations-openapi.json#createEvaluationUsingPOST
+- name: koin_antifraud_evaluation_status
+  description: Retrieve Evaluation Status
+  method: GET
+  path: /v1/antifraud/evaluations/{id}
+  source_operation: openapi/koin-antifraud-lifecycle-openapi.json#evaluationStatusUsingGET
+- name: koin_antifraud_cancel_evaluation
+  description: Cancel Evaluation
+  method: DELETE
+  path: /v1/antifraud/evaluations/{id}
+  source_operation: openapi/koin-antifraud-lifecycle-openapi.json#cancelEvaluationUsingDELETE
+- name: koin_antifraud_send_evaluation_updates
+  description: Send Notifications
+  method: PATCH
+  path: /v1/antifraud/notifications/{id}
+  source_operation: openapi/koin-antifraud-lifecycle-openapi.json#sendEvaluationUpdatesUsingPATCH
+- name: koin_antifraud_health_check
+  description: Service Health Check
+  method: GET
+  path: /v1/antifraud/healthCheck
+  source_operation: openapi/koin-antifraud-lifecycle-openapi.json#healthCheckUsingGET
+- name: koin_antifraud_wire_transfer_create_wire_transfer
+  description: Create Evaluation
+  method: POST
+  path: /v1/antifraud/evaluations
+  source_operation: openapi/koin-antifraud-wire-transfer-openapi.json#createWireTransferUsingPOST
+- name: koin_bnpl_generate_by_rest
+  description: Generate Authorization Token
+  method: POST
+  path: /access/token/resource
+  source_operation: openapi/koin-bnpl-openapi.json#generate-by-rest
+- name: koin_bnpl_check
+  description: Check
+  method: POST
+  path: /PaymentRequest/check
+  source_operation: openapi/koin-bnpl-openapi.json#check
+- name: koin_bnpl_include
+  description: Include
+  method: POST
+  path: /V1/PaymentRequest/include
+  source_operation: openapi/koin-bnpl-openapi.json#include
+- name: koin_onboarding_evaluation
+  description: Send Data
+  method: POST
+  path: /v1/onboarding
+  source_operation: openapi/koin-onboarding-openapi.json#evaluationUsingPOST
+- name: koin_onboarding_onboarding_status
+  description: Get Status
+  method: GET
+  path: /v1/onboarding/{id}
+  source_operation: openapi/koin-onboarding-openapi.json#onboardingStatusUsingGET
+- name: koin_payments_tokenize_card
+  description: Tokenize Card
+  method: POST
+  path: /v1/payment/tokenize
+  source_operation: openapi/koin-payments-openapi.json#tokenizeCardPOST
+- name: koin_payments_create_payment
+  description: Create Payment
+  method: POST
+  path: /v1/payment/orders
+  source_operation: openapi/koin-payments-openapi.json#createPayment
+- name: koin_payments_payment_by_reference_id
+  description: Get Payment by Reference ID
+  method: GET
+  path: /v1/payment/orders
+  source_operation: openapi/koin-payments-openapi.json#paymentByReferenceIdGET
+- name: koin_payments_payment_by_transaction_id
+  description: Get Payments by Transaction ID
+  method: GET
+  path: /v1/payment/orders/lookup
+  source_operation: openapi/koin-payments-openapi.json#paymentByTransactionIdGET
+- name: koin_payments_capture_payment
+  description: Capture Payment
+  method: POST
+  path: /v1/payment/orders/{order_id}/capture
+  source_operation: openapi/koin-payments-openapi.json#capturePayment
+- name: koin_payments_payment_by_order_id
+  description: Get Payment
+  method: GET
+  path: /v1/payment/orders/{order_id}
+  source_operation: openapi/koin-payments-openapi.json#paymentByOrderIdGET
+- name: koin_payments_create_refund_by_order_id
+  description: Create Refund
+  method: PUT
+  path: /v1/payment/orders/{order_id}/refund
+  source_operation: openapi/koin-payments-openapi.json#createRefundPUTbyOrderId
+- name: koin_payments_consult_refund
+  description: Get Refund
+  method: GET
+  path: /v1/payment/orders/{order_id}/refunds/{refund_id}
+  source_operation: openapi/koin-payments-openapi.json#consultRefundGET
+- name: koin_payments_notification
+  description: Payment Sale
+  method: POST
+  path: /v1/payment/orders/{order_id}/notifications
+  source_operation: openapi/koin-payments-openapi.json#notificationPOST
+- name: koin_payments_recipient_account
+  description: Recipient Account
+  method: POST
+  path: /v1/payment/payment-key/info
+  source_operation: openapi/koin-payments-openapi.json#RecipientAccountPOST
+- name: koin_payments_cancel_payment
+  description: Cancel Payment
+  method: PUT
+  path: /v1/payment/orders/{order_id}/cancel
+  source_operation: openapi/koin-payments-openapi.json#cancelPaymentPUT
+- name: koin_payments_availability
+  description: Availability
+  method: POST
+  path: /v1/payment/orders/availability
+  source_operation: openapi/koin-payments-openapi.json#availabilityPOST
+- name: koin_payments_get_currencies
+  description: Available Cryptocurrencies
+  method: POST
+  path: /v1/payment/payouts/currencies
+  source_operation: openapi/koin-payments-openapi.json#getCurrenciesPOST
+- name: koin_payments_get_quotations
+  description: Cryptocurrency Quotations
+  method: POST
+  path: /v1/payment/payouts/quotation
+  source_operation: openapi/koin-payments-openapi.json#getQuotationsPOST
+- name: koin_payments_create_payout
+  description: Create Payout
+  method: POST
+  path: /v1/payment/payouts
+  source_operation: openapi/koin-payments-openapi.json#createPayoutPOST
+- name: koin_payments_payout_by_reference_id
+  description: Get Payout by Reference ID
+  method: GET
+  path: /v1/payment/payouts
+  source_operation: openapi/koin-payments-openapi.json#payoutByReferenceIdGET
+- name: koin_payments_payout_by_payout_id
+  description: Get Payout
+  method: GET
+  path: /v1/payment/payouts/{payout_id}
+  source_operation: openapi/koin-payments-openapi.json#payoutByPayoutId
+- name: koin_payments_validate_account
+  description: Validate account
+  method: POST
+  path: /v1/payment/orders/{order_id}/account-validation
+  source_operation: openapi/koin-payments-openapi.json#validateAccountPOST

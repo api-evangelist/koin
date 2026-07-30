@@ -1,0 +1,14 @@
+{
+  "repo": "koin",
+  "feeds": [
+    {
+      "source": "https://www.koin.com.br/faq-b2b",
+      "feed_url": "https://www.koin.com.br/faq-b2b",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-07-25T15:00:33Z"
+}

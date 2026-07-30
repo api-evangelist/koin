@@ -1,0 +1,127 @@
+generated: '2026-07-19'
+method: searched
+source: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+docs:
+- https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+- https://api-docs.koin.com.br/docs/antifraud-with-3ds-integration
+- https://api-docs.koin.com.br/docs/integration-requirements
+summary:
+  Koin runs a dedicated sandbox host that every published OpenAPI contract points at by default.
+  Scenario selection is driven by MAGIC BUYER E-MAIL PATTERNS rather than by test-mode keys, plus a
+  published set of 3DS test cards. Certification (UAT) in sandbox covering success, pending and
+  decline scenarios is mandatory before Koin promotes an integration to production.
+
+environments:
+- name: sandbox
+  base_url: https://api-sandbox.koin.com.br
+  note: The declared `servers[0]` in every harvested Koin OpenAPI contract.
+- name: production
+  base_url: not published in the OpenAPI contracts
+  note: Koin does not publish the production base URL in its public specs; it is supplied per merchant
+    during onboarding. Observed production hosts in first-party plugin source include
+    api-payments.koin.com.br, api-antifraud.koin.com.br and api-secure.koin.com.br.
+- name: legacy BNPL
+  base_url: https://www.sp-api.koin.com
+  note: Server declared by the legacy BNPL Payment Request contract.
+
+credentials:
+  model: A single private key (`sk_` + 32 alphanumeric characters) issued by Koin. No documented
+    test-vs-live key prefix distinction — the environment is selected by base URL, not by key prefix.
+  mobile_sdk_toggle:
+    android: PaymentCheckoutConfig.Builder(...).isHomolog(true)   # true = testing, false = production
+    source: https://github.com/koinlatam/koin-checkout-android
+
+magic_values:
+  buyer_email_patterns:
+    description: |
+      Force the antifraud evaluation outcome in the testing environment by embedding a keyword in the
+      buyer e-mail local part. Form: {username}+{keyword}+{@emailprovider}.
+    docs: https://api-docs.koin.com.br/docs/antifraud-services-flow-1#testing-environment
+    patterns:
+    - keyword: prereject
+      example: john_prereject@test.com
+      behavior: Transaction rejected at the authorization stage.
+    - keyword: preaccept_autoaccept
+      example: john_preaccept_autoaccept@test.com
+      behavior: Transaction accepted at all stages.
+    - keyword: preaccept_autoreject
+      example: john_preaccept_autoreject@test.com
+      behavior: Accepted at authorization, rejected at evaluation.
+    - keyword: preaccept_autoinprogress
+      example: john_preaccept_autoinprogress@test.com
+      behavior: Accepted at authorization, then held open during background verification.
+    - keyword: autoaccept
+      example: john_autoaccept@test.com
+      behavior: Transaction accepted.
+    - keyword: autoreject
+      example: john_autoreject@test.com
+      behavior: Transaction rejected.
+    - keyword: autoinprogress
+      example: john_autoinprogress@test.com
+      behavior: Held open during background verification.
+    - keyword: manualaccept
+      example: john_manualaccept@test.com
+      behavior: Manual background review, ultimately accepted.
+    - keyword: manualreject
+      example: john_manualreject@test.com
+      behavior: Manual background review, ultimately declined.
+    - keyword: auto_inprogress_3ds2_autoaccept
+      example: john+auto_inprogress_3ds2_autoaccept@test.com
+      behavior: Held open through a 3DS authentication request, then accepted.
+    - keyword: auto_inprogress_3ds2_autoreject
+      example: john+auto_inprogress_3ds2_autoreject@test.com
+      behavior: Held open through a 3DS authentication request, then declined.
+
+  test_cards:
+    description: Published 3DS test cards for sandbox tokenization. Use only in test environments.
+    docs: https://api-docs.koin.com.br/docs/antifraud-with-3ds-integration
+    common_fields:
+      expiration_month: '12'
+      expiration_year: '2030'
+      security_code: '876'
+      holder_name: Juan Perez
+    cards:
+    - scenario: Aprobacion con 3DS con desafio
+      description: Challenge flow, approved
+      number: '4000000000002503'
+      brand_code: VI
+    - scenario: Aprobacion sin desafio (Frictionless)
+      description: Frictionless, approved
+      number: '4000000000001000'
+      brand_code: VI
+    - scenario: Frictionless con fallo
+      description: Frictionless, failure
+      number: '5200000000001013'
+      brand_code: CA
+    - scenario: 3DS con desafio con fallo
+      description: Challenge flow, failure
+      number: '4000000000002644'
+      brand_code: VI
+
+sandbox_endpoints:
+- purpose: Card tokenization
+  endpoint: POST https://api-sandbox.koin.com.br/v1/payment/tokenize
+- purpose: Antifraud pre-evaluation (before acquirer authorization)
+  endpoint: POST https://api-sandbox.koin.com.br/v1/antifraud/pre-evaluations
+- purpose: Antifraud full evaluation (after authorization, reusing the same reference_id)
+  endpoint: POST https://api-sandbox.koin.com.br/v1/antifraud/evaluations
+
+device_fingerprint:
+  sandbox_script_note: For sandbox certification the device-fingerprint script (b-track-min.js) is
+    loaded from the development/homologation risk environment; production uses the snippet and base
+    URL from the JavaScript Integration guide.
+  docs: https://api-docs.koin.com.br/reference/javascript-integration
+
+checkout_sdk:
+  sandbox_script: https://portal-dev.koin.com.br/checkout/static/scripts/sdk/tokenize.js
+  production_script: https://api-secure.koin.com.br/checkout/static/scripts/sdk/tokenize.js
+  docs: https://api-docs.koin.com.br/reference/koin-checkout-sdk
+
+certification:
+  required: true
+  gate: An integration will not be promoted to production without passing certification / UAT in
+    sandbox with success, pending and decline scenarios and, where applicable, strategies.
+  checklist_items:
+  - Production callback_url with TLS, 2xx response, and idempotent processing
+  - Sandbox tests using the forced-scenario e-mail patterns
+  docs: https://api-docs.koin.com.br/docs/integration-requirements
