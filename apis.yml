@@ -431,6 +431,8 @@ apis:
   - type: APIReference
     url: https://api-docs.koin.com.br/reference/payment-request
 common:
+- type: Overlay
+  url: overlays/koin-antifraud-ato-overlay.yaml
 - type: DeveloperPortal
   url: https://api-docs.koin.com.br/
 - type: Documentation
