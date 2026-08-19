@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "253d882a-751d-408b-b41b-7803f79adf59",
+      "name": "Notification Services Sales",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2401ea48-d797-49bb-80fb-b41ebea5824f",
+          "name": "Payment Sale",
+          "request": {
+            "name": "Payment Sale",
+            "description": {
+              "content": "Receiving notifications of a sale finalized.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders",
+                ":order_id",
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Order ID returned by create payment service"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"business_id\": \"<string>\",\n    \"provider_reference\": {\n      \"batch_id\": \"<string>\",\n      \"ticket_number\": \"<string>\",\n      \"tid\": \"<string>\",\n      \"nsu\": \"<string>\"\n    }\n  },\n  \"amount\": {\n    \"currency_code\": \"<string>\",\n    \"value\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "809c19da-45b2-420c-b2a9-43b98a68707e",
+              "name": "Notification response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Cancelled\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"provider_reference\": {\n      \"batch_id\": \"000012\",\n      \"ticket_number\": \"000045\",\n      \"tid\": \"10069930690009D31001\",\n      \"nsu\": \"792048\"\n    }\n  },\n  \"amount\": {\n    \"currency_code\": \"BRL\",\n    \"value\": 1500.56\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "381083bf-a514-42e1-992d-e6ecbfe862e2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"Cancelled\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"provider_reference\": {\n      \"batch_id\": \"000012\",\n      \"ticket_number\": \"000045\",\n      \"tid\": \"10069930690009D31001\",\n      \"nsu\": \"792048\"\n    }\n  },\n  \"amount\": {\n    \"currency_code\": \"BRL\",\n    \"value\": 1500.56\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"causes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "225be235-46a6-49bf-b783-3d6bca8c2ceb",
+    "name": "Antifraud Access Notification Services Sales API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

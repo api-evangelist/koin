@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Account Take Over Services API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Take Over Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/ato/evaluations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receives a new transaction to evaluate Account Take Over request"
+        },
+        {
+          "info": {
+            "name": "Send Notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-sandbox.koin.com.br/v1/ato/notifications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Evaluation ID returned by api on evaluation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API to send updates about an existing case."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

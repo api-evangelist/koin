@@ -1,0 +1,492 @@
+{
+  "item": [
+    {
+      "id": "791e9b5b-3b4f-4644-a7be-e6741af655cc",
+      "name": "Ecommerce",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99d54e64-63c0-42ab-b5c7-dd8d58da200f",
+          "name": "Create Pre-Evaluation",
+          "request": {
+            "name": "Create Pre-Evaluation",
+            "description": {
+              "content": "Receives a new transaction for antifraud analysis, its meant to be used before payment authorization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "pre-evaluations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyer\": \"<object>\",\n  \"items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"amount\": \"<object>\",\n      \"details\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"payer\": \"<object>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"method\": \"<string>\",\n      \"amount\": \"<object>\",\n      \"details\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"payer\": \"<object>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"total_amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"business_id\": \"<string>\",\n    \"sequence\": \"<string>\",\n    \"listener_mode\": \"<boolean>\",\n    \"redirected\": \"<boolean>\",\n    \"asynchronous\": \"<boolean>\",\n    \"channel\": \"<string>\",\n    \"business_unit\": \"<string>\",\n    \"agency_id\": \"<string>\",\n    \"mode\": \"<string>\"\n  },\n  \"type\": \"Ecommerce\",\n  \"device\": \"<object>\",\n  \"store\": {\n    \"code\": \"<string>\",\n    \"category\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\",\n    \"merchant_type\": \"<string>\"\n  },\n  \"shipping\": {\n    \"price\": \"<object>\",\n    \"address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"complement\": \"<string>\",\n      \"neighborhood\": \"<string>\",\n      \"number\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"full_address\": \"<string>\"\n    },\n    \"delivery\": {\n      \"by\": \"<string>\",\n      \"date\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"service_date\": \"<string>\",\n  \"sla_date\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"client_info\": {\n    \"creation_date\": \"<dateTime>\",\n    \"classification\": \"<string>\",\n    \"customer_order\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"days_since_first_order\": \"<integer>\",\n    \"days_since_last_order\": \"<integer>\",\n    \"cancelled_orders\": \"<integer>\",\n    \"average_order\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"cash_orders\": \"<integer>\",\n    \"card_orders\": \"<integer>\",\n    \"bank_orders\": \"<integer>\",\n    \"debit_orders\": \"<integer>\",\n    \"super_segmentation\": \"<string>\",\n    \"purchase_power\": \"<string>\",\n    \"year_first_purchase\": \"<integer>\",\n    \"purchases_30_days\": \"<integer>\",\n    \"purchases_60_days\": \"<integer>\",\n    \"purchases_lifetime\": \"<integer>\"\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": \"<boolean>\",\n    \"acquirer_bin\": \"<string>\",\n    \"acquirer\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"mcc\": \"<string>\",\n    \"merchant_descriptor\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c0b0e013-91bf-4f56-b465-ab8e35e9a884",
+              "name": "Evaluation response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "pre-evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"id\\\": \\\"VEFRUD8HUR25N4992221\\\", \\\"evaluation_id\\\": \\\"31ff2cc8-199e-4c3c-ba2d-4d85b88bd9f2\\\", \\\"status\\\": \\\"received\\\", \\\"score\\\": 50, \\\"analysis_type\\\": \\\"AUTOMATIC\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72b710f4-4d46-45ff-8d96-6961663890df",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "pre-evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"Validation errors\\\", \\\"causes\\\": [ \\\"device.ip must not be blank\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89133c05-a8d1-4a44-94bf-714a135e6fe1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "pre-evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1c041f3-3344-4dd4-a65d-1e277a013a50",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "pre-evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39d7f8ec-a739-4df8-ac93-1c709ba4997a",
+          "name": "Create Evaluation",
+          "request": {
+            "name": "Create Evaluation",
+            "description": {
+              "content": "Receives a new transaction for antifraud analysis, if used with pre-evaluation it should be called after the payment authorization. Its mandatory to reuse the reference_id from pre-evaluation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "evaluations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyer\": \"<object>\",\n  \"items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"amount\": \"<object>\",\n      \"details\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"payer\": \"<object>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"method\": \"<string>\",\n      \"amount\": \"<object>\",\n      \"details\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"payer\": \"<object>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"total_amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"business_id\": \"<string>\",\n    \"sequence\": \"<string>\",\n    \"listener_mode\": \"<boolean>\",\n    \"redirected\": \"<boolean>\",\n    \"asynchronous\": \"<boolean>\",\n    \"channel\": \"<string>\",\n    \"business_unit\": \"<string>\",\n    \"agency_id\": \"<string>\",\n    \"mode\": \"<string>\"\n  },\n  \"type\": \"Ecommerce\",\n  \"device\": \"<object>\",\n  \"store\": {\n    \"code\": \"<string>\",\n    \"category\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\",\n    \"merchant_type\": \"<string>\"\n  },\n  \"shipping\": {\n    \"price\": \"<object>\",\n    \"address\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"state\": \"<string>\",\n      \"complement\": \"<string>\",\n      \"neighborhood\": \"<string>\",\n      \"number\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"full_address\": \"<string>\"\n    },\n    \"delivery\": {\n      \"by\": \"<string>\",\n      \"date\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"service_date\": \"<string>\",\n  \"sla_date\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"client_info\": {\n    \"creation_date\": \"<dateTime>\",\n    \"classification\": \"<string>\",\n    \"customer_order\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"days_since_first_order\": \"<integer>\",\n    \"days_since_last_order\": \"<integer>\",\n    \"cancelled_orders\": \"<integer>\",\n    \"average_order\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"cash_orders\": \"<integer>\",\n    \"card_orders\": \"<integer>\",\n    \"bank_orders\": \"<integer>\",\n    \"debit_orders\": \"<integer>\",\n    \"super_segmentation\": \"<string>\",\n    \"purchase_power\": \"<string>\",\n    \"year_first_purchase\": \"<integer>\",\n    \"purchases_30_days\": \"<integer>\",\n    \"purchases_60_days\": \"<integer>\",\n    \"purchases_lifetime\": \"<integer>\"\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": \"<boolean>\",\n    \"acquirer_bin\": \"<string>\",\n    \"acquirer\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"mcc\": \"<string>\",\n    \"merchant_descriptor\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70bc4478-addb-4f2e-ba6b-5ea65afe19dc",
+              "name": "Evaluation response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"id\\\": \\\"VEFRUD8HUR25N4992221\\\", \\\"evaluation_id\\\": \\\"31ff2cc8-199e-4c3c-ba2d-4d85b88bd9f2\\\", \\\"status\\\": \\\"received\\\", \\\"score\\\": 50, \\\"analysis_type\\\": \\\"AUTOMATIC\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "374ff806-2522-4520-8286-57200d24b74b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"Validation errors\\\", \\\"causes\\\": [ \\\"device.ip must not be blank\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac9275cc-0e4c-4945-aed7-91c885e17f54",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68e0d3ea-cf9f-4e70-93b2-77456be5c7c9",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyer\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Dsauvybixo\",\n      \"country_code\": \"BR\",\n      \"neighborhood\": \"Iwewsfjyol\",\n      \"number\": \"1234\",\n      \"state\": \"sao paulo\",\n      \"street\": \"One street\",\n      \"zip_code\": \"12345\"\n    },\n    \"birth_date\": \"1980-05-06\",\n    \"document\": {\n      \"nationality\": \"BR\",\n      \"number\": \"11123456\",\n      \"type\": \"CPF\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"full_name\": \"Dgvwicjiqr Amdbvqkbja\",\n    \"gender\": \"MALE\",\n    \"id\": \"1234\",\n    \"phone\": {\n      \"area_code\": \"1265\",\n      \"number\": \"12345678\",\n      \"type\": \"MOBILE\"\n    }\n  },\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"device\": {\n    \"ipv4\": \"191.111.186.20\",\n    \"location\": {\n      \"latitude\": -14.11132789616039,\n      \"longitude\": -48.44445822129388\n    },\n    \"merchant_device\": \"b3692474-a298-41be-8b1c-938965d5b5ed\",\n    \"session_id\": \"40151f31-dff5-46ab-b6f7-2191bf992003\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"17877451306\",\n        \"name\": \"Vtiqzgxlwh\"\n      },\n      \"discount_amount\": {\n        \"currency\": \"USD\",\n        \"value\": 2344\n      },\n      \"id\": \"17803811909\",\n      \"name\": \"Aszmxlpebz\",\n      \"price\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"quantity\": 3,\n      \"seller_id\": \"16223265193\",\n      \"service_date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"Generic\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"amount\": {\n        \"currency\": \"USD\",\n        \"value\": 8008.99\n      },\n      \"concept\": \"Ergvekrvit Prtldbjwjs\",\n      \"details\": {\n        \"bin\": \"424242\",\n        \"brand_name\": \"Visa\",\n        \"eci\": \"123\",\n        \"expiration_month\": \"03\",\n        \"expiration_year\": \"2032\",\n        \"last_digits\": \"4444\"\n      },\n      \"id\": \"12345\",\n      \"installments\": 11,\n      \"method\": \"CreditCard\",\n      \"payer\": {\n        \"address\": {\n          \"city\": \"sao paulo\",\n          \"complement\": \"Vzeiidkesz\",\n          \"country_code\": \"BR\",\n          \"full_address\": \"Zluqwxxdhc 10091\",\n          \"neighborhood\": \"Fcbcwsgudy\",\n          \"state\": \"sao paulo\",\n          \"zip_code\": \"15060\"\n        },\n        \"birth_date\": \"1978-04-29\",\n        \"document\": {\n          \"nationality\": \"BR\",\n          \"number\": \"12345678\",\n          \"type\": \"CPF\"\n        },\n        \"email\": \"test@gmail.com\",\n        \"first_name\": \"Spoignvdki\",\n        \"gender\": \"OTHER\",\n        \"id\": \"12345\",\n        \"last_name\": \"Rljwjfspta\",\n        \"phone\": {\n          \"area_code\": \"123\",\n          \"number\": \"1234567\",\n          \"type\": \"MOBILE\"\n        }\n      },\n      \"subscription\": false\n    }\n  ],\n  \"service_date\": \"2023-02-02T13:50:31.000Z\",\n  \"shipping\": {\n    \"address\": {\n      \"city\": \"sao paulo\",\n      \"complement\": \"Vpqbsrobnf\",\n      \"country_code\": \"BR\",\n      \"full_address\": \"Uychukpruh 10666\",\n      \"neighborhood\": \"Pnddnuzvys\",\n      \"state\": \"sao paulo\",\n      \"zip_code\": \"18476\"\n    },\n    \"delivery\": {\n      \"by\": \"DHL\",\n      \"date\": \"2023-02-10T13:50:31.000Z\",\n      \"type\": \"EXPRESS\"\n    },\n    \"price\": {\n      \"currency\": \"USD\",\n      \"value\": 45.99\n    }\n  },\n  \"sla_date\": \"2023-02-10T13:50:31.000Z\",\n  \"store\": {\n    \"category\": \"17057\",\n    \"code\": \"Hrrnhqqisi\",\n    \"latitude\": -34.56532789616039,\n    \"longitude\": -58.48945822129388,\n    \"merchant_type\": \"shopping\"\n  },\n  \"transaction\": {\n    \"agency_id\": \"AGEN-12345\",\n    \"business_id\": \"1234567\",\n    \"country_code\": \"BR\",\n    \"reference_id\": \"123456\",\n    \"sequence\": 1,\n    \"listener_mode\": false,\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    }\n  },\n  \"client_info\": {\n    \"creation_date\": \"1978-04-29T17:10:35.387Z\",\n    \"classification\": \"GOLD\",\n    \"customer_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"days_since_first_order\": 45,\n    \"days_since_last_order\": 10,\n    \"cancelled_orders\": 3,\n    \"average_order\": {\n      \"currency_code\": \"USD\",\n      \"value\": 45.99\n    },\n    \"cash_orders\": 3,\n    \"card_orders\": 6,\n    \"bank_orders\": 4,\n    \"debit_orders\": 2,\n    \"super_segmentation\": \"potential\",\n    \"purchase_power\": \"pph\",\n    \"year_first_purchase\": 2024,\n    \"purchases_30_days\": 12,\n    \"purchases_60_days\": 22,\n    \"purchases_lifetime\": 32\n  },\n  \"strategies_data\": {\n    \"collect_auth_supported\": true,\n    \"acquirer_bin\": \"408956\",\n    \"acquirer\": \"WDP\",\n    \"merchant_id\": \"BRLIARLEGAPR\",\n    \"mcc\": \"1234\",\n    \"merchant_descriptor\": \"DAGS_TEST_3DS\"\n  },\n  \"type\": \"Ecommerce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "509b77ff-1b7f-44dd-aa3b-67f547c43590",
+    "name": "Antifraud Access Ecommerce API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

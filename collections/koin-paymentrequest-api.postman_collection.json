@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "dccc5da6-0493-4c5b-96b0-9d263fd4d241",
+      "name": "PaymentRequest",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07177f18-7014-433d-9dc7-1b79e2a6ee22",
+          "name": "Check",
+          "request": {
+            "name": "Check",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "PaymentRequest",
+                "check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CPF\": 9427275090,\n  \"TotalPrice\": 1000,\n  \"UseDate\": \"2021-05-24\",\n  \"SalesChannelId\": \"3\",\n  \"Proposal\": \"1234546\",\n  \"FraudId\": \"221313221\",\n  \"MaxInstallments\": \"12\",\n  \"Email\": \"email@dominio.com.br\",\n  \"Ip\": \"001\",\n  \"Optin\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8157fa73-d514-45d0-8906-8a78d4ab6534",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PaymentRequest",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CPF\": 9427275090,\n  \"TotalPrice\": 1000,\n  \"UseDate\": \"2021-05-24\",\n  \"SalesChannelId\": \"3\",\n  \"Proposal\": \"1234546\",\n  \"FraudId\": \"221313221\",\n  \"MaxInstallments\": \"12\",\n  \"Email\": \"email@dominio.com.br\",\n  \"Ip\": \"001\",\n  \"Optin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"UseDate\\\": \\\"05/24/2021\\\",\\n  \\\"Message\\\": \\\"Request authorized!\\\",\\n  \\\"amountInstallments\\\": 3,\\n  \\\"installmentOptions\\\": [\\n    {\\n      \\\"of\\\": null,\\n      \\\"cet\\\": null,\\n      \\\"installments\\\": \\\"1\\\",\\n      \\\"rates\\\": null,\\n      \\\"description\\\": \\\"On view\\\",\\n      \\\"originalValue\\\": \\\"570.00\\\",\\n      \\\"firstDueDate\\\": \\\"2020-12-11\\\",\\n      \\\"cetAM\\\": \\\"0.63\\\",\\n      \\\"orderValue\\\": \\\"570.00\\\",\\n      \\\"installmentValue\\\": null,\\n      \\\"paymentType\\\": \\\"21\\\"\\n    },\\n    {\\n      \\\"iof\\\": \\\"3.73\\\",\\n      \\\"cet\\\": \\\"70.32\\\",\\n      \\\"installments\\\": \\\"2\\\",\\n      \\\"rates\\\": \\\"3.89\\\",\\n      \\\"description\\\": \\\"2 x R$299.11\\\",\\n      \\\"originalValue\\\": \\\"570.00\\\",\\n      \\\"firstDueDate\\\": \\\"2020-12-11\\\",\\n      \\\"cetAM\\\": \\\"4.52\\\",\\n      \\\"orderValue\\\": \\\"598.22\\\",\\n      \\\"installmentValue\\\": \\\"299.11\\\",\\n      \\\"paymentType\\\": \\\"85\\\"\\n    }\\n  ],\\n  \\\"CPF\\\": \\\"432.378,721-99\\\",\\n  \\\"TotalPrice\\\": \\\"570\\\",\\n  \\\"IdPaymentRequest\\\": 661005,\\n  \\\"Code\\\": 11100,\\n  \\\"Proposal\\\": \\\"1234567\\\",\\n  \\\"status\\\": \\\"Approved\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "836d7dd3-33e1-4f8b-a541-6965aab760c8",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PaymentRequest",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CPF\": 9427275090,\n  \"TotalPrice\": 1000,\n  \"UseDate\": \"2021-05-24\",\n  \"SalesChannelId\": \"3\",\n  \"Proposal\": \"1234546\",\n  \"FraudId\": \"221313221\",\n  \"MaxInstallments\": \"12\",\n  \"Email\": \"email@dominio.com.br\",\n  \"Ip\": \"001\",\n  \"Optin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21cee6b2-7100-41f6-8045-5030a17250b2",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PaymentRequest",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CPF\": 9427275090,\n  \"TotalPrice\": 1000,\n  \"UseDate\": \"2021-05-24\",\n  \"SalesChannelId\": \"3\",\n  \"Proposal\": \"1234546\",\n  \"FraudId\": \"221313221\",\n  \"MaxInstallments\": \"12\",\n  \"Email\": \"email@dominio.com.br\",\n  \"Ip\": \"001\",\n  \"Optin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d77acfe7-48f5-457b-9612-b1deacf744e1",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PaymentRequest",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CPF\": 9427275090,\n  \"TotalPrice\": 1000,\n  \"UseDate\": \"2021-05-24\",\n  \"SalesChannelId\": \"3\",\n  \"Proposal\": \"1234546\",\n  \"FraudId\": \"221313221\",\n  \"MaxInstallments\": \"12\",\n  \"Email\": \"email@dominio.com.br\",\n  \"Ip\": \"001\",\n  \"Optin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24abbe74-31b6-4a60-8d87-abb72090ddeb",
+              "name": "5XX",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PaymentRequest",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CPF\": 9427275090,\n  \"TotalPrice\": 1000,\n  \"UseDate\": \"2021-05-24\",\n  \"SalesChannelId\": \"3\",\n  \"Proposal\": \"1234546\",\n  \"FraudId\": \"221313221\",\n  \"MaxInstallments\": \"12\",\n  \"Email\": \"email@dominio.com.br\",\n  \"Ip\": \"001\",\n  \"Optin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a1330b2-4118-415b-9638-bad3ad7c0468",
+          "name": "Include",
+          "request": {
+            "name": "Include",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V1",
+                "PaymentRequest",
+                "include"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"OrderID\": \"Class1\",\n  \"Currency\": \"BRL\",\n  \"TotalPrice\": \"78.99\",\n  \"Buyer\": {\n    \"Email\": \"email@domain.com.br\",\n    \"Name\": \"Nome da Loja\",\n    \"Documents\": {\n      \"Key\": \"CPF\",\n      \"Value\": \"1234567890\"\n    },\n    \"Address\": {\n      \"ZipCode\": \"30160913\",\n      \"Number\": \"999\",\n      \"AddressType\": \"1\",\n      \"Country\": \"Brasil\",\n      \"State\": \"MG\",\n      \"City\": \"Belo Horizonte\",\n      \"District\": \"Bela Vista\",\n      \"Street\": \"Rua Rio de Janeiro 909\",\n      \"Complement\": \"13º Andar\"\n    },\n    \"Phones\": {\n      \"AreaCode\": \"11\",\n      \"Number\": \"999984999\",\n      \"PhoneType\": \"1\"\n    },\n    \"Ip\": \"127001\",\n    \"IsReliable\": \"false\",\n    \"IsFirstPurchase\": \"false\",\n    \"AdditionalInfo\": {\n      \"Key\": \"Birthday\",\n      \"Value\": \"1993-03-19\"\n    }\n  },\n  \"Shipping\": {\n    \"UseData\": \"2022-07-20\",\n    \"Address\": {\n      \"ZipCode\": \"01310300\",\n      \"Street\": \"Av. Paulista\",\n      \"Number\": \"2421\",\n      \"Complement\": \"13° Andar\",\n      \"City\": \"São Paulo\",\n      \"District\": \"Bela Vista\",\n      \"State\": \"São Paulo\",\n      \"Country\": \"Brasil\",\n      \"Type\": \"1\"\n    },\n    \"Price\": \"199.90\"\n  },\n  \"Items\": {\n    \"Reference\": \"Item_4556\",\n    \"Description\": \"Teste boleto registrado\",\n    \"Quantity\": \"1\",\n    \"Price\": \"980.56\",\n    \"Category\": \"Teste\"\n  },\n  \"AdditionalParameters\": {\n    \"ExpirationDate\": \"2022-01-02 00:12:12\",\n    \"UserExpirationDate\": \"2022-02-02 00:02:23\",\n    \"FixInstallments\": \"0\",\n    \"MaxInstallments\": \"24\",\n    \"IntermediateId\": \"123\",\n    \"SalesChannelId\": \"5\",\n    \"SoftDescription\": \"Nome Que Aparece no Boleto\",\n    \"OrderOriginIsDifferent\": \"Y\",\n    \"UserCreate\": \"Email do Usuário de Criação do Pedido\",\n    \"OrderOriginData\": {\n      \"OrderOriginDocuments\": {\n        \"Type\": \"CPF\",\n        \"Number\": \"833.931.540-44\"\n      },\n      \"OrderOriginName\": \"Nome Fantasia da Origem do Pedido\",\n      \"OrderOriginCompanyName\": \"Razão Social da Origem do Pedido\",\n      \"OrderOriginEmail\": \"origem_pedido@email.com.br\",\n      \"OrderOriginPhone\": \"552133665591\"\n    }\n  },\n  \"Proposal\": \"692241828173551436932475\",\n  \"DiscountPercent\": \"0.20\",\n  \"DiscountValue\": \"0.05\",\n  \"IncreasePercent\": \"0.10\",\n  \"IncreaseValue\": \"1.00\",\n  \"ProductType\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7081ac05-ab85-425f-9faf-1aa3d802003e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "PaymentRequest",
+                    "include"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OrderID\": \"Class1\",\n  \"Currency\": \"BRL\",\n  \"TotalPrice\": \"78.99\",\n  \"Proposal\": \"692241828173551436932475\",\n  \"Buyer\": {\n    \"Name\": \"Maria Silva\",\n    \"Email\": \"email@domain.com.br\",\n    \"Documents\": [\n      {\n        \"Type\": \"CPF\",\n        \"Number\": \"1234567890\"\n      }\n    ],\n    \"Address\": {\n      \"Country\": \"Brasil\",\n      \"State\": \"MG\",\n      \"City\": \"Belo Horizonte\",\n      \"ZipCode\": \"30160913\",\n      \"Street\": \"Rua Rio de Janeiro 909\",\n      \"Number\": \"999\",\n      \"Complement\": \"\",\n      \"Type\": \"1\"\n    },\n    \"Phones\": [\n      {\n        \"AreaCode\": \"11\",\n        \"Number\": \"999984999\"\n      }\n    ]\n  },\n  \"Shipping\": {\n    \"UseDate\": \"2023-05-24\",\n    \"Price\": \"0.00\",\n    \"Address\": null\n  },\n  \"Items\": [\n    {\n      \"Reference\": \"Cod_Item_321\",\n      \"Description\": \"Origem no aeroporto GRU, com destino no aeroporto YYZ\",\n      \"Quantity\": \"1\",\n      \"Price\": \"1999.01\",\n      \"Category\": \"Passagem\"\n    }\n  ],\n  \"AdditionalParameters\": {\n    \"ExpirationDate\": \"2023-01-02 00:12:12\",\n    \"UserExpirationDate\": \"2022-02-02 00:02:23\",\n    \"FixInstallments\": \"0\",\n    \"MaxInstallments\": \"24\",\n    \"IntermediateId\": \"123\",\n    \"SalesChannelId\": \"5\",\n    \"SoftDescription\": \"Nome Que Aparece no Boleto\",\n    \"OrderOriginData\": {\n      \"OrderOriginDocuments\": {\n        \"Type\": \"CNPJ\",\n        \"Number\": \"12.456.789/0001-01\"\n      },\n      \"OrderOriginName\": \"Nome Fantasia da Origem do Pedido\",\n      \"OrderOriginCompanyName\": \"Razão Social da Origem do Pedido\",\n      \"OrderOriginEmail\": \"origem_pedido@email.com.br\",\n      \"OrderOriginPhone\": \"552133665591\"\n    },\n    \"OrderOriginIsDifferent\": \"Y\",\n    \"UserCreate\": \"Email do Usuário de Criação do Pedido\"\n  },\n  \"AdditionalData\": {\n    \"CarRentalData\": [\n      {\n        \"CarRentalCompany\": \"United\",\n        \"CarDescription\": \"Volkswagen T-Cross Automatic\",\n        \"CarCategory\": \"CA\",\n        \"PickUpDateTime\": \"2019-12-25 16:30:00\",\n        \"ReturnDateTime\": \"2019-12-27 16:30:00\",\n        \"PickUpLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"ReturnLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"Drivers\": [\n          {\n            \"DriverName\": \"Main Driver Name\",\n            \"DriverEmail\": \"email_condutor_principal@dominio.com.br\",\n            \"DriverBirthDate\": \"1988-07-27\",\n            \"DriverPhone\": \"552133665591\",\n            \"DriverGender\": \"2\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 132618605\n            }\n          },\n          {\n            \"DriverName\": \"Second Driver Name\",\n            \"DriverEmail\": \"email__second_condutor@dominio.com.br\",\n            \"DriverBirthDate\": \"1985-02-15\",\n            \"DriverPhone\": \"552133665577\",\n            \"DriverGender\": \"1\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 234638625\n            }\n          }\n        ]\n      }\n    ]\n  },\n  \"Product Type\": [\n    \"CarRental\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"AdditionalInfo\\\": [],\\n  \\\"Message\\\": \\\"Your purchase is APPROVED! Thank you for shopping with KOIN.\\\",\\n  \\\"Transaction ID\\\": 833971,\\n  \\\"Code\\\": \\\"200\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60b65382-03db-4ef7-9735-80ecf612ebd0",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "PaymentRequest",
+                    "include"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OrderID\": \"Class1\",\n  \"Currency\": \"BRL\",\n  \"TotalPrice\": \"78.99\",\n  \"Proposal\": \"692241828173551436932475\",\n  \"Buyer\": {\n    \"Name\": \"Maria Silva\",\n    \"Email\": \"email@domain.com.br\",\n    \"Documents\": [\n      {\n        \"Type\": \"CPF\",\n        \"Number\": \"1234567890\"\n      }\n    ],\n    \"Address\": {\n      \"Country\": \"Brasil\",\n      \"State\": \"MG\",\n      \"City\": \"Belo Horizonte\",\n      \"ZipCode\": \"30160913\",\n      \"Street\": \"Rua Rio de Janeiro 909\",\n      \"Number\": \"999\",\n      \"Complement\": \"\",\n      \"Type\": \"1\"\n    },\n    \"Phones\": [\n      {\n        \"AreaCode\": \"11\",\n        \"Number\": \"999984999\"\n      }\n    ]\n  },\n  \"Shipping\": {\n    \"UseDate\": \"2023-05-24\",\n    \"Price\": \"0.00\",\n    \"Address\": null\n  },\n  \"Items\": [\n    {\n      \"Reference\": \"Cod_Item_321\",\n      \"Description\": \"Origem no aeroporto GRU, com destino no aeroporto YYZ\",\n      \"Quantity\": \"1\",\n      \"Price\": \"1999.01\",\n      \"Category\": \"Passagem\"\n    }\n  ],\n  \"AdditionalParameters\": {\n    \"ExpirationDate\": \"2023-01-02 00:12:12\",\n    \"UserExpirationDate\": \"2022-02-02 00:02:23\",\n    \"FixInstallments\": \"0\",\n    \"MaxInstallments\": \"24\",\n    \"IntermediateId\": \"123\",\n    \"SalesChannelId\": \"5\",\n    \"SoftDescription\": \"Nome Que Aparece no Boleto\",\n    \"OrderOriginData\": {\n      \"OrderOriginDocuments\": {\n        \"Type\": \"CNPJ\",\n        \"Number\": \"12.456.789/0001-01\"\n      },\n      \"OrderOriginName\": \"Nome Fantasia da Origem do Pedido\",\n      \"OrderOriginCompanyName\": \"Razão Social da Origem do Pedido\",\n      \"OrderOriginEmail\": \"origem_pedido@email.com.br\",\n      \"OrderOriginPhone\": \"552133665591\"\n    },\n    \"OrderOriginIsDifferent\": \"Y\",\n    \"UserCreate\": \"Email do Usuário de Criação do Pedido\"\n  },\n  \"AdditionalData\": {\n    \"CarRentalData\": [\n      {\n        \"CarRentalCompany\": \"United\",\n        \"CarDescription\": \"Volkswagen T-Cross Automatic\",\n        \"CarCategory\": \"CA\",\n        \"PickUpDateTime\": \"2019-12-25 16:30:00\",\n        \"ReturnDateTime\": \"2019-12-27 16:30:00\",\n        \"PickUpLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"ReturnLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"Drivers\": [\n          {\n            \"DriverName\": \"Main Driver Name\",\n            \"DriverEmail\": \"email_condutor_principal@dominio.com.br\",\n            \"DriverBirthDate\": \"1988-07-27\",\n            \"DriverPhone\": \"552133665591\",\n            \"DriverGender\": \"2\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 132618605\n            }\n          },\n          {\n            \"DriverName\": \"Second Driver Name\",\n            \"DriverEmail\": \"email__second_condutor@dominio.com.br\",\n            \"DriverBirthDate\": \"1985-02-15\",\n            \"DriverPhone\": \"552133665577\",\n            \"DriverGender\": \"1\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 234638625\n            }\n          }\n        ]\n      }\n    ]\n  },\n  \"Product Type\": [\n    \"CarRental\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a578a8d-c7ce-4cce-9493-0c7898af8549",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "PaymentRequest",
+                    "include"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OrderID\": \"Class1\",\n  \"Currency\": \"BRL\",\n  \"TotalPrice\": \"78.99\",\n  \"Proposal\": \"692241828173551436932475\",\n  \"Buyer\": {\n    \"Name\": \"Maria Silva\",\n    \"Email\": \"email@domain.com.br\",\n    \"Documents\": [\n      {\n        \"Type\": \"CPF\",\n        \"Number\": \"1234567890\"\n      }\n    ],\n    \"Address\": {\n      \"Country\": \"Brasil\",\n      \"State\": \"MG\",\n      \"City\": \"Belo Horizonte\",\n      \"ZipCode\": \"30160913\",\n      \"Street\": \"Rua Rio de Janeiro 909\",\n      \"Number\": \"999\",\n      \"Complement\": \"\",\n      \"Type\": \"1\"\n    },\n    \"Phones\": [\n      {\n        \"AreaCode\": \"11\",\n        \"Number\": \"999984999\"\n      }\n    ]\n  },\n  \"Shipping\": {\n    \"UseDate\": \"2023-05-24\",\n    \"Price\": \"0.00\",\n    \"Address\": null\n  },\n  \"Items\": [\n    {\n      \"Reference\": \"Cod_Item_321\",\n      \"Description\": \"Origem no aeroporto GRU, com destino no aeroporto YYZ\",\n      \"Quantity\": \"1\",\n      \"Price\": \"1999.01\",\n      \"Category\": \"Passagem\"\n    }\n  ],\n  \"AdditionalParameters\": {\n    \"ExpirationDate\": \"2023-01-02 00:12:12\",\n    \"UserExpirationDate\": \"2022-02-02 00:02:23\",\n    \"FixInstallments\": \"0\",\n    \"MaxInstallments\": \"24\",\n    \"IntermediateId\": \"123\",\n    \"SalesChannelId\": \"5\",\n    \"SoftDescription\": \"Nome Que Aparece no Boleto\",\n    \"OrderOriginData\": {\n      \"OrderOriginDocuments\": {\n        \"Type\": \"CNPJ\",\n        \"Number\": \"12.456.789/0001-01\"\n      },\n      \"OrderOriginName\": \"Nome Fantasia da Origem do Pedido\",\n      \"OrderOriginCompanyName\": \"Razão Social da Origem do Pedido\",\n      \"OrderOriginEmail\": \"origem_pedido@email.com.br\",\n      \"OrderOriginPhone\": \"552133665591\"\n    },\n    \"OrderOriginIsDifferent\": \"Y\",\n    \"UserCreate\": \"Email do Usuário de Criação do Pedido\"\n  },\n  \"AdditionalData\": {\n    \"CarRentalData\": [\n      {\n        \"CarRentalCompany\": \"United\",\n        \"CarDescription\": \"Volkswagen T-Cross Automatic\",\n        \"CarCategory\": \"CA\",\n        \"PickUpDateTime\": \"2019-12-25 16:30:00\",\n        \"ReturnDateTime\": \"2019-12-27 16:30:00\",\n        \"PickUpLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"ReturnLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"Drivers\": [\n          {\n            \"DriverName\": \"Main Driver Name\",\n            \"DriverEmail\": \"email_condutor_principal@dominio.com.br\",\n            \"DriverBirthDate\": \"1988-07-27\",\n            \"DriverPhone\": \"552133665591\",\n            \"DriverGender\": \"2\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 132618605\n            }\n          },\n          {\n            \"DriverName\": \"Second Driver Name\",\n            \"DriverEmail\": \"email__second_condutor@dominio.com.br\",\n            \"DriverBirthDate\": \"1985-02-15\",\n            \"DriverPhone\": \"552133665577\",\n            \"DriverGender\": \"1\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 234638625\n            }\n          }\n        ]\n      }\n    ]\n  },\n  \"Product Type\": [\n    \"CarRental\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32d7d6ff-bc38-44da-9485-9ff41b56864d",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "PaymentRequest",
+                    "include"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OrderID\": \"Class1\",\n  \"Currency\": \"BRL\",\n  \"TotalPrice\": \"78.99\",\n  \"Proposal\": \"692241828173551436932475\",\n  \"Buyer\": {\n    \"Name\": \"Maria Silva\",\n    \"Email\": \"email@domain.com.br\",\n    \"Documents\": [\n      {\n        \"Type\": \"CPF\",\n        \"Number\": \"1234567890\"\n      }\n    ],\n    \"Address\": {\n      \"Country\": \"Brasil\",\n      \"State\": \"MG\",\n      \"City\": \"Belo Horizonte\",\n      \"ZipCode\": \"30160913\",\n      \"Street\": \"Rua Rio de Janeiro 909\",\n      \"Number\": \"999\",\n      \"Complement\": \"\",\n      \"Type\": \"1\"\n    },\n    \"Phones\": [\n      {\n        \"AreaCode\": \"11\",\n        \"Number\": \"999984999\"\n      }\n    ]\n  },\n  \"Shipping\": {\n    \"UseDate\": \"2023-05-24\",\n    \"Price\": \"0.00\",\n    \"Address\": null\n  },\n  \"Items\": [\n    {\n      \"Reference\": \"Cod_Item_321\",\n      \"Description\": \"Origem no aeroporto GRU, com destino no aeroporto YYZ\",\n      \"Quantity\": \"1\",\n      \"Price\": \"1999.01\",\n      \"Category\": \"Passagem\"\n    }\n  ],\n  \"AdditionalParameters\": {\n    \"ExpirationDate\": \"2023-01-02 00:12:12\",\n    \"UserExpirationDate\": \"2022-02-02 00:02:23\",\n    \"FixInstallments\": \"0\",\n    \"MaxInstallments\": \"24\",\n    \"IntermediateId\": \"123\",\n    \"SalesChannelId\": \"5\",\n    \"SoftDescription\": \"Nome Que Aparece no Boleto\",\n    \"OrderOriginData\": {\n      \"OrderOriginDocuments\": {\n        \"Type\": \"CNPJ\",\n        \"Number\": \"12.456.789/0001-01\"\n      },\n      \"OrderOriginName\": \"Nome Fantasia da Origem do Pedido\",\n      \"OrderOriginCompanyName\": \"Razão Social da Origem do Pedido\",\n      \"OrderOriginEmail\": \"origem_pedido@email.com.br\",\n      \"OrderOriginPhone\": \"552133665591\"\n    },\n    \"OrderOriginIsDifferent\": \"Y\",\n    \"UserCreate\": \"Email do Usuário de Criação do Pedido\"\n  },\n  \"AdditionalData\": {\n    \"CarRentalData\": [\n      {\n        \"CarRentalCompany\": \"United\",\n        \"CarDescription\": \"Volkswagen T-Cross Automatic\",\n        \"CarCategory\": \"CA\",\n        \"PickUpDateTime\": \"2019-12-25 16:30:00\",\n        \"ReturnDateTime\": \"2019-12-27 16:30:00\",\n        \"PickUpLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"ReturnLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"Drivers\": [\n          {\n            \"DriverName\": \"Main Driver Name\",\n            \"DriverEmail\": \"email_condutor_principal@dominio.com.br\",\n            \"DriverBirthDate\": \"1988-07-27\",\n            \"DriverPhone\": \"552133665591\",\n            \"DriverGender\": \"2\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 132618605\n            }\n          },\n          {\n            \"DriverName\": \"Second Driver Name\",\n            \"DriverEmail\": \"email__second_condutor@dominio.com.br\",\n            \"DriverBirthDate\": \"1985-02-15\",\n            \"DriverPhone\": \"552133665577\",\n            \"DriverGender\": \"1\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 234638625\n            }\n          }\n        ]\n      }\n    ]\n  },\n  \"Product Type\": [\n    \"CarRental\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51e6f4e1-caf6-4789-8659-ff41200cd1a7",
+              "name": "5XX",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V1",
+                    "PaymentRequest",
+                    "include"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OrderID\": \"Class1\",\n  \"Currency\": \"BRL\",\n  \"TotalPrice\": \"78.99\",\n  \"Proposal\": \"692241828173551436932475\",\n  \"Buyer\": {\n    \"Name\": \"Maria Silva\",\n    \"Email\": \"email@domain.com.br\",\n    \"Documents\": [\n      {\n        \"Type\": \"CPF\",\n        \"Number\": \"1234567890\"\n      }\n    ],\n    \"Address\": {\n      \"Country\": \"Brasil\",\n      \"State\": \"MG\",\n      \"City\": \"Belo Horizonte\",\n      \"ZipCode\": \"30160913\",\n      \"Street\": \"Rua Rio de Janeiro 909\",\n      \"Number\": \"999\",\n      \"Complement\": \"\",\n      \"Type\": \"1\"\n    },\n    \"Phones\": [\n      {\n        \"AreaCode\": \"11\",\n        \"Number\": \"999984999\"\n      }\n    ]\n  },\n  \"Shipping\": {\n    \"UseDate\": \"2023-05-24\",\n    \"Price\": \"0.00\",\n    \"Address\": null\n  },\n  \"Items\": [\n    {\n      \"Reference\": \"Cod_Item_321\",\n      \"Description\": \"Origem no aeroporto GRU, com destino no aeroporto YYZ\",\n      \"Quantity\": \"1\",\n      \"Price\": \"1999.01\",\n      \"Category\": \"Passagem\"\n    }\n  ],\n  \"AdditionalParameters\": {\n    \"ExpirationDate\": \"2023-01-02 00:12:12\",\n    \"UserExpirationDate\": \"2022-02-02 00:02:23\",\n    \"FixInstallments\": \"0\",\n    \"MaxInstallments\": \"24\",\n    \"IntermediateId\": \"123\",\n    \"SalesChannelId\": \"5\",\n    \"SoftDescription\": \"Nome Que Aparece no Boleto\",\n    \"OrderOriginData\": {\n      \"OrderOriginDocuments\": {\n        \"Type\": \"CNPJ\",\n        \"Number\": \"12.456.789/0001-01\"\n      },\n      \"OrderOriginName\": \"Nome Fantasia da Origem do Pedido\",\n      \"OrderOriginCompanyName\": \"Razão Social da Origem do Pedido\",\n      \"OrderOriginEmail\": \"origem_pedido@email.com.br\",\n      \"OrderOriginPhone\": \"552133665591\"\n    },\n    \"OrderOriginIsDifferent\": \"Y\",\n    \"UserCreate\": \"Email do Usuário de Criação do Pedido\"\n  },\n  \"AdditionalData\": {\n    \"CarRentalData\": [\n      {\n        \"CarRentalCompany\": \"United\",\n        \"CarDescription\": \"Volkswagen T-Cross Automatic\",\n        \"CarCategory\": \"CA\",\n        \"PickUpDateTime\": \"2019-12-25 16:30:00\",\n        \"ReturnDateTime\": \"2019-12-27 16:30:00\",\n        \"PickUpLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"ReturnLocation\": {\n          \"ZipCode\": \"01310-300\",\n          \"Street\": \"Av. Paulista\",\n          \"Number\": \"2421\",\n          \"Complement\": \"\",\n          \"District\": \"Bela Vista\",\n          \"City\": \"São Paulo\",\n          \"State\": \"SP\",\n          \"Country\": \"Brazil\"\n        },\n        \"Drivers\": [\n          {\n            \"DriverName\": \"Main Driver Name\",\n            \"DriverEmail\": \"email_condutor_principal@dominio.com.br\",\n            \"DriverBirthDate\": \"1988-07-27\",\n            \"DriverPhone\": \"552133665591\",\n            \"DriverGender\": \"2\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 132618605\n            }\n          },\n          {\n            \"DriverName\": \"Second Driver Name\",\n            \"DriverEmail\": \"email__second_condutor@dominio.com.br\",\n            \"DriverBirthDate\": \"1985-02-15\",\n            \"DriverPhone\": \"552133665577\",\n            \"DriverGender\": \"1\",\n            \"DriverDocuments\": {\n              \"Type\": \"CPF\",\n              \"Number\": 234638625\n            }\n          }\n        ]\n      }\n    ]\n  },\n  \"Product Type\": [\n    \"CarRental\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "59803a88-d1e4-47f0-ae24-42bb99227cf9",
+    "name": "Antifraud Access PaymentRequest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

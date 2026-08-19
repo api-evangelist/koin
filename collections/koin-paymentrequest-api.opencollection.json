@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access PaymentRequest API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PaymentRequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/PaymentRequest/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check"
+        },
+        {
+          "info": {
+            "name": "Include",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/V1/PaymentRequest/include",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Include"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

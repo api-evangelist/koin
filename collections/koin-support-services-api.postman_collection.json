@@ -1,0 +1,1077 @@
+{
+  "item": [
+    {
+      "id": "20a46d0b-dc12-417d-906d-4e273a25fd5b",
+      "name": "Support Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7e32ecf-f390-4216-89b1-e8d2b5a81114",
+          "name": "Retrieve Evaluation Status",
+          "request": {
+            "name": "Retrieve Evaluation Status",
+            "description": {
+              "content": "API to retrieve the status of an antifraud evaluation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "evaluations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "EVALUATION_ID",
+                  "description": "Indicates which field should be used to look up the case (evalaution_id or reference_id). By default its value is EVALUATION_ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "653637fb-8a19-49fc-bf8a-749479d2964b",
+              "name": "Antifraud analysis status response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\\"id\\\": \\\"05OBS9CRU0VNKZ9\\\",\\\"evaluation_id\\\": \\\"70691872-f9a8-40c5-952a-72f79b32733b\\\",\\\"status\\\": \\\"approved\\\",\\\"score\\\": 0,\\\"analysis_type\\\": \\\"automatic\\\"}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75505ac3-a632-41d0-a034-4190011f76cb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"field must be in [EVALUATION_ID, REFERENCE_ID]\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "443ebf28-8ed2-4689-8ac6-655f1fb3535a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c22a34df-55eb-4b5f-9488-1789df947547",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 404, \\\"message\\\": \\\"Case not found for id 123456 and idName REFERENCE_ID\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8799403-9a4d-4180-a2cf-c3033c4b871b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a592c572-e551-4bff-a16f-abd7db77a064",
+          "name": "Cancel Evaluation",
+          "request": {
+            "name": "Cancel Evaluation",
+            "description": {
+              "content": "API to notify if the order was canceled either by the store or the buyer before completition of the Antifraud analysis.\nThe query parameter in the URL :id Could be either Evaluation ID returned by api on evaluation :evaluationId or reference id sent by client on evaluation :store.referenceId",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "evaluations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "EVALUATION_ID",
+                  "description": "Indicates which field should be used to look up the case (evalaution_id or reference_id). By default its value is EVALUATION_ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4260511d-9bd9-4e8b-bf84-4078adf6339f",
+              "name": "Cancel response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\\"id\\\": \\\"05OBS9CRU0VNKZ9\\\",\\\"evaluation_id\\\": \\\"70691872-f9a8-40c5-952a-72f79b32733b\\\",\\\"status\\\": \\\"denied\\\"}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e55abd43-24bf-4bf9-8360-9a08d03c1a4f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"field must be in [EVALUATION_ID, REFERENCE_ID]\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ac1819d-54af-4ecb-b20a-fdb06d3ba67d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82ed96e0-712a-41fa-ba8e-1ea3ac569129",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 404, \\\"message\\\": \\\"Case not found for id 123456 and idName REFERENCE_ID\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbb36aed-8084-4fd4-8a90-9b982485e32c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c20338b-901a-451e-b7ad-1d90f007637b",
+          "name": "Send Notifications",
+          "request": {
+            "name": "Send Notifications",
+            "description": {
+              "content": "API to send notifications about an evaluated transaction.\nThe types of notifications:\n- RFI: Notify a request for information (internal, from a bank, or from any entity)\n- Chargeback: Notify a chargeback (internal, from a bank, or from any entity)\n- Status \n   - Collected: Transaction payment was settled\n   - Not Collected: Transaction payments was failed\n   - Cancelled: Transaction was cancelled\n   - Finalized: Transaction finalized OK\n   - Refunded: Transaction payment was refunded\n   - Authorized: Transaction payment was authorized\n   - Recovering: In case a strategy has been applied, informs the result. See [Strategies](https://api-koin.readme.io/reference/strategies)\n- Info: Other type of information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "notifications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "EVALUATION_ID",
+                  "description": "Indicates which field should be used to look up the case (evalaution_id or reference_id). By default its value is EVALUATION_ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"CHARGEBACK\",\n  \"notification_date\": \"<string>\",\n  \"sub_type\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d882c84e-38c2-43da-8890-82e5884f7fbd",
+              "name": "Notifications response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"CHARGEBACK\",\n  \"notification_date\": \"2021-02-23T14:10:44.307Z\",\n  \"message\": \"Notification about...\",\n  \"sub_type\": \"FRAUD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d520ca40-5893-481c-b231-3132458006f4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"CHARGEBACK\",\n  \"notification_date\": \"2021-02-23T14:10:44.307Z\",\n  \"message\": \"Notification about...\",\n  \"sub_type\": \"FRAUD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"Validation errors\\\", \\\"causes\\\": [ \\\"type must not be blank\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c53bd61-4f2b-4154-8cd8-0888c3ff67ec",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"CHARGEBACK\",\n  \"notification_date\": \"2021-02-23T14:10:44.307Z\",\n  \"message\": \"Notification about...\",\n  \"sub_type\": \"FRAUD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac58699b-c420-4a38-b294-35673b70aef3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"CHARGEBACK\",\n  \"notification_date\": \"2021-02-23T14:10:44.307Z\",\n  \"message\": \"Notification about...\",\n  \"sub_type\": \"FRAUD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 404, \\\"message\\\": \\\"Case not found for id 123456 and idName REFERENCE_ID\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad785f45-3aac-4d55-a9bb-370daeb2f3ec",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "EVALUATION_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"CHARGEBACK\",\n  \"notification_date\": \"2021-02-23T14:10:44.307Z\",\n  \"message\": \"Notification about...\",\n  \"sub_type\": \"FRAUD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf277e91-f86a-45e1-a07e-7bab12d11c78",
+          "name": "Service Health Check",
+          "request": {
+            "name": "Service Health Check",
+            "description": {
+              "content": "API to get information about the server health",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "healthCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a81ec15d-f6c0-4f6b-9e8c-52b6a96eadd7",
+              "name": "HealthCheck response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "healthCheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\\"message\\\": \\\"N/A\\\",\\\"status\\\": \\\"OK\\\",\\\"version\\\": \\\"unknown\\\"}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "768134f6-730d-4ec1-b4b7-50511506ab6a",
+    "name": "Antifraud Access Support Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

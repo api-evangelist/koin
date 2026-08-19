@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "71e34d30-9cd2-43ff-956b-1e27ef190cc9",
+      "name": "Tokenize Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "03cbfdb2-5120-4533-a7bc-61b710bbbc18",
+          "name": "Tokenize Card",
+          "request": {
+            "name": "Tokenize Card",
+            "description": {
+              "content": "Create secure token from card.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "tokenize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"<string>\"\n  },\n  \"card\": {\n    \"number\": \"<string>\",\n    \"expiration_month\": \"<string>\",\n    \"expiration_year\": \"<string>\",\n    \"security_code\": \"<string>\",\n    \"holder_name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1276d683-8a81-4ab5-9b51-3b3d5d80d6f3",
+              "name": "Create secure token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "tokenize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"<string>\"\n  },\n  \"card\": {\n    \"number\": \"4225289837059229\",\n    \"expiration_month\": \"01\",\n    \"expiration_year\": \"2030\",\n    \"security_code\": \"<string>\",\n    \"holder_name\": \"Jhon Doe Jones\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"secure_token\": \"86198ce2640145ef2488e884b8ecb459d414700dc540f76ee6034824f6187e9ac3d100f3649650754d3a2592c0391c3f90d924d745fb7e6d0a9fae4cfa79c4e55f9ab1e00102c0a5c7a7e7c59cfff219c86c30c77b9e5509e224f293052f58c275123a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4516981-3901-443b-84e1-837b27b9b9c3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "tokenize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"<string>\"\n  },\n  \"card\": {\n    \"number\": \"4225289837059229\",\n    \"expiration_month\": \"01\",\n    \"expiration_year\": \"2030\",\n    \"security_code\": \"<string>\",\n    \"holder_name\": \"Jhon Doe Jones\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed\",\n  \"status\": \"ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "99997e1a-8d6c-48f3-94e4-592d83a81892",
+    "name": "Antifraud Access Tokenize Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

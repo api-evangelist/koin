@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "a62e9b04-cca9-437f-9c0c-90ec8a918e12",
+      "name": "Recipient Services Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "caea8fab-55c8-4ec0-97ae-7b1085e89e19",
+          "name": "Recipient Account",
+          "request": {
+            "name": "Recipient Account",
+            "description": {
+              "content": "Service to obtain recipient account information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "payment-key",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_key\": \"<string>\",\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    \"account\": \"<string>\",\n    \"business_id\": \"<string>\",\n    \"descriptor\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e264758c-8dc9-4ec4-b0eb-a7bc4ec0230a",
+              "name": "Recipient response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payment-key",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_key\": \"<string>\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\",\n    \"descriptor\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"si0Jh6ZjE1\",\n  \"name\": \"Box Jhon\",\n  \"document\": {\n    \"type\": \"cnpj\",\n    \"number\": \"31742010067\"\n  },\n  \"account\": {\n    \"agency\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"CC\"\n  },\n  \"bank\": {\n    \"name\": \"Bank name\",\n    \"ispb\": \"string\"\n  },\n  \"descriptor\": \"From Mike to Maria's birthday present\",\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74a1df7e-83e8-4eec-a4f8-f81445864307",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payment-key",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_key\": \"<string>\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\",\n    \"descriptor\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"causes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cadc3d73-94d4-4eed-85d2-71f2ce76abbc",
+    "name": "Antifraud Access Recipient Services Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

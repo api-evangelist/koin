@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Communication Services API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Communication Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/payment/orders/:order_id/account-validation",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "order_id",
+                "value": "5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6",
+                "type": "path",
+                "description": "Order ID related to the transaction"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate account for communications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

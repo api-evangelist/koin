@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Onboarding Services API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onboarding Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/onboarding",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receives a new onboarding data."
+        },
+        {
+          "info": {
+            "name": "Get Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.koin.com.br/v1/onboarding/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "query",
+                "description": "Name that indicates which id we are going to use to look up the case (onboarding_id or reference_id). Optional and by default its value is onboarding_id. When uses a reference_id the query param \"field\" must be added with the value REFERENCE_ID."
+              }
+            ]
+          },
+          "docs": "API to get the status of the onboarding"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

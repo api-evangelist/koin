@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "2297bf7d-7df5-47cb-8780-90ec9274cf74",
+      "name": "Access",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac49a66b-0ce1-47b8-87a0-516485887daf",
+          "name": "Generate Authorization Token",
+          "request": {
+            "name": "Generate Authorization Token",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "access",
+                "token",
+                "resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://sp-api.koin.com.br/V1/TransactionService.svc/Request\",\n  \"consumerKey\": \"<CONSUMER KEY>\",\n  \"secretKey\": \"<SECRET KEY>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac761f56-0fa2-4ba1-a9dd-da7ceae3b55f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access",
+                    "token",
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://sp-api.koin.com.br/V1/TransactionService.svc/Request\",\n  \"consumerKey\": \"<CONSUMER KEY>\",\n  \"secretKey\": \"<SECRET KEY>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"Authorization\\\": \\\"06497EEC06624XXXXX1CA995A58D11C36,cEKjWCGZnu3BqWIzjh86kDqkUK5Kn1Tqk1Um0CRvb/zypnnzxJ+Ck51g7OgzSt+cnrPYBqWDHZa+0lQHpsDbGA==,1655995847441\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e941561-4698-417a-9b1f-f59febb9d51a",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access",
+                    "token",
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://sp-api.koin.com.br/V1/TransactionService.svc/Request\",\n  \"consumerKey\": \"<CONSUMER KEY>\",\n  \"secretKey\": \"<SECRET KEY>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5757067d-998d-4566-8f75-20d752ddb9f7",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access",
+                    "token",
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://sp-api.koin.com.br/V1/TransactionService.svc/Request\",\n  \"consumerKey\": \"<CONSUMER KEY>\",\n  \"secretKey\": \"<SECRET KEY>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef66b4d0-ca9f-4e7d-a782-3497a4361afa",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access",
+                    "token",
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://sp-api.koin.com.br/V1/TransactionService.svc/Request\",\n  \"consumerKey\": \"<CONSUMER KEY>\",\n  \"secretKey\": \"<SECRET KEY>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03c9a79b-cbf3-44ba-ac16-3366e5a76fe5",
+              "name": "5XX",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access",
+                    "token",
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://sp-api.koin.com.br/V1/TransactionService.svc/Request\",\n  \"consumerKey\": \"<CONSUMER KEY>\",\n  \"secretKey\": \"<SECRET KEY>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "64cbb45d-ad20-4c26-9fdb-bece7880026a",
+    "name": "Antifraud Access API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

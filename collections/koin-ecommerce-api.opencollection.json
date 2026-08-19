@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Ecommerce API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ecommerce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Pre-Evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/pre-evaluations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receives a new transaction for antifraud analysis, its meant to be used before payment authorization."
+        },
+        {
+          "info": {
+            "name": "Create Evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/evaluations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receives a new transaction for antifraud analysis, if used with pre-evaluation it should be called after the payment authorization. Its mandatory to reuse the reference_id from pre-evaluation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Refund Services API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refund Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-sandbox.koin.com.br/v1/payment/orders/:order_id/refund",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "order_id",
+                "value": "9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f",
+                "type": "path",
+                "description": "Order ID returned by create payment service"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Service responsible for requesting the return of an approved payment. The refund may be total or partial."
+        },
+        {
+          "info": {
+            "name": "Get Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.koin.com.br/v1/payment/orders/:order_id/refunds/:refund_id",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "order_id",
+                "value": "455e9a73-37f6-464c-b09c-334545",
+                "type": "path",
+                "description": "Order ID returned by create payment service"
+              },
+              {
+                "name": "refund_id",
+                "value": "455e9a73-37f6-464c-b09c-9c0048fdafef",
+                "type": "path",
+                "description": "Refund ID returned by create refund service"
+              }
+            ]
+          },
+          "docs": "Service to get a previously generated refund."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

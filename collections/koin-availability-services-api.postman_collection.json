@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "6e239d56-d7a8-42e8-80cf-05b23cf4d546",
+      "name": "Availability Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "785ff3a7-7959-4bf3-88c8-711eb86f9c07",
+          "name": "Availability",
+          "request": {
+            "name": "Availability",
+            "description": {
+              "content": "You can use this service to check if the customer is eligible for the \"buy now pay later\" payment method. The service will return the installment options in case of success. It is available for transparent checkout only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"account\": \"<string>\",\n    \"amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    \"business_id\": \"<string>\"\n  },\n  \"country_code\": \"<string>\",\n  \"payment_method\": {\n    \"code\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"email\": \"<string>\"\n  },\n  \"ip_address\": \"<string>\",\n  \"device_fingerprint\": \"<string>\",\n  \"store\": {\n    \"code\": \"<string>\"\n  },\n  \"items\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77044868-7dc7-418a-af15-1f12f01669e5",
+              "name": "Availability",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    },\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"BNPL\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\"\n    },\n    \"email\": \"jhon_doe@domain.com\"\n  },\n  \"ip_address\": \"192.0.2.146\",\n  \"device_fingerprint\": \"3f139f92d30d54f1aaf519b3a39a20814\",\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"111\",\n        \"name\": \"Some category name\"\n      },\n      \"id\": \"13238487\",\n      \"name\": \"Some name\",\n      \"price\": {},\n      \"quantity\": 5,\n      \"type\": \"<string>\",\n      \"discount_amount\": {},\n      \"seller_id\": \"Some Seller\",\n      \"service_date\": \"2021-01-01T00:00:00.000Z\"\n    },\n    {\n      \"category\": {\n        \"id\": \"111\",\n        \"name\": \"Some category name\"\n      },\n      \"id\": \"13238487\",\n      \"name\": \"Some name\",\n      \"price\": {},\n      \"quantity\": 5,\n      \"type\": \"<string>\",\n      \"discount_amount\": {},\n      \"seller_id\": \"Some Seller\",\n      \"service_date\": \"2021-01-01T00:00:00.000Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Applicable\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 100\n    }\n  },\n  \"payment_method\": {\n    \"code\": \"BNPL\"\n  },\n  \"country_code\": \"BR\",\n  \"payer\": {\n    \"document\": {\n      \"type\": \"cpf\",\n      \"number\": \"54672396002\"\n    },\n    \"email\": \"jhon_doe@domain.com\"\n  },\n  \"installment_options\": [\n    {\n      \"installments\": 1,\n      \"installment_rate\": 0,\n      \"installment_amount\": 100,\n      \"total_amount\": 100,\n      \"first_due_date\": \"2022-06-03T00:00:00Z\",\n      \"cet_am\": 0,\n      \"option_id\": \"e9652f2e-6aa1-4580-b6e3-45e9c5de66a6\",\n      \"incoming_percent_value\": 0,\n      \"incoming_value\": 0,\n      \"discount\": {\n        \"original_installment_value\": 100,\n        \"value\": 0,\n        \"percent\": 0\n      }\n    },\n    {\n      \"installments\": 2,\n      \"installment_rate\": 2.99,\n      \"installment_amount\": 51.5,\n      \"total_amount\": 103,\n      \"first_due_date\": \"2022-06-03T00:00:00Z\",\n      \"iof\": 26.18,\n      \"cet\": 58.17,\n      \"cet_am\": 3.84,\n      \"option_id\": \"55a250ae-84cf-432c-8fb6-3976194a2d8e\",\n      \"incoming_percent_value\": 1.2,\n      \"incoming_value\": 5.2,\n      \"discount\": {\n        \"original_installment_value\": 51.5,\n        \"value\": 0,\n        \"percent\": 0\n      }\n    },\n    {\n      \"installments\": 3,\n      \"installment_rate\": 2.99,\n      \"installment_amount\": 34.71,\n      \"total_amount\": 104.12,\n      \"first_due_date\": \"2022-06-03T00:00:00Z\",\n      \"iof\": 32.53,\n      \"cet\": 52.29,\n      \"cet_am\": 3.52,\n      \"option_id\": \"965d982c-d8d4-49ae-9bff-a170071b4820\",\n      \"incoming_percent_value\": 1.6,\n      \"incoming_value\": 8.35,\n      \"discount\": {\n        \"original_installment_value\": 34.71,\n        \"value\": 0,\n        \"percent\": 0\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4568eff5-1288-4fb0-a178-74cb13cd9b8c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    },\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"BNPL\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\"\n    },\n    \"email\": \"jhon_doe@domain.com\"\n  },\n  \"ip_address\": \"192.0.2.146\",\n  \"device_fingerprint\": \"3f139f92d30d54f1aaf519b3a39a20814\",\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"items\": [\n    {\n      \"category\": {\n        \"id\": \"111\",\n        \"name\": \"Some category name\"\n      },\n      \"id\": \"13238487\",\n      \"name\": \"Some name\",\n      \"price\": {},\n      \"quantity\": 5,\n      \"type\": \"<string>\",\n      \"discount_amount\": {},\n      \"seller_id\": \"Some Seller\",\n      \"service_date\": \"2021-01-01T00:00:00.000Z\"\n    },\n    {\n      \"category\": {\n        \"id\": \"111\",\n        \"name\": \"Some category name\"\n      },\n      \"id\": \"13238487\",\n      \"name\": \"Some name\",\n      \"price\": {},\n      \"quantity\": 5,\n      \"type\": \"<string>\",\n      \"discount_amount\": {},\n      \"seller_id\": \"Some Seller\",\n      \"service_date\": \"2021-01-01T00:00:00.000Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Validation failed\",\n  \"causes\": [\n    \"transaction.reference_id must not be blank\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "be012c82-955e-4e57-b313-d701c97d0268",
+    "name": "Antifraud Access Availability Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

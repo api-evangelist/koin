@@ -1,0 +1,585 @@
+{
+  "item": [
+    {
+      "id": "0cbcb5e9-b25f-4e33-97f9-cfc59f4c1096",
+      "name": "Account Take Over Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c3495ed-bfe3-4c86-89ca-5e21cebcff3e",
+          "name": "Create Evaluation",
+          "request": {
+            "name": "Create Evaluation",
+            "description": {
+              "content": "Receives a new transaction to evaluate Account Take Over request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ato",
+                "evaluations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"device\": \"<object>\",\n  \"sla_date\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"details\": {\n    \"user_id\": \"<string>\",\n    \"email\": \"<string>\",\n    \"authentication_type\": \"<string>\",\n    \"authentication_result\": \"<string>\",\n    \"captcha\": \"<boolean>\",\n    \"document\": {\n      \"number\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c57a5a68-a825-4ed0-ab85-32efd1ea765c",
+              "name": "Evaluation response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"authentication_result\": \"FAILED\",\n    \"authentication_type\": \"MAGIC_LINK\",\n    \"captcha\": true,\n    \"document\": {\n      \"nationality\": \"AR\",\n      \"number\": \"11124837511\",\n      \"type\": \"DNI\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"user_id\": \"479c8d7f-780a-4a89-a962-a60d64f12811\"\n  },\n  \"device\": {\n    \"ipv4\": \"218.83.130.111\",\n    \"ipv6\": \"2001:0DB8:8e91:ebb3:6fb6:6754:769a:1111\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -48.48945822129388\n    },\n    \"merchant_device\": \"77370a68-b70e-4a71-a83e-222994416c12\",\n    \"session_id\": \"455e1d2f-6db1-409a-8089-80e40cf37a12\"\n  },\n  \"sla_date\": \"2023-02-11T00:00:32.000Z\",\n  \"type\": \"LOGIN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"id\\\": \\\"VEFRUD8HUR25N4992221\\\", \\\"evaluation_id\\\": \\\"31ff2cc8-199e-4c3c-ba2d-4d85b88bd9f2\\\", \\\"status\\\": \\\"received\\\", \\\"score\\\": 50, \\\"analysis_type\\\": \\\"automatic\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e3a73c3-d9bd-449f-a5a1-f522d7d2db63",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"authentication_result\": \"FAILED\",\n    \"authentication_type\": \"MAGIC_LINK\",\n    \"captcha\": true,\n    \"document\": {\n      \"nationality\": \"AR\",\n      \"number\": \"11124837511\",\n      \"type\": \"DNI\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"user_id\": \"479c8d7f-780a-4a89-a962-a60d64f12811\"\n  },\n  \"device\": {\n    \"ipv4\": \"218.83.130.111\",\n    \"ipv6\": \"2001:0DB8:8e91:ebb3:6fb6:6754:769a:1111\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -48.48945822129388\n    },\n    \"merchant_device\": \"77370a68-b70e-4a71-a83e-222994416c12\",\n    \"session_id\": \"455e1d2f-6db1-409a-8089-80e40cf37a12\"\n  },\n  \"sla_date\": \"2023-02-11T00:00:32.000Z\",\n  \"type\": \"LOGIN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"Validation errors\\\", \\\"causes\\\": [ \\\"type must not be blank\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eabd9526-929e-4b8e-a2b9-408bdad4538c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"authentication_result\": \"FAILED\",\n    \"authentication_type\": \"MAGIC_LINK\",\n    \"captcha\": true,\n    \"document\": {\n      \"nationality\": \"AR\",\n      \"number\": \"11124837511\",\n      \"type\": \"DNI\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"user_id\": \"479c8d7f-780a-4a89-a962-a60d64f12811\"\n  },\n  \"device\": {\n    \"ipv4\": \"218.83.130.111\",\n    \"ipv6\": \"2001:0DB8:8e91:ebb3:6fb6:6754:769a:1111\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -48.48945822129388\n    },\n    \"merchant_device\": \"77370a68-b70e-4a71-a83e-222994416c12\",\n    \"session_id\": \"455e1d2f-6db1-409a-8089-80e40cf37a12\"\n  },\n  \"sla_date\": \"2023-02-11T00:00:32.000Z\",\n  \"type\": \"LOGIN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd5c3407-ad5c-49ee-bed0-672abab366b1",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"authentication_result\": \"FAILED\",\n    \"authentication_type\": \"MAGIC_LINK\",\n    \"captcha\": true,\n    \"document\": {\n      \"nationality\": \"AR\",\n      \"number\": \"11124837511\",\n      \"type\": \"DNI\"\n    },\n    \"email\": \"test@gmail.com\",\n    \"user_id\": \"479c8d7f-780a-4a89-a962-a60d64f12811\"\n  },\n  \"device\": {\n    \"ipv4\": \"218.83.130.111\",\n    \"ipv6\": \"2001:0DB8:8e91:ebb3:6fb6:6754:769a:1111\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -48.48945822129388\n    },\n    \"merchant_device\": \"77370a68-b70e-4a71-a83e-222994416c12\",\n    \"session_id\": \"455e1d2f-6db1-409a-8089-80e40cf37a12\"\n  },\n  \"sla_date\": \"2023-02-11T00:00:32.000Z\",\n  \"type\": \"LOGIN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16e94955-5c19-40c2-839e-789b38a1c833",
+          "name": "Send Notifications",
+          "request": {
+            "name": "Send Notifications",
+            "description": {
+              "content": "API to send updates about an existing case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ato",
+                "notifications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Evaluation ID returned by api on evaluation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"notification_date\": \"<string>\",\n  \"strategies\": {\n    \"type\": \"<string>\",\n    \"results\": [\n      {\n        \"channel\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"<string>\",\n            \"category\": \"<string>\",\n            \"url\": \"<string>\",\n            \"created\": \"<string>\"\n          },\n          {\n            \"document_id\": \"<string>\",\n            \"category\": \"<string>\",\n            \"url\": \"<string>\",\n            \"created\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"channel\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"<string>\",\n            \"category\": \"<string>\",\n            \"url\": \"<string>\",\n            \"created\": \"<string>\"\n          },\n          {\n            \"document_id\": \"<string>\",\n            \"category\": \"<string>\",\n            \"url\": \"<string>\",\n            \"created\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"message\": \"<string>\",\n  \"details\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f569a68-5191-44af-9a6f-9ee76aa87388",
+              "name": "Notifications response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Evaluation ID returned by api on evaluation"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"notification_date\": \"2021-02-23T14:10:44.307062Z\",\n  \"strategies\": {\n    \"type\": \"<string>\",\n    \"results\": [\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      },\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      }\n    ]\n  },\n  \"message\": \"Notification about...\",\n  \"details\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44261ee6-d22c-44ba-82ef-66b5986d9224",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Evaluation ID returned by api on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"notification_date\": \"2021-02-23T14:10:44.307062Z\",\n  \"strategies\": {\n    \"type\": \"<string>\",\n    \"results\": [\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      },\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      }\n    ]\n  },\n  \"message\": \"Notification about...\",\n  \"details\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"Validation errors\\\", \\\"causes\\\": [ \\\"type must not be blank\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07d00498-19e8-40d0-99c4-f79be57d2651",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Evaluation ID returned by api on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"notification_date\": \"2021-02-23T14:10:44.307062Z\",\n  \"strategies\": {\n    \"type\": \"<string>\",\n    \"results\": [\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      },\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      }\n    ]\n  },\n  \"message\": \"Notification about...\",\n  \"details\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd2e8339-61e0-4b9e-a97c-7f20c3ee1a02",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Evaluation ID returned by api on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"notification_date\": \"2021-02-23T14:10:44.307062Z\",\n  \"strategies\": {\n    \"type\": \"<string>\",\n    \"results\": [\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      },\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      }\n    ]\n  },\n  \"message\": \"Notification about...\",\n  \"details\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 404, \\\"message\\\": \\\"Case not found for id 123456 and idName REFERENCE_ID\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de79d544-0da8-4fc7-b6d7-a75799aabf22",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ato",
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Evaluation ID returned by api on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"notification_date\": \"2021-02-23T14:10:44.307062Z\",\n  \"strategies\": {\n    \"type\": \"<string>\",\n    \"results\": [\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      },\n      {\n        \"channel\": \"Mail\",\n        \"provider\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"status\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"images\": [\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          },\n          {\n            \"document_id\": \"123456789\",\n            \"category\": \"IDENTITY_CARD_FRONT\",\n            \"url\": \"https://url.com/1.jpeg\",\n            \"created\": \"2021-02-23T14:10:44.307062Z\"\n          }\n        ]\n      }\n    ]\n  },\n  \"message\": \"Notification about...\",\n  \"details\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bffcd4a8-8754-4167-8142-cb3a28d6a1ef",
+    "name": "Antifraud Access Account Take Over Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Notification Services Sales API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification Services Sales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Payment Sale",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/payment/orders/:order_id/notifications",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f",
+                "type": "path",
+                "description": "Order ID returned by create payment service"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receiving notifications of a sale finalized."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

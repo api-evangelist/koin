@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "9db06aec-30d3-416e-8e14-24fe46702027",
+      "name": "WireTransfer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9d09b08-95fa-408d-90f9-876f96162638",
+          "name": "Create Evaluation",
+          "request": {
+            "name": "Create Evaluation",
+            "description": {
+              "content": "Receives a new transaction for antifraud analysis.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "antifraud",
+                "evaluations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"total_amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<bigdecimal>\"\n    },\n    \"business_id\": \"<string>\",\n    \"sequence\": \"<string>\",\n    \"channel\": \"<string>\"\n  },\n  \"type\": \"WireTransfer\",\n  \"account_from\": \"<object>\",\n  \"account_to\": \"<object>\",\n  \"order_date\": \"<string>\",\n  \"transfer_type\": \"<string>\",\n  \"device\": \"<object>\",\n  \"store\": {\n    \"code\": \"<string>\",\n    \"category\": \"<string>\"\n  },\n  \"execution_date\": \"<string>\",\n  \"instant\": \"<boolean>\",\n  \"sla_date\": \"<string>\",\n  \"callback_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9fba5bb-a581-4820-9012-98f981b4ed3f",
+              "name": "Evaluation response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"WireTransfer\",\n  \"sla_date\": \"2023-02-10T13:51:48.000Z\",\n  \"order_date\": \"2023-02-03T13:51:48.000Z\",\n  \"execution_date\": \"2023-02-03T13:51:48.000Z\",\n  \"instant\": true,\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"transfer_type\": \"TRANSFER\",\n  \"device\": {\n    \"ipv4\": \"35.139.105.100\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -28.48945822129388\n    },\n    \"merchant_device\": \"411db886-eea4-4ea6-84bb-9d48e171c415\",\n    \"session_id\": \"0e986bae-8738-4cbf-b596-863704e562a9\"\n  },\n  \"store\": {\n    \"code\": \"Jwhllcslhx\",\n    \"category\": \"1234\"\n  },\n  \"transaction\": {\n    \"country_code\": \"BR\",\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    },\n    \"reference_id\": \"12345\",\n    \"business_id\": \"9876654\",\n    \"sequence\": 1\n  },\n  \"account_from\": {\n    \"user_id\": \"ddb6dd01-8be9-4f91-9ff3-ae2d57086454\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"1234\",\n    \"bank_name\": \"HSBC\",\n    \"holder\": \"ZuinCpmwjsd\",\n    \"currency_code\": \"USD\",\n    \"type\": \"BUSINESS\",\n    \"status\": \"TO_VALIDATE\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  },\n  \"account_to\": {\n    \"user_id\": \"bfafbd30-f171-4bd3-bb66-220a2e0bbad0\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"2345\",\n    \"bank_name\": \"Banktest\",\n    \"holder\": \"IyaeVfeygvh\",\n    \"currency_code\": \"USD\",\n    \"type\": \"PERSONAL\",\n    \"status\": \"OK\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"id\\\": \\\"VEFRUD8HUR25N4992221\\\", \\\"evaluation_id\\\": \\\"31ff2cc8-199e-4c3c-ba2d-4d85b88bd9f2\\\", \\\"status\\\": \\\"received\\\", \\\"score\\\": 50, \\\"analysis_type\\\": \\\"AUTOMATIC\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "874d2466-0729-4894-a695-9a8d1d057504",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"WireTransfer\",\n  \"sla_date\": \"2023-02-10T13:51:48.000Z\",\n  \"order_date\": \"2023-02-03T13:51:48.000Z\",\n  \"execution_date\": \"2023-02-03T13:51:48.000Z\",\n  \"instant\": true,\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"transfer_type\": \"TRANSFER\",\n  \"device\": {\n    \"ipv4\": \"35.139.105.100\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -28.48945822129388\n    },\n    \"merchant_device\": \"411db886-eea4-4ea6-84bb-9d48e171c415\",\n    \"session_id\": \"0e986bae-8738-4cbf-b596-863704e562a9\"\n  },\n  \"store\": {\n    \"code\": \"Jwhllcslhx\",\n    \"category\": \"1234\"\n  },\n  \"transaction\": {\n    \"country_code\": \"BR\",\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    },\n    \"reference_id\": \"12345\",\n    \"business_id\": \"9876654\",\n    \"sequence\": 1\n  },\n  \"account_from\": {\n    \"user_id\": \"ddb6dd01-8be9-4f91-9ff3-ae2d57086454\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"1234\",\n    \"bank_name\": \"HSBC\",\n    \"holder\": \"ZuinCpmwjsd\",\n    \"currency_code\": \"USD\",\n    \"type\": \"BUSINESS\",\n    \"status\": \"TO_VALIDATE\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  },\n  \"account_to\": {\n    \"user_id\": \"bfafbd30-f171-4bd3-bb66-220a2e0bbad0\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"2345\",\n    \"bank_name\": \"Banktest\",\n    \"holder\": \"IyaeVfeygvh\",\n    \"currency_code\": \"USD\",\n    \"type\": \"PERSONAL\",\n    \"status\": \"OK\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 400, \\\"message\\\": \\\"Validation errors\\\", \\\"causes\\\": [ \\\"device.ip must not be blank\\\" ] }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dc2c2b0-ba87-4513-b111-687b93f3f976",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"WireTransfer\",\n  \"sla_date\": \"2023-02-10T13:51:48.000Z\",\n  \"order_date\": \"2023-02-03T13:51:48.000Z\",\n  \"execution_date\": \"2023-02-03T13:51:48.000Z\",\n  \"instant\": true,\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"transfer_type\": \"TRANSFER\",\n  \"device\": {\n    \"ipv4\": \"35.139.105.100\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -28.48945822129388\n    },\n    \"merchant_device\": \"411db886-eea4-4ea6-84bb-9d48e171c415\",\n    \"session_id\": \"0e986bae-8738-4cbf-b596-863704e562a9\"\n  },\n  \"store\": {\n    \"code\": \"Jwhllcslhx\",\n    \"category\": \"1234\"\n  },\n  \"transaction\": {\n    \"country_code\": \"BR\",\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    },\n    \"reference_id\": \"12345\",\n    \"business_id\": \"9876654\",\n    \"sequence\": 1\n  },\n  \"account_from\": {\n    \"user_id\": \"ddb6dd01-8be9-4f91-9ff3-ae2d57086454\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"1234\",\n    \"bank_name\": \"HSBC\",\n    \"holder\": \"ZuinCpmwjsd\",\n    \"currency_code\": \"USD\",\n    \"type\": \"BUSINESS\",\n    \"status\": \"TO_VALIDATE\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  },\n  \"account_to\": {\n    \"user_id\": \"bfafbd30-f171-4bd3-bb66-220a2e0bbad0\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"2345\",\n    \"bank_name\": \"Banktest\",\n    \"holder\": \"IyaeVfeygvh\",\n    \"currency_code\": \"USD\",\n    \"type\": \"PERSONAL\",\n    \"status\": \"OK\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 401, \\\"message\\\": \\\"Store does not have access to path.\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ced99de3-3458-4b51-91cf-5035508b7a93",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "antifraud",
+                    "evaluations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"WireTransfer\",\n  \"sla_date\": \"2023-02-10T13:51:48.000Z\",\n  \"order_date\": \"2023-02-03T13:51:48.000Z\",\n  \"execution_date\": \"2023-02-03T13:51:48.000Z\",\n  \"instant\": true,\n  \"callback_url\": \"https://postman-echo.com/post\",\n  \"transfer_type\": \"TRANSFER\",\n  \"device\": {\n    \"ipv4\": \"35.139.105.100\",\n    \"location\": {\n      \"latitude\": -14.56532789616039,\n      \"longitude\": -28.48945822129388\n    },\n    \"merchant_device\": \"411db886-eea4-4ea6-84bb-9d48e171c415\",\n    \"session_id\": \"0e986bae-8738-4cbf-b596-863704e562a9\"\n  },\n  \"store\": {\n    \"code\": \"Jwhllcslhx\",\n    \"category\": \"1234\"\n  },\n  \"transaction\": {\n    \"country_code\": \"BR\",\n    \"total_amount\": {\n      \"currency\": \"USD\",\n      \"value\": 8008.99\n    },\n    \"reference_id\": \"12345\",\n    \"business_id\": \"9876654\",\n    \"sequence\": 1\n  },\n  \"account_from\": {\n    \"user_id\": \"ddb6dd01-8be9-4f91-9ff3-ae2d57086454\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"1234\",\n    \"bank_name\": \"HSBC\",\n    \"holder\": \"ZuinCpmwjsd\",\n    \"currency_code\": \"USD\",\n    \"type\": \"BUSINESS\",\n    \"status\": \"TO_VALIDATE\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  },\n  \"account_to\": {\n    \"user_id\": \"bfafbd30-f171-4bd3-bb66-220a2e0bbad0\",\n    \"number\": \"1234567\",\n    \"bank_code\": \"2345\",\n    \"bank_name\": \"Banktest\",\n    \"holder\": \"IyaeVfeygvh\",\n    \"currency_code\": \"USD\",\n    \"type\": \"PERSONAL\",\n    \"status\": \"OK\",\n    \"creation_date\": \"2021-07-23T16:00:00.307062Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{ \\\"code\\\": 500, \\\"message\\\": \\\"Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488\\\" }\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "28eb83f7-eb3e-46d7-b2e0-086690e8c60e",
+    "name": "Antifraud Access WireTransfer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

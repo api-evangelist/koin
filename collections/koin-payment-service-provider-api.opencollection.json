@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Payment Service Provider API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Service Provider",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/evaluations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receives a new transaction for antifraud analysis."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

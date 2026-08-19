@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Access",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Authorization Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/access/token/resource",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate Authorization Token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

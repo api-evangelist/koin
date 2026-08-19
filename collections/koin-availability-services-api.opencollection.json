@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Availability Services API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Availability Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/payment/orders/availability",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can use this service to check if the customer is eligible for the \"buy now pay later\" payment method. The service will return the installment options in case of success. It is available for transparent checkout only."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

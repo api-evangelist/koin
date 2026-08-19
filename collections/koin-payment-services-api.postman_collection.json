@@ -1,0 +1,1637 @@
+{
+  "item": [
+    {
+      "id": "486a8feb-4a76-4b98-a5db-0581fcdb70ac",
+      "name": "Payment Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7ee06f3-41e9-442f-ba48-6b266ded8edd",
+          "name": "Create Payment",
+          "request": {
+            "name": "Create Payment",
+            "description": {
+              "content": "Create payment service. Before required fields will validated and after will validated business rules. Below is a table with the information regarding said api.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<number>\",\n      \"breakdown\": {\n        \"items\": {\n          \"currency_code\": \"<string>\",\n          \"value\": \"<number>\"\n        },\n        \"shipping\": {\n          \"currency_code\": \"<string>\",\n          \"value\": \"<number>\"\n        },\n        \"taxes\": {\n          \"currency_code\": \"<string>\",\n          \"value\": \"<number>\"\n        },\n        \"fee\": {\n          \"currency_code\": \"<string>\",\n          \"value\": \"<number>\"\n        }\n      }\n    },\n    \"account\": \"<string>\",\n    \"business_id\": \"<string>\"\n  },\n  \"country_code\": \"<string>\",\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"expiration_date\": \"<dateTime>\",\n    \"payment_key\": \"<string>\"\n  },\n  \"notification_url\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"store\": {\n    \"code\": \"<string>\",\n    \"category\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"<string>\",\n      \"nationality\": \"<string>\"\n    },\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": {\n      \"area\": \"<string>\",\n      \"number\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"descriptor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd2e0fa6-4a86-474a-ab7e-ce745a13033b",
+              "name": "Create payment response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56,\n      \"breakdown\": {\n        \"items\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 1500\n        },\n        \"shipping\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 500.56\n        },\n        \"taxes\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        },\n        \"fee\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        }\n      }\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"expiration_date\": \"2021-01-01T00:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayments\",\n    \"https://www.providerApi.com/notificationPayments\"\n  ],\n  \"store\": {\n    \"code\": \"SBXSTORE\",\n    \"category\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe Jones\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"country_code\": \"+55\",\n      \"type\": \"Mobile\"\n    }\n  },\n  \"descriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Published\",\n    \"date\": \"2022-02-10T16:25:11.000Z\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 3111.11\n    },\n    \"provider_reference\": {\n      \"tx_id\": \"20000000000000026628140042292\"\n    }\n  },\n  \"country_code\": \"BR\",\n  \"order_id\": \"9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f\",\n  \"locations\": [\n    {\n      \"location\": {\n        \"emv\": \"00020101021126950014BR.GOV.BCB.PIX2573spi.dev.cloud.itau.com.br/documentos/198e49c5-2330-4ad7-9d0b-967c7b5371225204000053039865802BR5923PMD Gotham NegA cios ME6009SAO PAULO62410503***50300017BR.GOV.BCB.BRCODE01051.0.063040866\",\n        \"qr_code\": \"iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6AQAAAACgl2eQAAADCUlEQVR4Xu2XUW4cIRBE6YvA/W+Ro8BFIPWKsWU5kpWPbOVn8SaZhWep1F1dTNr5ef1q33e+rTdw1xu466+A2VqtXbuP3etMPY9zlrdjwPLnrNm1NceaNXtv426nAOliqw5K+1io3IBhoFyZsWuaE/UfgM1h0xpzTMqUBfRxXZB2ONylhy/Nej0wMe2fi+0Y4KUend1omcZHR7vufgigNMzLEDXFbL63Pj6bFQBkld57MS0KkEWfdhOg3sWAI0mYRUIJMkvGwq5VCJhWtwkwAWoXIcJvjRxw9WnL/YKQWxejPGKAxvZgEHWoBKlhErztmBhgafaMXCtqWKVDJQYc2oNndY5llncEspUDlOFFrXRA23QiUl9jwB7aPvhkoE5UGeQxBlyFLEaXCbrW+XT16wGe9Kcsk25JsH/oWgjw9PbGge+ysdAtgRAhwNm1iW+rXN5pV2oMuEaVTHlXL30iFaySXU+hAsBGpJulzAAclE3geEQGAIzCfcKrFv7VEVna3LAQMIcNyiue7lKSg1ppQ0OcAshPWWT4amNtarb4GgN8qcmwvlAk8qNRtC4GuEVKLn13fKlUUuxepQC+C9NWJ9ZlHRu5iLMUMPGrdhkZLKwLpvQfoXvXhoCDzsZP0beFgagefgkC0yWiVbxqFBmmn/Xh6tcDyxnGtUpskJ/Mb0dpDGBQnSJSJ7NKHYahaR+Fej3wWMSqMI/+Utmkmm6lgCewfICwmyPdHg4BGtRBkHp+m29VqbPyHCCPKL+pFzpJUiZIep9CBQAnOZ+nQwu3TP8bAybjqvJgkyI+DjLF07gQ4M5wXEibvtod5u0RGQDYKhhZFX3ca9hYuRID9GbDidql+kgt/eKCpYMpwGaVIAZGAaKObZyL1BygxTMgMUKXuOEXbQwBFEWaOt4tusQW/eKXQsDic0vE+17njA4SrjFg8n43XCwbZQsdfooCC4eSJJoXJVkRYJ/NSgHEOBIJ8wtYeAzQh0HpCjLop3GDeU4BtEU2kUpXR1YhQqlXDvhxvYG73sBd/wD4Df7+v4eqIoYgAAAAAElFTkSuQmCC\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "820bcba1-279b-4f85-be6a-4455bed4088c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56,\n      \"breakdown\": {\n        \"items\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 1500\n        },\n        \"shipping\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 500.56\n        },\n        \"taxes\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        },\n        \"fee\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        }\n      }\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"expiration_date\": \"2021-01-01T00:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayments\",\n    \"https://www.providerApi.com/notificationPayments\"\n  ],\n  \"store\": {\n    \"code\": \"SBXSTORE\",\n    \"category\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe Jones\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"country_code\": \"+55\",\n      \"type\": \"Mobile\"\n    }\n  },\n  \"descriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Validation failed\",\n  \"causes\": [\n    \"transaction.amount.currency_code must not be null\",\n    \"transaction.amount.value must not be null\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a41b4650-b564-45f1-a1c5-704709075d6c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56,\n      \"breakdown\": {\n        \"items\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 1500\n        },\n        \"shipping\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 500.56\n        },\n        \"taxes\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        },\n        \"fee\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        }\n      }\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"expiration_date\": \"2021-01-01T00:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayments\",\n    \"https://www.providerApi.com/notificationPayments\"\n  ],\n  \"store\": {\n    \"code\": \"SBXSTORE\",\n    \"category\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe Jones\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"country_code\": \"+55\",\n      \"type\": \"Mobile\"\n    }\n  },\n  \"descriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "062a229a-6818-43fb-a8fb-bd6a6ef8eec6",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56,\n      \"breakdown\": {\n        \"items\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 1500\n        },\n        \"shipping\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 500.56\n        },\n        \"taxes\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        },\n        \"fee\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        }\n      }\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"expiration_date\": \"2021-01-01T00:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayments\",\n    \"https://www.providerApi.com/notificationPayments\"\n  ],\n  \"store\": {\n    \"code\": \"SBXSTORE\",\n    \"category\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe Jones\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"country_code\": \"+55\",\n      \"type\": \"Mobile\"\n    }\n  },\n  \"descriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb183a2c-cda1-444a-a1bd-352cb954eadb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56,\n      \"breakdown\": {\n        \"items\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 1500\n        },\n        \"shipping\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 500.56\n        },\n        \"taxes\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        },\n        \"fee\": {\n          \"currency_code\": \"BRL\",\n          \"value\": 0\n        }\n      }\n    },\n    \"account\": \"SBX000\",\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"country_code\": \"BR\",\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"expiration_date\": \"2021-01-01T00:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayments\",\n    \"https://www.providerApi.com/notificationPayments\"\n  ],\n  \"store\": {\n    \"code\": \"SBXSTORE\",\n    \"category\": \"<string>\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"<string>\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe Jones\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"country_code\": \"+55\",\n      \"type\": \"Mobile\"\n    }\n  },\n  \"descriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "448c55ab-6bec-4014-af3f-116b18dd5c88",
+          "name": "Get Payment by Reference ID",
+          "request": {
+            "name": "Get Payment by Reference ID",
+            "description": {
+              "content": "Payment details service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reference_id",
+                  "value": "<string>",
+                  "description": "(Required) Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81d0c414-aed3-4d5a-a0ab-ce2cc48db159",
+              "name": "Payment details response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Published\",\n    \"date\": \"2022-02-08T13:54:35.000Z\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 3111.1\n    },\n    \"provider_reference\": {\n      \"tx_id\": \"20000000000000026628140042292\",\n      \"end_to_end_id\": \"E0036030520211216092957cb99ed693\"\n    }\n  },\n  \"country_code\": \"BR\",\n  \"order_id\": \"9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f\",\n  \"locations\": [\n    {\n      \"location\": {\n        \"emv\": \"00020101021126950014BR.GOV.BCB.PIX2573spi.dev.cloud.itau.com.br/documentos/198e49c5-2330-4ad7-9d0b-967c7b5371225204000053039865802BR5923PMD Gotham NegA cios ME6009SAO PAULO62410503***50300017BR.GOV.BCB.BRCODE01051.0.063040866\",\n        \"qr_code\": \"iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6AQAAAACgl2eQAAADCUlEQVR4Xu2XUW4cIRBE6YvA/W+Ro8BFIPWKsWU5kpWPbOVn8SaZhWep1F1dTNr5ef1q33e+rTdw1xu466+A2VqtXbuP3etMPY9zlrdjwPLnrNm1NceaNXtv426nAOliqw5K+1io3IBhoFyZsWuaE/UfgM1h0xpzTMqUBfRxXZB2ONylhy/Nej0wMe2fi+0Y4KUend1omcZHR7vufgigNMzLEDXFbL63Pj6bFQBkld57MS0KkEWfdhOg3sWAI0mYRUIJMkvGwq5VCJhWtwkwAWoXIcJvjRxw9WnL/YKQWxejPGKAxvZgEHWoBKlhErztmBhgafaMXCtqWKVDJQYc2oNndY5llncEspUDlOFFrXRA23QiUl9jwB7aPvhkoE5UGeQxBlyFLEaXCbrW+XT16wGe9Kcsk25JsH/oWgjw9PbGge+ysdAtgRAhwNm1iW+rXN5pV2oMuEaVTHlXL30iFaySXU+hAsBGpJulzAAclE3geEQGAIzCfcKrFv7VEVna3LAQMIcNyiue7lKSg1ppQ0OcAshPWWT4amNtarb4GgN8qcmwvlAk8qNRtC4GuEVKLn13fKlUUuxepQC+C9NWJ9ZlHRu5iLMUMPGrdhkZLKwLpvQfoXvXhoCDzsZP0beFgagefgkC0yWiVbxqFBmmn/Xh6tcDyxnGtUpskJ/Mb0dpDGBQnSJSJ7NKHYahaR+Fej3wWMSqMI/+Utmkmm6lgCewfICwmyPdHg4BGtRBkHp+m29VqbPyHCCPKL+pFzpJUiZIep9CBQAnOZ+nQwu3TP8bAybjqvJgkyI+DjLF07gQ4M5wXEibvtod5u0RGQDYKhhZFX3ca9hYuRID9GbDidql+kgt/eKCpYMpwGaVIAZGAaKObZyL1BygxTMgMUKXuOEXbQwBFEWaOt4tusQW/eKXQsDic0vE+17njA4SrjFg8n43XCwbZQsdfooCC4eSJJoXJVkRYJ/NSgHEOBIJ8wtYeAzQh0HpCjLop3GDeU4BtEU2kUpXR1YhQqlXDvhxvYG73sBd/wD4Df7+v4eqIoYgAAAAAElFTkSuQmCC\"\n      }\n    }\n  ],\n  \"payment_method\": {\n    \"code\": \"PIX\",\n    \"expiration_date\": \"2022-02-09T18:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"cpf\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"type\": \"Mobile\",\n      \"country_code\": \"+55\"\n    }\n  },\n  \"provider\": {\n    \"code\": \"ITAU\",\n    \"payer\": {\n      \"full_name\": \"Jhon Doe\",\n      \"document\": {\n        \"type\": \"cpf\",\n        \"number\": 54672396002\n      },\n      \"account\": {\n        \"ispb\": 12345678,\n        \"agency\": 1500,\n        \"code\": 123456789,\n        \"type\": \"CC\"\n      }\n    }\n  },\n  \"refunds\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e521fdd-ed7a-464b-a956-b68a3af88b8d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Required String parameter 'reference_id' is not present\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b471632-e732-43fb-b00f-99eec0904e6a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 404,\n  \"message\": \"Payment not found by reference_id {reference_id}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e6c8d4c-c911-406a-b279-7f445ba14c3d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63cfef6b-7dc3-4acc-9fb9-ef5afeda94d3",
+          "name": "Get Payments by Transaction ID",
+          "request": {
+            "name": "Get Payments by Transaction ID",
+            "description": {
+              "content": "Payment orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transaction_id",
+                  "value": "<string>",
+                  "description": "(Required) Payment identifier, Multiple orders associated with a payment."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ceb6a289-68ad-4eb3-81e8-06cf3616c53c",
+              "name": "Payment order response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "TRX0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"order_id\": \"9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f\"\n  },\n  {\n    \"order_id\": \"9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f40770de-0354-4519-b4d2-af5df66587c1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "TRX0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Required String parameter 'transaction_id' is not present\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74a1aef5-c3f7-4c5d-b169-e7f200dab763",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "TRX0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 404,\n  \"message\": \"Payment not found by transaction_id {transaction_id}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c998e2f0-2729-4446-b9c2-80a620675a3f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "TRX0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4f9f171-0aa8-46ce-b5c5-c5802891b94f",
+          "name": "Capture Payment",
+          "request": {
+            "name": "Capture Payment",
+            "description": {
+              "content": "Service responsible for capturing a card payment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders",
+                ":order_id",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Order ID returned by create payment service"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c54a3a8c-f6e0-4593-911b-e5ae8d98b57b",
+              "name": "Capture response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Collected\",\n    \"date\": \"2021-09-03T15:27:28.000Z\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    },\n    \"provider_reference\": {\n      \"order_id\": \"cd548679-bba2-4208-89ba-1db4dc1bd459\",\n      \"payment_id\": \"41da0f11-f4b3-4f85-8567-8d1fe52d6df5\",\n      \"batch_id\": \"000012\",\n      \"ticket_number\": \"000045\",\n      \"tid\": \"10069930690009D31001\",\n      \"nsu\": \"792048\"\n    }\n  },\n  \"country_code\": \"BR\",\n  \"order_id\": \"2609bd4a-60ba-8fb6-ac9f-0b28f67f679e\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e4171db-e92e-4736-8780-45bde982d958",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "826f64ca-0e1d-4425-af7f-092648218f89",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "025f2878-30f4-47b7-818e-b0c6a3f5f6cf",
+          "name": "Get Payment",
+          "request": {
+            "name": "Get Payment",
+            "description": {
+              "content": "Payment details service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Order ID returned by create payment service"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2c85baf-d1b1-4566-9d71-3369cce1dd72",
+              "name": "Payment details response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Published\",\n    \"date\": \"2022-02-08T13:54:35.000Z\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 3111.1\n    },\n    \"provider_reference\": {\n      \"tx_id\": \"20000000000000026628140042292\",\n      \"end_to_end_id\": \"E0036030520211216092957cb99ed693\"\n    }\n  },\n  \"country_code\": \"BR\",\n  \"order_id\": \"9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f\",\n  \"locations\": [\n    {\n      \"location\": {\n        \"emv\": \"00020101021126950014BR.GOV.BCB.PIX2573spi.dev.cloud.itau.com.br/documentos/198e49c5-2330-4ad7-9d0b-967c7b5371225204000053039865802BR5923PMD Gotham NegA cios ME6009SAO PAULO62410503***50300017BR.GOV.BCB.BRCODE01051.0.063040866\",\n        \"qr_code\": \"iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6AQAAAACgl2eQAAADCUlEQVR4Xu2XUW4cIRBE6YvA/W+Ro8BFIPWKsWU5kpWPbOVn8SaZhWep1F1dTNr5ef1q33e+rTdw1xu466+A2VqtXbuP3etMPY9zlrdjwPLnrNm1NceaNXtv426nAOliqw5K+1io3IBhoFyZsWuaE/UfgM1h0xpzTMqUBfRxXZB2ONylhy/Nej0wMe2fi+0Y4KUend1omcZHR7vufgigNMzLEDXFbL63Pj6bFQBkld57MS0KkEWfdhOg3sWAI0mYRUIJMkvGwq5VCJhWtwkwAWoXIcJvjRxw9WnL/YKQWxejPGKAxvZgEHWoBKlhErztmBhgafaMXCtqWKVDJQYc2oNndY5llncEspUDlOFFrXRA23QiUl9jwB7aPvhkoE5UGeQxBlyFLEaXCbrW+XT16wGe9Kcsk25JsH/oWgjw9PbGge+ysdAtgRAhwNm1iW+rXN5pV2oMuEaVTHlXL30iFaySXU+hAsBGpJulzAAclE3geEQGAIzCfcKrFv7VEVna3LAQMIcNyiue7lKSg1ppQ0OcAshPWWT4amNtarb4GgN8qcmwvlAk8qNRtC4GuEVKLn13fKlUUuxepQC+C9NWJ9ZlHRu5iLMUMPGrdhkZLKwLpvQfoXvXhoCDzsZP0beFgagefgkC0yWiVbxqFBmmn/Xh6tcDyxnGtUpskJ/Mb0dpDGBQnSJSJ7NKHYahaR+Fej3wWMSqMI/+Utmkmm6lgCewfICwmyPdHg4BGtRBkHp+m29VqbPyHCCPKL+pFzpJUiZIep9CBQAnOZ+nQwu3TP8bAybjqvJgkyI+DjLF07gQ4M5wXEibvtod5u0RGQDYKhhZFX3ca9hYuRID9GbDidql+kgt/eKCpYMpwGaVIAZGAaKObZyL1BygxTMgMUKXuOEXbQwBFEWaOt4tusQW/eKXQsDic0vE+17njA4SrjFg8n43XCwbZQsdfooCC4eSJJoXJVkRYJ/NSgHEOBIJ8wtYeAzQh0HpCjLop3GDeU4BtEU2kUpXR1YhQqlXDvhxvYG73sBd/wD4Df7+v4eqIoYgAAAAAElFTkSuQmCC\"\n      }\n    }\n  ],\n  \"payment_method\": {\n    \"code\": \"PIX\",\n    \"expiration_date\": \"2022-02-09T18:00:00.000Z\",\n    \"payment_key\": \"sbx@paymentKey\"\n  },\n  \"payer\": {\n    \"document\": {\n      \"type\": \"cpf\",\n      \"number\": \"54672396002\",\n      \"nationality\": \"BR\"\n    },\n    \"first_name\": \"Jhon\",\n    \"last_name\": \"Doe\",\n    \"full_name\": \"Jhon Doe\",\n    \"email\": \"jhon_doe@domain.com\",\n    \"phone\": {\n      \"area\": \"11\",\n      \"number\": \"984565666\",\n      \"type\": \"Mobile\",\n      \"country_code\": \"+55\"\n    }\n  },\n  \"provider\": {\n    \"code\": \"ITAU\",\n    \"payer\": {\n      \"full_name\": \"Jhon Doe\",\n      \"document\": {\n        \"type\": \"cpf\",\n        \"number\": 54672396002\n      },\n      \"account\": {\n        \"ispb\": 12345678,\n        \"agency\": 1500,\n        \"code\": 123456789,\n        \"type\": \"CC\"\n      }\n    }\n  },\n  \"refunds\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d1284c4-0c63-422e-8961-b22b886a5d1f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Required String parameter 'reference_id' is not present\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55a6f981-dbd7-4318-b7f7-a4d4d6b2d778",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 404,\n  \"message\": \"Payment not found by order_id {order_id}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c35a2df-3ee7-413e-9485-cc6203753132",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "917c02b9-55ad-4f2d-92a2-cad74b22c4cf",
+          "name": "Cancel Payment",
+          "request": {
+            "name": "Cancel Payment",
+            "description": {
+              "content": "Cancellation payment. Card, Pix and BNPL payment method can be cancelled, for Pix payment method, you can only cancel dynamic QR payments; for the card payment method, you can cancel **Opened** or **Authorized** payments, which will remain with the status **Canceled** or **Voided** respectively.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "orders",
+                ":order_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) Order ID returned by create payment service"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9aab01a5-09b7-4285-8654-6e9cdeb5ae5a",
+              "name": "Cancel payment response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Cancelled\",\n    \"date\": \"2022-02-08T21:25:04.000Z\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000\",\n    \"provider_reference\": {\n      \"tx_id\": \"20000000000000026628140042292\"\n    }\n  },\n  \"order_id\": \"9dd3f765-a51a-49d8-b6af-a51d5a0b3f7f\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2b35beb-bf97-4814-b9f6-a45fe75a909e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"causes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14e1b5ef-0092-4c58-9a6f-6b541bf61da1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "017cb033-7d0e-4b03-b8ea-536798db3a29",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "orders",
+                    ":order_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) Order ID returned by create payment service"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f831a60-d9d6-415c-9b91-6ae03d361d59",
+    "name": "Antifraud Access Payment Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

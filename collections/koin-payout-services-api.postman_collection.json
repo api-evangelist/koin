@@ -1,0 +1,1050 @@
+{
+  "item": [
+    {
+      "id": "e7643e71-dd50-42da-ab34-15acf56a3286",
+      "name": "Payout Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f3feaae-c71d-4ac1-9703-e627152b6945",
+          "name": "Available Cryptocurrencies",
+          "request": {
+            "name": "Available Cryptocurrencies",
+            "description": {
+              "content": "Service only for crypto payout. It will return the possible cryptocurrencies that the account is allowed to transact.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "payouts",
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"account\": \"<string>\"\n  },\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8014aa75-aa78-4c2d-b4ac-47d699dcdcd8",
+              "name": "Available cryptocurrencies response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"account\": \"ACCOUNTCODE\"\n  },\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currencies\": [\n    {\n      \"code\": \"btc\",\n      \"desc\": \"Bitcoin\",\n      \"price\": \"23524.3339968278\",\n      \"var\": \"853.29\"\n    },\n    {\n      \"code\": \"xrp\",\n      \"desc\": \"Ripple\",\n      \"price\": \"0.3719827981\",\n      \"var\": \"0.0128\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e98369f2-7b66-486f-8bf7-3bf8c34fef28",
+          "name": "Cryptocurrency Quotations",
+          "request": {
+            "name": "Cryptocurrency Quotations",
+            "description": {
+              "content": "Service only for crypto payout. It will return the quote for the selected cryptocurrency",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "payouts",
+                "quotation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": {\n    \"code\": \"<string>\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"account\": \"<string>\",\n    \"amount\": {\n      \"value\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"to_currency\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "636a720e-e8d3-4013-a3f7-0c27a091fa79",
+              "name": "Cryptocurrencies quote.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts",
+                    "quotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"code\": \"CRYPTO\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"value\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"to_currency\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quotation\": {\n    \"amount\": {\n      \"currency\": \"btc\",\n      \"value\": 250.89024957\n    },\n    \"id\": \"cictoqrp\",\n    \"expiration_date\": \"2022-09-14T15:11:18Z\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce47539a-1660-418a-810c-0edb786ea08f",
+          "name": "Create Payout",
+          "request": {
+            "name": "Create Payout",
+            "description": {
+              "content": "In the payout service creation, all the required fields will be validated at first, after that, business validation rules will be run. The next table shows the information about the API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"store\": {\n    \"code\": \"<string>\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"<string>\",\n    \"account\": \"<string>\",\n    \"amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    \"business_id\": \"<string>\"\n  },\n  \"payment_method\": {\n    \"code\": \"<string>\",\n    \"recipient\": {\n      \"id\": \"<string>\",\n      \"payment_key\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"document\": {\n        \"type\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"account\": {\n        \"ispb\": \"<string>\",\n        \"agency\": \"<string>\",\n        \"code\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    }\n  },\n  \"notification_url\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"descriptor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cc1b392c-c8b0-4fde-aa88-34ef0b670f06",
+              "name": "Create payout response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": \"<number>\"\n    },\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"recipient\": {\n      \"id\": \"<string>\",\n      \"payment_key\": \"<string>\",\n      \"full_name\": \"Box Jhon\",\n      \"document\": {\n        \"type\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"account\": {\n        \"ispb\": \"<string>\",\n        \"agency\": \"<string>\",\n        \"code\": \"<string>\",\n        \"type\": \"CC\"\n      }\n    }\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayouts\",\n    \"https://www.providerApi.com/notificationPayouts\"\n  ],\n  \"descriptor\": \"From Mike to Maria's birthday present\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Opened\",\n    \"date\": \"2021-09-03T15:27:28.000Z\"\n  },\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"descriptor\": \"From Mike to Maria's birthday present\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    }\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"recipient\": {\n      \"payment_key\": 12345678000112\n    }\n  },\n  \"payout_id\": \"5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dad2e47-867b-4cfa-ad4c-4e93c71074b9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": \"<number>\"\n    },\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"recipient\": {\n      \"id\": \"<string>\",\n      \"payment_key\": \"<string>\",\n      \"full_name\": \"Box Jhon\",\n      \"document\": {\n        \"type\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"account\": {\n        \"ispb\": \"<string>\",\n        \"agency\": \"<string>\",\n        \"code\": \"<string>\",\n        \"type\": \"CC\"\n      }\n    }\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayouts\",\n    \"https://www.providerApi.com/notificationPayouts\"\n  ],\n  \"descriptor\": \"From Mike to Maria's birthday present\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Validation failed\",\n  \"causes\": [\n    \"store must not be null\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1387e197-febd-4b37-973c-e8d9f9f6499a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": \"<number>\"\n    },\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"recipient\": {\n      \"id\": \"<string>\",\n      \"payment_key\": \"<string>\",\n      \"full_name\": \"Box Jhon\",\n      \"document\": {\n        \"type\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"account\": {\n        \"ispb\": \"<string>\",\n        \"agency\": \"<string>\",\n        \"code\": \"<string>\",\n        \"type\": \"CC\"\n      }\n    }\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayouts\",\n    \"https://www.providerApi.com/notificationPayouts\"\n  ],\n  \"descriptor\": \"From Mike to Maria's birthday present\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "432c64d6-90d1-479f-879d-f7c76ae58261",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": \"<number>\"\n    },\n    \"business_id\": \"BIZ0000001\"\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"recipient\": {\n      \"id\": \"<string>\",\n      \"payment_key\": \"<string>\",\n      \"full_name\": \"Box Jhon\",\n      \"document\": {\n        \"type\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"account\": {\n        \"ispb\": \"<string>\",\n        \"agency\": \"<string>\",\n        \"code\": \"<string>\",\n        \"type\": \"CC\"\n      }\n    }\n  },\n  \"notification_url\": [\n    \"https://www.providerApi.com/notificationPayouts\",\n    \"https://www.providerApi.com/notificationPayouts\"\n  ],\n  \"descriptor\": \"From Mike to Maria's birthday present\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67ab1f60-fe09-477b-bcdd-17068f46b7cb",
+          "name": "Get Payout by Reference ID",
+          "request": {
+            "name": "Get Payout by Reference ID",
+            "description": {
+              "content": "Payout details service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reference_id",
+                  "value": "<string>",
+                  "description": "(Required) Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd623e29-e9e8-4ccb-b79d-1f1b2203a670",
+              "name": "Payout details response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Transferred\",\n    \"date\": \"2021-09-03T15:27:28.000Z\"\n  },\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"descriptor\": \"From Mike to Maria's birthday present\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    }\n  },\n  \"payer\": {\n    \"agency\": \"1500\",\n    \"account_code\": 800550,\n    \"account_type\": \"CC\"\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"payment_key\": \"sbx.po@paymentKey\"\n  },\n  \"payout_id\": \"5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cb4d58d-693d-40b1-8166-7e6f67a8dc67",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Required String parameter 'reference_id' is not present\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8ccdaba-76f0-46ee-a13a-e74360675086",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 404,\n  \"message\": \"Payout not found by reference_id {reference_id}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ce0718a-bce1-43ff-8dd4-d653b72d8159",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reference_id",
+                      "value": "REF0000001"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "165f0ebc-ad9e-4984-8fb5-1f9b602323a4",
+          "name": "Get Payout",
+          "request": {
+            "name": "Get Payout",
+            "description": {
+              "content": "Payout details service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment",
+                "payouts",
+                ":payout_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payout_id",
+                  "description": "(Required) Payout ID returned by Create Payout api."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c65c7a4-7ce1-4435-b4e3-1809e1dc75bf",
+              "name": "Payout details response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts",
+                    ":payout_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_id",
+                      "description": "(Required) Payout ID returned by Create Payout api."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"type\": \"Transferred\",\n    \"date\": \"2021-09-03T15:27:28.000Z\"\n  },\n  \"store\": {\n    \"code\": \"SBXSTORE\"\n  },\n  \"descriptor\": \"From Mike to Maria's birthday present\",\n  \"transaction\": {\n    \"reference_id\": \"REF0000001\",\n    \"business_id\": \"BIZ0000001\",\n    \"account\": \"SBX000PO\",\n    \"amount\": {\n      \"currency_code\": \"BRL\",\n      \"value\": 1500.56\n    }\n  },\n  \"payer\": {\n    \"agency\": \"1500\",\n    \"account_code\": 800550,\n    \"account_type\": \"CC\"\n  },\n  \"payment_method\": {\n    \"code\": \"PAYOUTS\",\n    \"payment_key\": \"sbx.po@paymentKey\"\n  },\n  \"payout_id\": \"5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ec1a522-41eb-4246-8a24-c48478c75bfd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts",
+                    ":payout_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_id",
+                      "description": "(Required) Payout ID returned by Create Payout api."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"causes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68806e87-387a-4a26-ae44-4c01d79c7d9e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts",
+                    ":payout_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_id",
+                      "description": "(Required) Payout ID returned by Create Payout api."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 404,\n  \"message\": \"Payout not found by payout_id {payout_id}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c93337ff-da4a-4a28-992f-01db0b17925c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment",
+                    "payouts",
+                    ":payout_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payout_id",
+                      "description": "(Required) Payout ID returned by Create Payout api."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Media type of the body of the request. Default value for payment provider protocol is application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Media type(s) that is/are acceptable for the response. Default value for payment provider protocol is application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1437c80d-9ed5-4276-9e86-245362f90903",
+    "name": "Antifraud Access Payout Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

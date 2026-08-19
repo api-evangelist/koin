@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Recipient Services Account API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipient Services Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Recipient Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.koin.com.br/v1/payment/payment-key/info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Service to obtain recipient account information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,547 @@
+{
+  "item": [
+    {
+      "id": "35282257-6bd9-418c-a16b-55ff2ddc206d",
+      "name": "Onboarding Services",
+      "description": {
+        "content": "Onboarding Service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e703ce7-2f62-412b-aef7-eedb7fd154fb",
+          "name": "Send Data",
+          "request": {
+            "name": "Send Data",
+            "description": {
+              "content": "Receives a new onboarding data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "onboarding"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"store\": {\n    \"name\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"documentType\": \"<string>\",\n    \"document\": \"<string>\",\n    \"integration\": \"<string>\"\n  },\n  \"contacts\": [\n    {\n      \"contact\": \"<string>\",\n      \"type\": \"<string>\",\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"contact\": \"<string>\",\n      \"type\": \"<string>\",\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"personData\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"cpf\": \"<string>\",\n        \"birthDate\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"mcc\": \"<string>\",\n        \"address\": {\n          \"address\": \"<string>\",\n          \"number\": \"<string>\",\n          \"cep\": \"<string>\"\n        },\n        \"revenue\": \"<string>\"\n      },\n      \"transferData\": {\n        \"period\": \"<string>\",\n        \"account\": \"<string>\",\n        \"accountType\": \"<string>\",\n        \"code\": \"<string>\",\n        \"bank\": \"<string>\",\n        \"branch\": \"<string>\",\n        \"documentType\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      \"companyData\": {\n        \"name\": \"<string>\",\n        \"cnpj\": \"<string>\",\n        \"address\": {\n          \"address\": \"<string>\",\n          \"number\": \"<string>\",\n          \"cep\": \"<string>\"\n        },\n        \"email\": \"<string>\",\n        \"mcc\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"revenue\": \"<string>\"\n      },\n      \"pricing\": [\n        {\n          \"paymentMethod\": \"<string>\",\n          \"summarized\": \"<double>\",\n          \"detailed\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"paymentMethod\": \"<string>\",\n          \"summarized\": \"<double>\",\n          \"detailed\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"paymentMethod\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"personData\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"cpf\": \"<string>\",\n        \"birthDate\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"mcc\": \"<string>\",\n        \"address\": {\n          \"address\": \"<string>\",\n          \"number\": \"<string>\",\n          \"cep\": \"<string>\"\n        },\n        \"revenue\": \"<string>\"\n      },\n      \"transferData\": {\n        \"period\": \"<string>\",\n        \"account\": \"<string>\",\n        \"accountType\": \"<string>\",\n        \"code\": \"<string>\",\n        \"bank\": \"<string>\",\n        \"branch\": \"<string>\",\n        \"documentType\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      \"companyData\": {\n        \"name\": \"<string>\",\n        \"cnpj\": \"<string>\",\n        \"address\": {\n          \"address\": \"<string>\",\n          \"number\": \"<string>\",\n          \"cep\": \"<string>\"\n        },\n        \"email\": \"<string>\",\n        \"mcc\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"revenue\": \"<string>\"\n      },\n      \"pricing\": [\n        {\n          \"paymentMethod\": \"<string>\",\n          \"summarized\": \"<double>\",\n          \"detailed\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"paymentMethod\": \"<string>\",\n          \"summarized\": \"<double>\",\n          \"detailed\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"transaction\": {\n    \"referenceId\": \"<string>\",\n    \"callbackUrl\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77e89dda-4c2d-4b50-8ce7-6407d240a279",
+              "name": "Onboarding response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"name\": \"Test 93\",\n    \"countryCode\": \"AR\",\n    \"documentType\": \"CPF\",\n    \"document\": \"12345678\"\n  },\n  \"contacts\": [\n    {\n      \"contact\": \"test@example.com\",\n      \"type\": \"EMAIL\",\n      \"roles\": [\n        \"REPORT\",\n        \"SUPPORT\"\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": [\n        \"CARD\",\n        \"PIX\"\n      ],\n      \"personData\": {\n        \"firstName\": \"Jhon\",\n        \"lastName\": \"Doe\",\n        \"email\": \"test@example.com\",\n        \"cpf\": \"12345678\",\n        \"birthDate\": \"1984-10-28\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"revenue\": \"80000\"\n      },\n      \"companyData\": {\n        \"name\": \"KOIN\",\n        \"cnpj\": \"123456\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"email\": \"koin@koin.com.br\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"revenue\": \"50054\"\n      },\n      \"transferData\": {\n        \"period\": \"D2\",\n        \"accountType\": \"CCAC\",\n        \"account\": \"12345567\",\n        \"bank\": \"John Doe\",\n        \"code\": \"001\",\n        \"branch\": \"0015\",\n        \"documentType\": \"CNPJ\",\n        \"documentNumber\": \"123456\"\n      }\n    }\n  ],\n  \"transaction\": {\n    \"referenceId\": \"123456\",\n    \"callbackUrl\": \"http://cnd-backend/test\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"onboardingId\\\": \\\"d46ef4fc-32fd-4fbe-880b-eaa6d6dbd377\\\",\\n    \\\"referenceId\\\": \\\"123456\\\",\\n    \\\"status\\\": \\\"PENDING\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf931283-8947-4688-a902-080c67626ba1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"name\": \"Test 93\",\n    \"countryCode\": \"AR\",\n    \"documentType\": \"CPF\",\n    \"document\": \"12345678\"\n  },\n  \"contacts\": [\n    {\n      \"contact\": \"test@example.com\",\n      \"type\": \"EMAIL\",\n      \"roles\": [\n        \"REPORT\",\n        \"SUPPORT\"\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": [\n        \"CARD\",\n        \"PIX\"\n      ],\n      \"personData\": {\n        \"firstName\": \"Jhon\",\n        \"lastName\": \"Doe\",\n        \"email\": \"test@example.com\",\n        \"cpf\": \"12345678\",\n        \"birthDate\": \"1984-10-28\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"revenue\": \"80000\"\n      },\n      \"companyData\": {\n        \"name\": \"KOIN\",\n        \"cnpj\": \"123456\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"email\": \"koin@koin.com.br\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"revenue\": \"50054\"\n      },\n      \"transferData\": {\n        \"period\": \"D2\",\n        \"accountType\": \"CCAC\",\n        \"account\": \"12345567\",\n        \"bank\": \"John Doe\",\n        \"code\": \"001\",\n        \"branch\": \"0015\",\n        \"documentType\": \"CNPJ\",\n        \"documentNumber\": \"123456\"\n      }\n    }\n  ],\n  \"transaction\": {\n    \"referenceId\": \"123456\",\n    \"callbackUrl\": \"http://cnd-backend/test\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"errorMessage\\\": \\\"Request without commerce\\\",\\n    \\\"error\\\": \\\"null\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fee730fe-cb50-4255-bfb5-b5e62f60edbf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"name\": \"Test 93\",\n    \"countryCode\": \"AR\",\n    \"documentType\": \"CPF\",\n    \"document\": \"12345678\"\n  },\n  \"contacts\": [\n    {\n      \"contact\": \"test@example.com\",\n      \"type\": \"EMAIL\",\n      \"roles\": [\n        \"REPORT\",\n        \"SUPPORT\"\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": [\n        \"CARD\",\n        \"PIX\"\n      ],\n      \"personData\": {\n        \"firstName\": \"Jhon\",\n        \"lastName\": \"Doe\",\n        \"email\": \"test@example.com\",\n        \"cpf\": \"12345678\",\n        \"birthDate\": \"1984-10-28\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"revenue\": \"80000\"\n      },\n      \"companyData\": {\n        \"name\": \"KOIN\",\n        \"cnpj\": \"123456\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"email\": \"koin@koin.com.br\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"revenue\": \"50054\"\n      },\n      \"transferData\": {\n        \"period\": \"D2\",\n        \"accountType\": \"CCAC\",\n        \"account\": \"12345567\",\n        \"bank\": \"John Doe\",\n        \"code\": \"001\",\n        \"branch\": \"0015\",\n        \"documentType\": \"CNPJ\",\n        \"documentNumber\": \"123456\"\n      }\n    }\n  ],\n  \"transaction\": {\n    \"referenceId\": \"123456\",\n    \"callbackUrl\": \"http://cnd-backend/test\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f3da034-bbd6-4ae2-b514-0a8a8e1ca9f1",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"store\": {\n    \"name\": \"Test 93\",\n    \"countryCode\": \"AR\",\n    \"documentType\": \"CPF\",\n    \"document\": \"12345678\"\n  },\n  \"contacts\": [\n    {\n      \"contact\": \"test@example.com\",\n      \"type\": \"EMAIL\",\n      \"roles\": [\n        \"REPORT\",\n        \"SUPPORT\"\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": [\n        \"CARD\",\n        \"PIX\"\n      ],\n      \"personData\": {\n        \"firstName\": \"Jhon\",\n        \"lastName\": \"Doe\",\n        \"email\": \"test@example.com\",\n        \"cpf\": \"12345678\",\n        \"birthDate\": \"1984-10-28\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"revenue\": \"80000\"\n      },\n      \"companyData\": {\n        \"name\": \"KOIN\",\n        \"cnpj\": \"123456\",\n        \"address\": {\n          \"address\": \"Street 12, Oregon\",\n          \"number\": \"12\",\n          \"cep\": \"29115827\"\n        },\n        \"email\": \"koin@koin.com.br\",\n        \"countryCode\": \"55\",\n        \"phone\": \"(11)99123456\",\n        \"mcc\": \"8999\",\n        \"revenue\": \"50054\"\n      },\n      \"transferData\": {\n        \"period\": \"D2\",\n        \"accountType\": \"CCAC\",\n        \"account\": \"12345567\",\n        \"bank\": \"John Doe\",\n        \"code\": \"001\",\n        \"branch\": \"0015\",\n        \"documentType\": \"CNPJ\",\n        \"documentNumber\": \"123456\"\n      }\n    }\n  ],\n  \"transaction\": {\n    \"referenceId\": \"123456\",\n    \"callbackUrl\": \"http://cnd-backend/test\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"errorMessage\\\": \\\"Request without commerce\\\",\\n    \\\"error\\\": \\\"null\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f2cb317-4871-488f-aa54-ba544b8ee52d",
+          "name": "Get Status",
+          "request": {
+            "name": "Get Status",
+            "description": {
+              "content": "API to get the status of the onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "onboarding",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "REFERENCE_ID",
+                  "description": "Name that indicates which id we are going to use to look up the case (onboarding_id or reference_id). Optional and by default its value is onboarding_id. When uses a reference_id the query param \"field\" must be added with the value REFERENCE_ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f20a7fce-5ce6-4ab5-b5e1-b0aeba7df5d2",
+              "name": "Antifraud analysis status response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "REFERENCE_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"onboardingId\\\": \\\"d46ef4fc-32fd-4fbe-880b-eaa6d6dbd377\\\",\\n    \\\"referenceId\\\": \\\"123456\\\",\\n    \\\"status\\\": \\\"PENDING\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc179382-9803-4952-92d1-522bd9b958e4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "REFERENCE_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"errorMessage\\\": \\\"Request without commerce\\\",\\n    \\\"error\\\": \\\"null\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f0b3926-9ac1-4c33-9376-346766233fd1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "REFERENCE_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7114ad50-22eb-4c45-8660-c75fb99c6d7a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "REFERENCE_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"errorMessage\\\": \\\"Onboarding 12345678 not found\\\",\\n    \\\"error\\\": \\\"null\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b007f4eb-b079-43a5-8890-e54dbd96ebbe",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboarding",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field",
+                      "value": "REFERENCE_ID"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either evaluation ID returned by api on evaluation or reference id sent by client on evaluation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"errorMessage\\\": \\\"Request without commerce\\\",\\n    \\\"error\\\": \\\"null\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.koin.com.br",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fdeb2e4f-77b2-4373-9e04-45e300e8bb98",
+    "name": "Antifraud Access Onboarding Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Antifraud services",
+      "type": "text/plain"
+    }
+  }
+}

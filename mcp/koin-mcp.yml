@@ -184,3 +184,9 @@ tools:
   method: POST
   path: /v1/payment/orders/{order_id}/account-validation
   source_operation: openapi/koin-payments-openapi.json#validateAccountPOST
+deployment:
+  mode: none
+  verified: derived
+  tools: 33
+  checked: '2026-08-12'
+  source: catalog MCP census

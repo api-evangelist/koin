@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Antifraud Access Support Services API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Support Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Evaluation Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/evaluations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "query",
+                "description": "Indicates which field should be used to look up the case (evalaution_id or reference_id). By default its value is EVALUATION_ID."
+              }
+            ]
+          },
+          "docs": "API to retrieve the status of an antifraud evaluation."
+        },
+        {
+          "info": {
+            "name": "Cancel Evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/evaluations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "query",
+                "description": "Indicates which field should be used to look up the case (evalaution_id or reference_id). By default its value is EVALUATION_ID."
+              }
+            ]
+          },
+          "docs": "API to notify if the order was canceled either by the store or the buyer before completition of the Antifraud analysis.\nThe query parameter in the URL :id Could be either Evaluation ID returned by api on evaluation :evaluationId or reference id sent by client on evaluation :store.referenceId"
+        },
+        {
+          "info": {
+            "name": "Send Notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/notifications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Could be either Evaluation ID returned by api on evaluation :evaluation_id or reference id sent by client on evaluation :store.reference_id"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "query",
+                "description": "Indicates which field should be used to look up the case (evalaution_id or reference_id). By default its value is EVALUATION_ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API to send notifications about an evaluated transaction.\nThe types of notifications:\n- RFI: Notify a request for information (internal, from a bank, or from any entity)\n- Chargeback: Notify a chargeback (internal, from a bank, or from any entity)\n- Status \n   - Collected: Transaction payment was settled\n   - Not Collected: Transaction payments was failed\n   - Cancelled: Transaction was cancelled\n   - Finalized: Transaction finalized OK\n   - Refunded: Transaction payment was refunded\n   - Author"
+        },
+        {
+          "info": {
+            "name": "Service Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.koin.com.br/v1/antifraud/healthCheck"
+          },
+          "docs": "API to get information about the server health"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
