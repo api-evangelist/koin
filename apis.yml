@@ -35,6 +35,18 @@ tags:
 - Buy Now Pay Later
 - Pix
 - E-Commerce
+- Financial-Services
+- Brazil
+- Latin America
+- Anti-Fraud
+- Checkout
+- Company
+tags_raw:
+- Payments
+- Fraud Prevention
+- Buy Now Pay Later
+- Pix
+- E-Commerce
 - Financial Services
 - Brazil
 - Latin America
@@ -145,6 +157,8 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
+  - E-Commerce
+  tags_raw:
   - Ecommerce
   properties:
   - type: OpenAPI
@@ -267,6 +281,8 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
+  - Payment Request
+  tags_raw:
   - PaymentRequest
   properties:
   - type: OpenAPI
@@ -412,6 +428,8 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
+  - Wire Transfer
+  tags_raw:
   - WireTransfer
   properties:
   - type: OpenAPI
