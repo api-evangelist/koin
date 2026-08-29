@@ -461,6 +461,9 @@ apis:
   - type: APIReference
     url: https://api-docs.koin.com.br/reference/payment-request
 common:
+- type: CapabilityMap
+  url: capabilities/koin-capability-edges.yml
+  name: Koin Business Capability Map
 - type: Overlay
   url: overlays/koin-antifraud-ato-overlay.yaml
 - type: DeveloperPortal
