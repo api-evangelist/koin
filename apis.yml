@@ -9,6 +9,18 @@ description: Koin is a Brazilian payments and fraud-prevention provider operatin
   Magento 2, WooCommerce, VTEX, Shopify, Wake, Nuvemshop and Tiendanube plugins, and iOS/Android
   checkout SDKs. Founded in Brazil and backed by Speedinvest (2018), Koin was acquired by Despegar in 2020.
 url: https://raw.githubusercontent.com/api-evangelist/koin/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
