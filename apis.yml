@@ -293,7 +293,7 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
-  - Payment Request
+  - PaymentRequest
   tags_raw:
   - PaymentRequest
   properties:
@@ -440,7 +440,7 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
-  - Wire Transfer
+  - WireTransfer
   tags_raw:
   - WireTransfer
   properties:
@@ -461,6 +461,11 @@ apis:
   - type: APIReference
     url: https://api-docs.koin.com.br/reference/payment-request
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/despegar/
+  name: Despegar
+  x-relationship: acquired
+  x-evidence: "Founded in Brazil and backed by Speedinvest (2018), Koin was acquired by Despegar in 2020."
 - type: CapabilityMap
   url: capabilities/koin-capability-edges.yml
   name: Koin Business Capability Map
