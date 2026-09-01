@@ -293,7 +293,7 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
-  - PaymentRequest
+  - Payment Request
   tags_raw:
   - PaymentRequest
   properties:
@@ -440,7 +440,7 @@ apis:
   humanURL: https://api-docs.koin.com.br/reference/createpayment
   baseURL: https://api-sandbox.koin.com.br
   tags:
-  - WireTransfer
+  - Wire Transfer
   tags_raw:
   - WireTransfer
   properties:
