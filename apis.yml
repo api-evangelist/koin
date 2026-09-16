@@ -240,31 +240,6 @@ apis:
     url: https://api-docs.koin.com.br/docs/introduction-bnpl
   - type: APIReference
     url: https://api-docs.koin.com.br/reference/payment-request
-- aid: koin:koin-payment-service-provider-api
-  name: Koin Payment Service Provider API
-  description: >-
-    The Payment Service Provider API from Koin — 1 operation(s) for payment service provider.
-  humanURL: https://api-docs.koin.com.br/reference/createpayment
-  baseURL: https://api-sandbox.koin.com.br
-  tags:
-  - Payment Service Provider
-  properties:
-  - type: OpenAPI
-    url: openapi/koin-payment-service-provider-api-openapi.yml
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/introduction-card
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/createpayment
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/onboardingpost
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/introduction-bnpl
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/payment-request
 - aid: koin:koin-payment-services-api
   name: Koin Payment Services API
   description: The Payment Services API from Koin — 5 operation(s) for payment services.
@@ -422,32 +397,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/koin-tokenize-services-api-openapi.yml
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/introduction-card
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/createpayment
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/onboardingpost
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/introduction-bnpl
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/payment-request
-- aid: koin:koin-wiretransfer-api
-  name: Koin WireTransfer API
-  description: The WireTransfer API from Koin — 1 operation(s) for wiretransfer.
-  humanURL: https://api-docs.koin.com.br/reference/createpayment
-  baseURL: https://api-sandbox.koin.com.br
-  tags:
-  - Wire Transfer
-  tags_raw:
-  - WireTransfer
-  properties:
-  - type: OpenAPI
-    url: openapi/koin-wiretransfer-api-openapi.yml
   - type: Documentation
     url: https://api-docs.koin.com.br/docs/introduction-card
   - type: APIReference
