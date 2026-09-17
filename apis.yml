@@ -264,32 +264,6 @@ apis:
     url: https://api-docs.koin.com.br/docs/introduction-bnpl
   - type: APIReference
     url: https://api-docs.koin.com.br/reference/payment-request
-- aid: koin:koin-paymentrequest-api
-  name: Koin PaymentRequest API
-  description: The PaymentRequest API from Koin — 2 operation(s) for paymentrequest.
-  humanURL: https://api-docs.koin.com.br/reference/createpayment
-  baseURL: https://api-sandbox.koin.com.br
-  tags:
-  - Payment Request
-  tags_raw:
-  - PaymentRequest
-  properties:
-  - type: OpenAPI
-    url: openapi/koin-paymentrequest-api-openapi.yml
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/introduction-card
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/createpayment
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/onboardingpost
-  - type: Documentation
-    url: https://api-docs.koin.com.br/docs/introduction-bnpl
-  - type: APIReference
-    url: https://api-docs.koin.com.br/reference/payment-request
 - aid: koin:koin-payout-services-api
   name: Koin Payout Services API
   description: The Payout Services API from Koin — 4 operation(s) for payout services.
@@ -397,6 +371,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/koin-tokenize-services-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-card
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createpayment
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/antifraud-services-flow-1
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/createevaluationusingpost
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/onboardingpost
+  - type: Documentation
+    url: https://api-docs.koin.com.br/docs/introduction-bnpl
+  - type: APIReference
+    url: https://api-docs.koin.com.br/reference/payment-request
+- aid: koin:koin-payment-request-api
+  name: Koin Payment Request API
+  description: The Payment Request API from Koin — 2 operation(s) for payment request.
+  humanURL: https://api-docs.koin.com.br/reference/createpayment
+  baseURL: https://api-sandbox.koin.com.br
+  tags:
+  - Payment Request
+  properties:
+  - type: OpenAPI
+    url: openapi/koin-payment-request-api-openapi.yml
   - type: Documentation
     url: https://api-docs.koin.com.br/docs/introduction-card
   - type: APIReference
