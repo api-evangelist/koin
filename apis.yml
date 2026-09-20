@@ -410,6 +410,8 @@ apis:
   - type: APIReference
     url: https://api-docs.koin.com.br/reference/payment-request
 common:
+- type: Plans
+  url: plans/koin-plans-pricing.yml
 - type: ParentCompany
   url: https://apis.io/providers/despegar/
   name: Despegar

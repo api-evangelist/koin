@@ -1,0 +1,36 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.koin.com.br/plataforma-de-pagamentos-b2b
+sources:
+- https://www.koin.com.br/plataforma-de-pagamentos-b2b
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: ad-valorem
+published: true
+note: Taxas variam conforme período de antecipação, quantidade de parcelas e volume do segmento; página
+  indica 'Sem taxa extra por transação'.
+plan_count: 3
+currency: BRL
+plans:
+- name: Cartão de Crédito
+  price_text: A partir de 2,35%
+  price: 2.35
+  currency: BRL
+  period: per-use
+  unit: transaction
+- name: Pix
+  price_text: A partir de R$0,5
+  price: 0.5
+  currency: BRL
+  period: per-use
+  unit: Por transação
+- name: Boleto e Pix Parcelado
+  price_text: A partir de 2,35%
+  price: 2.35
+  currency: BRL
+  period: per-use
+  unit: transaction
