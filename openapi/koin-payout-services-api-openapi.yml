@@ -1,14 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Antifraud Access Payout Services API
-  description: Antifraud services
+  title: Payments Payout Services API
+  description: Payments services for Koin clients
+  contact:
+    name: Koin S.A.
+    url: https://koinlatam.com/
+    email: payments-it@koin.com.br
   license:
     name: Apache License Version 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: '2.0'
+  version: '1.0'
 servers:
 - url: https://api-sandbox.koin.com.br
-  description: Sandbox domain url
+  description: sandbox domain url
 tags:
 - name: Payout Services
 paths:
@@ -389,6 +393,17 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    PayoutCryptoCurrencies:
+      title: Payout Cryptocurrencies
+      type: object
+      required:
+      - transaction
+      properties:
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCryptoCurrencies'
+        currency:
+          type: string
+          description: Currency code (ISO 4217)
     PayoutTransaction:
       title: Payout Transaction
       required:
@@ -426,6 +441,37 @@ components:
               pattern: d{1,10}.d{2}
               description: Payout total amount.
               example: '1500.56'
+    Payout:
+      title: Pix Payout
+      type: object
+      required:
+      - store
+      - transaction
+      - payment_method
+      - notification_url
+      properties:
+        store:
+          type: object
+          required:
+          - code
+          properties:
+            code:
+              type: string
+              example: SBXSTORE
+        transaction:
+          $ref: '#/components/schemas/PayoutTransaction'
+        payment_method:
+          $ref: '#/components/schemas/PayoutPaymentMethod'
+        notification_url:
+          type: array
+          description: List of urls to which notifications will be sent
+          items:
+            type: string
+            example: https://www.providerApi.com/notificationPayouts
+        descriptor:
+          type: string
+          description: Text send to client. Maximum of 140 characters.
+          example: From Mike to Maria's birthday present
     PayoutTransactionCryptoQuotation:
       title: Crypto Quotation Transaction
       required:
@@ -465,6 +511,125 @@ components:
               pattern: '[A-Z]{3}'
               description: Quote to_currency code (ISO 4217)
               example: btc
+    CryptoPayoutResponse:
+      title: Crypto Payout Response
+      type: object
+      properties:
+        status:
+          type: object
+          required:
+          - type
+          - date
+          properties:
+            type:
+              type: string
+              enum:
+              - Opened
+              - Transferred
+              - Failed
+              description: Payout status.
+            date:
+              type: string
+              format: date-time
+              description: Status change date (ISO 8601 date format)
+        store:
+          type: object
+          properties:
+            code:
+              type: string
+              example: STORECODE
+              description: Store identifier.
+        descriptor:
+          type: string
+          example: From Mike to Maria's birthday present
+          description: Text send to client. Maximum of 140 characters.
+        transaction:
+          $ref: '#/components/schemas/PayoutTransaction'
+        method:
+          $ref: '#/components/schemas/PayoutMethodCrypto'
+        payout_id:
+          type: string
+          example: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
+          description: Payout Id returned by Create Payout API.
+        code:
+          type: string
+          description: Standardized error code (applies only for error cases)
+        message:
+          type: string
+          description: Message associated with the error code (applies only for error cases)
+    CryptocurrenciesResponse:
+      title: Cryptocurrencies Response
+      type: object
+      properties:
+        currencies:
+          type: array
+          description: Available cryptocurrencies options (for the provided account).
+          items:
+            required:
+            - code
+            - desc
+            - price
+            - var
+            type: object
+            properties:
+              code:
+                type: string
+                description: Cryptocurrency code.
+                example: btc
+              desc:
+                type: string
+                description: Cryptocurrency description.
+                example: BITCOIN
+              price:
+                type: string
+                description: Cryptocurrency price.
+                example: '23524.3339968278'
+              var:
+                type: string
+                description: Cryptocurrency variation.
+                example: '853.29'
+    QuoteResponse:
+      title: Crypto Quote Response
+      type: object
+      properties:
+        quotation:
+          type: object
+          required:
+          - amount
+          - id
+          - expiration_date
+          properties:
+            amount:
+              required:
+              - currency
+              - value
+              type: object
+              properties:
+                currency:
+                  type: string
+                  pattern: '[A-Z]{3}'
+                  description: Quote currency code (ISO 4217)
+                  example: btc
+                value:
+                  type: number
+                  pattern: d{1,10}.d{8}
+                  description: Payout total amount.
+                  example: 250.89024957
+            id:
+              type: string
+              description: Quote id.
+            expiration_date:
+              type: string
+              format: date-time
+              description: Quote expiration (ISO 8601 date format)
+        transaction:
+          type: object
+          properties:
+            reference_id:
+              type: string
+              pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+              description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
+              example: REF0000001
     PayoutDetailResponse:
       title: Payout Detail Response
       type: object
@@ -534,6 +699,89 @@ components:
         message:
           type: string
           description: Message associated with the error code (applies only for error cases)
+    PayoutTransactionCryptoCurrencies:
+      title: Payout Cryptocurrencies Transaction
+      required:
+      - account
+      type: object
+      properties:
+        account:
+          type: string
+          description: Client account number provided by Koin.
+          example: ACCOUNTCODE
+    PayoutTransactionCrypto:
+      title: Crypto Payout Transaction
+      required:
+      - reference_id
+      - account
+      - amount
+      type: object
+      properties:
+        reference_id:
+          type: string
+          pattern: ^[a-zA-Z0-9_#.-]{0,50}$
+          description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
+          example: REF0000001
+        business_id:
+          type: string
+          description: Business ID. The ID of the transaction related with this payout. (Maximum of 50 characters - Unique per transaction)
+          example: BIZ0000001
+        account:
+          type: string
+          description: Client account number provided by Koin.
+          example: SBX000PO
+        amount:
+          required:
+          - currency
+          - value
+          type: object
+          properties:
+            currency:
+              type: string
+              pattern: '[A-Z]{3}'
+              description: Payout currency code (ISO 4217)
+              example: btc
+            value:
+              type: number
+              pattern: d{1,10}.d{8}
+              description: Payout total amount.
+              example: '100.12345678'
+    PayoutMethodCryptoQuotation:
+      title: Crypto Quote method
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+          example: CRYPTO
+          description: Crypto Payout method code
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
+    PayoutQuotation:
+      title: Cryptocurrency Quotation
+      type: object
+      required:
+      - method
+      - transaction
+      properties:
+        method:
+          $ref: '#/components/schemas/PayoutMethodCryptoQuotation'
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCryptoQuotation'
     PayoutResponse:
       title: Payout Response
       type: object
@@ -588,306 +836,6 @@ components:
         message:
           type: string
           description: Message associated with the error code (applies only for error cases)
-    PayoutQuotation:
-      title: Cryptocurrency Quotation
-      type: object
-      required:
-      - method
-      - transaction
-      properties:
-        method:
-          $ref: '#/components/schemas/PayoutMethodCryptoQuotation'
-        transaction:
-          $ref: '#/components/schemas/PayoutTransactionCryptoQuotation'
-    PayoutMethodCrypto:
-      title: Crypto Payout Method
-      required:
-      - code
-      - quotation_id
-      type: object
-      properties:
-        code:
-          type: string
-          example: CRYPTO
-          description: Crypto Payout method code
-        quotation_id:
-          type: string
-          description: Value returned by the quote service. (quotation.id)
-          example:
-          - m1gtqkwg
-    PayoutTransactionCrypto:
-      title: Crypto Payout Transaction
-      required:
-      - reference_id
-      - account
-      - amount
-      type: object
-      properties:
-        reference_id:
-          type: string
-          pattern: ^[a-zA-Z0-9_#.-]{0,50}$
-          description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
-          example: REF0000001
-        business_id:
-          type: string
-          description: Business ID. The ID of the transaction related with this payout. (Maximum of 50 characters - Unique per transaction)
-          example: BIZ0000001
-        account:
-          type: string
-          description: Client account number provided by Koin.
-          example: SBX000PO
-        amount:
-          required:
-          - currency
-          - value
-          type: object
-          properties:
-            currency:
-              type: string
-              pattern: '[A-Z]{3}'
-              description: Payout currency code (ISO 4217)
-              example: btc
-            value:
-              type: number
-              pattern: d{1,10}.d{8}
-              description: Payout total amount.
-              example: '100.12345678'
-    CryptocurrenciesResponse:
-      title: Cryptocurrencies Response
-      type: object
-      properties:
-        currencies:
-          type: array
-          description: Available cryptocurrencies options (for the provided account).
-          items:
-            required:
-            - code
-            - desc
-            - price
-            - var
-            type: object
-            properties:
-              code:
-                type: string
-                description: Cryptocurrency code.
-                example: btc
-              desc:
-                type: string
-                description: Cryptocurrency description.
-                example: BITCOIN
-              price:
-                type: string
-                description: Cryptocurrency price.
-                example: '23524.3339968278'
-              var:
-                type: string
-                description: Cryptocurrency variation.
-                example: '853.29'
-    PayoutCryptoCurrencies:
-      title: Payout Cryptocurrencies
-      type: object
-      required:
-      - transaction
-      properties:
-        transaction:
-          $ref: '#/components/schemas/PayoutTransactionCryptoCurrencies'
-        currency:
-          type: string
-          description: Currency code (ISO 4217)
-    Payout:
-      title: Pix Payout
-      type: object
-      required:
-      - store
-      - transaction
-      - payment_method
-      - notification_url
-      properties:
-        store:
-          type: object
-          required:
-          - code
-          properties:
-            code:
-              type: string
-              example: SBXSTORE
-        transaction:
-          $ref: '#/components/schemas/PayoutTransaction'
-        payment_method:
-          $ref: '#/components/schemas/PayoutPaymentMethod'
-        notification_url:
-          type: array
-          description: List of urls to which notifications will be sent
-          items:
-            type: string
-            example: https://www.providerApi.com/notificationPayouts
-        descriptor:
-          type: string
-          description: Text send to client. Maximum of 140 characters.
-          example: From Mike to Maria's birthday present
-    ErrorResponse:
-      title: Error Response
-      type: object
-      properties:
-        code:
-          type: string
-          description: Standardized error code.
-        message:
-          type: string
-          description: Error message.
-        causes:
-          type: array
-          description: List of error causes.
-          items:
-            type: string
-    PayoutMethodCryptoQuotation:
-      title: Crypto Quote method
-      required:
-      - code
-      type: object
-      properties:
-        code:
-          type: string
-          example: CRYPTO
-          description: Crypto Payout method code
-    PayoutCrypto:
-      title: Crypto Payout
-      type: object
-      required:
-      - store
-      - transaction
-      - method
-      - payer
-      - notification_url
-      properties:
-        store:
-          type: object
-          required:
-          - code
-          properties:
-            code:
-              type: string
-              example: STORECODE
-        transaction:
-          $ref: '#/components/schemas/PayoutTransactionCrypto'
-        method:
-          $ref: '#/components/schemas/PayoutMethodCrypto'
-        notification_url:
-          type: array
-          description: List of urls to which notifications will be sent
-          items:
-            type: string
-            example: https://www.providerApi.com/notificationPayouts
-        descriptor:
-          type: string
-          description: Text send to client. Maximum of 140 characters.
-          example: From Mike to Maria's birthday present
-        payer:
-          required:
-          - email
-          properties:
-            email:
-              type: string
-              description: Payer email
-              example: jhon_doe@domain.com
-    CryptoPayoutResponse:
-      title: Crypto Payout Response
-      type: object
-      properties:
-        status:
-          type: object
-          required:
-          - type
-          - date
-          properties:
-            type:
-              type: string
-              enum:
-              - Opened
-              - Transferred
-              - Failed
-              description: Payout status.
-            date:
-              type: string
-              format: date-time
-              description: Status change date (ISO 8601 date format)
-        store:
-          type: object
-          properties:
-            code:
-              type: string
-              example: STORECODE
-              description: Store identifier.
-        descriptor:
-          type: string
-          example: From Mike to Maria's birthday present
-          description: Text send to client. Maximum of 140 characters.
-        transaction:
-          $ref: '#/components/schemas/PayoutTransaction'
-        method:
-          $ref: '#/components/schemas/PayoutMethodCrypto'
-        payout_id:
-          type: string
-          example: 5t1bc9001-6b5a-4f21-b5ee-fd32m4f436c6
-          description: Payout Id returned by Create Payout API.
-        code:
-          type: string
-          description: Standardized error code (applies only for error cases)
-        message:
-          type: string
-          description: Message associated with the error code (applies only for error cases)
-    PayoutTransactionCryptoCurrencies:
-      title: Payout Cryptocurrencies Transaction
-      required:
-      - account
-      type: object
-      properties:
-        account:
-          type: string
-          description: Client account number provided by Koin.
-          example: ACCOUNTCODE
-    QuoteResponse:
-      title: Crypto Quote Response
-      type: object
-      properties:
-        quotation:
-          type: object
-          required:
-          - amount
-          - id
-          - expiration_date
-          properties:
-            amount:
-              required:
-              - currency
-              - value
-              type: object
-              properties:
-                currency:
-                  type: string
-                  pattern: '[A-Z]{3}'
-                  description: Quote currency code (ISO 4217)
-                  example: btc
-                value:
-                  type: number
-                  pattern: d{1,10}.d{8}
-                  description: Payout total amount.
-                  example: 250.89024957
-            id:
-              type: string
-              description: Quote id.
-            expiration_date:
-              type: string
-              format: date-time
-              description: Quote expiration (ISO 8601 date format)
-        transaction:
-          type: object
-          properties:
-            reference_id:
-              type: string
-              pattern: ^[a-zA-Z0-9_#.-]{0,50}$
-              description: Transaction identifier, generated by client. (Maximum of 50 characters - Unique per transaction).
-              example: REF0000001
     PayoutPaymentMethod:
       title: Payout Payment Method
       required:
@@ -960,6 +908,62 @@ components:
                   - CS
                   description: Receiver account type.
                   example: CC
+    PayoutMethodCrypto:
+      title: Crypto Payout Method
+      required:
+      - code
+      - quotation_id
+      type: object
+      properties:
+        code:
+          type: string
+          example: CRYPTO
+          description: Crypto Payout method code
+        quotation_id:
+          type: string
+          description: Value returned by the quote service. (quotation.id)
+          example:
+          - m1gtqkwg
+    PayoutCrypto:
+      title: Crypto Payout
+      type: object
+      required:
+      - store
+      - transaction
+      - method
+      - payer
+      - notification_url
+      properties:
+        store:
+          type: object
+          required:
+          - code
+          properties:
+            code:
+              type: string
+              example: STORECODE
+        transaction:
+          $ref: '#/components/schemas/PayoutTransactionCrypto'
+        method:
+          $ref: '#/components/schemas/PayoutMethodCrypto'
+        notification_url:
+          type: array
+          description: List of urls to which notifications will be sent
+          items:
+            type: string
+            example: https://www.providerApi.com/notificationPayouts
+        descriptor:
+          type: string
+          description: Text send to client. Maximum of 140 characters.
+          example: From Mike to Maria's birthday present
+        payer:
+          required:
+          - email
+          properties:
+            email:
+              type: string
+              description: Payer email
+              example: jhon_doe@domain.com
   examples:
     GetPayoutResponse:
       value:

@@ -1,14 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Antifraud Access Notification Services Sales API
-  description: Antifraud services
+  title: Payments Notification Services Sales API
+  description: Payments services for Koin clients
+  contact:
+    name: Koin S.A.
+    url: https://koinlatam.com/
+    email: payments-it@koin.com.br
   license:
     name: Apache License Version 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: '2.0'
+  version: '1.0'
 servers:
 - url: https://api-sandbox.koin.com.br
-  description: Sandbox domain url
+  description: sandbox domain url
 tags:
 - name: Notification Services Sales
 paths:
@@ -44,6 +48,21 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
     NotificationSale:
       title: Notification
       required:
@@ -107,18 +126,3 @@ components:
               pattern: d{1,10}.d{2}
               description: Payment total amount
               example: 1500.56
-    ErrorResponse:
-      title: Error Response
-      type: object
-      properties:
-        code:
-          type: string
-          description: Standardized error code.
-        message:
-          type: string
-          description: Error message.
-        causes:
-          type: array
-          description: List of error causes.
-          items:
-            type: string

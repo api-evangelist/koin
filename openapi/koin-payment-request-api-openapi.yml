@@ -1,16 +1,13 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Antifraud Access PaymentRequest API
-  description: Antifraud services
-  license:
-    name: Apache License Version 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: '2.0'
+  title: BNPL Payment Request API
+  version: unknown
 servers:
-- url: https://api-sandbox.koin.com.br
-  description: Sandbox domain url
+- url: https://www.sp-api.koin.com
+security:
+- sec0: []
 tags:
-- name: PaymentRequest
+- name: Payment Request
 paths:
   /PaymentRequest/check:
     post:
@@ -184,7 +181,7 @@ paths:
                   value: ''
       deprecated: false
       tags:
-      - PaymentRequest
+      - Payment Request
   /V1/PaymentRequest/include:
     post:
       summary: Include
@@ -858,4 +855,15 @@ paths:
                   value: ''
       deprecated: false
       tags:
-      - PaymentRequest
+      - Payment Request
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: ''
+      x-default: 06497EEC06624XXXXX1CA995A58D11C36,cEKjWCGZnu3BqWIzjh86kDqkUK5Kn1Tqk1Um0CRvb/zypnnzxJ+Ck51g7OgzSt+cnrPYBqWDHZa+0lQHpsDbGA==,1655995847441
+x-readme:
+  headers: []
+x-readme-fauxas: true
