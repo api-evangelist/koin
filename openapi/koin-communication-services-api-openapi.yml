@@ -87,6 +87,16 @@ paths:
                     code: 404
                     message: Resource with order_id 3d8b0956-1a91-42a0-bbba-0b1154a3c529 not found.
 components:
+  examples:
+    UnableToValidateAccountExampleResponse:
+      value:
+        status:
+          type: Failed
+          reason: 'Invalid orderId: c2b0b09e-d79b-4c1e-97a8-b1418543356c'
+    ValidateAccountExampleResponse:
+      value:
+        status:
+          type: Sent
   schemas:
     ValidateAccountType:
       title: Type
@@ -99,21 +109,6 @@ components:
           description: Validation channel
           enum:
           - Whatsapp
-    ErrorResponse:
-      title: Error Response
-      type: object
-      properties:
-        code:
-          type: string
-          description: Standardized error code.
-        message:
-          type: string
-          description: Error message.
-        causes:
-          type: array
-          description: List of error causes.
-          items:
-            type: string
     ValidateAccountResponse:
       title: Validate account successfully
       type: object
@@ -134,13 +129,18 @@ components:
             reason:
               type: string
               description: Reason for which it was not possible to validate the account. Only available in Failed status type.
-  examples:
-    UnableToValidateAccountExampleResponse:
-      value:
-        status:
-          type: Failed
-          reason: 'Invalid orderId: c2b0b09e-d79b-4c1e-97a8-b1418543356c'
-    ValidateAccountExampleResponse:
-      value:
-        status:
-          type: Sent
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string

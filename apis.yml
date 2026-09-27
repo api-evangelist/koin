@@ -49,10 +49,9 @@ tags:
 - Buy Now Pay Later
 - Pix
 - E-Commerce
-- Financial-Services
+- Financial Services
 - Brazil
 - Latin America
-- Anti-Fraud
 - Checkout
 - Company
 tags_raw:
@@ -67,6 +66,7 @@ tags_raw:
 - Anti-Fraud
 - Checkout
 - Company
+- Financial-Services
 apis:
 - aid: koin:koin-access-api
   name: Koin Access API

@@ -313,18 +313,159 @@ paths:
                   value: '{"message": "N/A","status": "ERROR","version": "unknown"}'
 components:
   schemas:
-    UnAuthorizedResponse:
-      title: UnAuthorized Response
+    InfoNotification:
+      required:
+      - type
+      - notification_date
+      title: INFO
       type: object
       properties:
-        code:
-          type: integer
-          description: Status code
-          example: 401
+        type:
+          type: string
+          description: Notification Type
+          enum:
+          - INFO
+          default: INFO
         message:
           type: string
-          description: Error message
-          example: Validation errors
+          description: Descriptive message about notification
+          example: Notification about...
+        notification_date:
+          type: string
+          description: Notification date
+          example: '2021-02-23T14:10:44.307062Z'
+        details:
+          type: object
+          description: Notification details. It's a set of key/value pairs
+          additionalProperties:
+            type: string
+    StandardApiCancelResponse:
+      title: StandardApiResponse
+      type: object
+      properties:
+        analysis_type:
+          type: string
+          description: Resolution type
+          enum:
+          - AUTOMATIC
+          - MANUAL
+        evaluation_id:
+          type: string
+          description: antifraud provider identifier
+        id:
+          type: string
+          description: Client transaction identifier
+        score:
+          type: integer
+          description: Evaluation score
+        message:
+          type: string
+          description: Response message applies only for error cases
+        status:
+          type: string
+          description: Transaction status
+          enum:
+          - approved
+          - denied
+          - received
+    ChargebackNotification:
+      required:
+      - type
+      - notification_date
+      title: CHARGEBACK
+      type: object
+      properties:
+        type:
+          type: string
+          description: Notification Type
+          enum:
+          - CHARGEBACK
+          default: CHARGEBACK
+        sub_type:
+          type: string
+          description: Notification subtype
+          enum:
+          - FRAUD
+          - NON_FRAUD
+          - PENDING
+        message:
+          type: string
+          description: Descriptive message about notification
+          example: Notification about...
+        notification_date:
+          type: string
+          description: Notification date
+          example: '2021-02-23T14:10:44.307062Z'
+        details:
+          type: object
+          description: Notification details. It's a set of key/value pairs
+          additionalProperties:
+            type: string
+    AntiFraudNotification:
+      title: notification
+      type: object
+      required:
+      - type
+      - notification_date
+      discriminator:
+        propertyName: type
+        mapping:
+          CHARGEBACK: '#/components/schemas/ChargebackNotification'
+          INFO: '#/components/schemas/InfoNotification'
+          STATUS: '#/components/schemas/StatusNotification'
+          RFI: '#/components/schemas/RFINotification'
+      oneOf:
+      - $ref: '#/components/schemas/ChargebackNotification'
+      - $ref: '#/components/schemas/InfoNotification'
+      - $ref: '#/components/schemas/StatusNotification'
+      - $ref: '#/components/schemas/RFINotification'
+      properties:
+        type:
+          type: string
+          description: Notification type
+          enum:
+          - CHARGEBACK
+          - INFO
+          - STATUS
+          - RFI
+    ImageNotification:
+      title: ImageNotification
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Image identifier
+          example: '123456789'
+        category:
+          type: string
+          description: Image category
+          example: IDENTITY_CARD_FRONT
+        url:
+          type: string
+          description: Image url
+          example: https://url.com/1.jpeg
+        created:
+          type: string
+          description: Image created date
+          example: '2021-02-23T14:10:44.307062Z'
+    HealthCheckResponse:
+      title: Health check response
+      type: object
+      properties:
+        message:
+          type: string
+          description: response message
+          example: N/A
+        status:
+          type: string
+          description: Health Status
+          enum:
+          - OK
+          - ERROR
+        version:
+          type: string
+          description: application version
+          example: unknown
     StatusNotification:
       title: STATUS
       type: object
@@ -388,41 +529,53 @@ components:
           description: Strategies applied. Applies to RECOVERING sub_type.
           items:
             $ref: '#/components/schemas/StrategiesNotification'
-    StrategiesNotification:
-      title: StrategiesNotification
+    UnAuthorizedResponse:
+      title: UnAuthorized Response
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Validation errors
+    StrategyResponse:
+      title: StrategyResponse
       type: object
       properties:
         type:
           type: string
-          description: Strategy type
+          description: Strategy type, see [Strategies](https://api-koin.readme.io/reference/strategies)
           enum:
-          - DocumentScan
           - VerificationCode
+          - DocumentScan
+          - ManualVerification
           - CollectAuthRecovery
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResultsNotification'
-    ImageNotification:
-      title: ImageNotification
-      type: object
-      properties:
-        document_id:
+        link:
           type: string
-          description: Image identifier
-          example: '123456789'
-        category:
+          description: Url for access the strategy page
+        channels:
           type: string
-          description: Image category
-          example: IDENTITY_CARD_FRONT
-        url:
+          description: Channels for the strategy
+          enum:
+          - Mail
+          - Phone
+        provider:
           type: string
-          description: Image url
-          example: https://url.com/1.jpeg
-        created:
+          description: Provider for the strategy in case of CollectAuthRecovery strategy
+          enum:
+          - 3DS2
+        mode:
           type: string
-          description: Image created date
-          example: '2021-02-23T14:10:44.307062Z'
+          description: Mode for the strategy in case of CollectAuthRecovery strategy
+          enum:
+          - FRICTIONLESS
+          - CHALLENGE
+        code:
+          type: string
+          description: Code in case of verification code strategy
     RFINotification:
       required:
       - type
@@ -456,139 +609,6 @@ components:
           description: Notification details. It's a set of key/value pairs
           additionalProperties:
             type: string
-    AntiFraudNotification:
-      title: notification
-      type: object
-      required:
-      - type
-      - notification_date
-      discriminator:
-        propertyName: type
-        mapping:
-          CHARGEBACK: '#/components/schemas/ChargebackNotification'
-          INFO: '#/components/schemas/InfoNotification'
-          STATUS: '#/components/schemas/StatusNotification'
-          RFI: '#/components/schemas/RFINotification'
-      oneOf:
-      - $ref: '#/components/schemas/ChargebackNotification'
-      - $ref: '#/components/schemas/InfoNotification'
-      - $ref: '#/components/schemas/StatusNotification'
-      - $ref: '#/components/schemas/RFINotification'
-      properties:
-        type:
-          type: string
-          description: Notification type
-          enum:
-          - CHARGEBACK
-          - INFO
-          - STATUS
-          - RFI
-    InfoNotification:
-      required:
-      - type
-      - notification_date
-      title: INFO
-      type: object
-      properties:
-        type:
-          type: string
-          description: Notification Type
-          enum:
-          - INFO
-          default: INFO
-        message:
-          type: string
-          description: Descriptive message about notification
-          example: Notification about...
-        notification_date:
-          type: string
-          description: Notification date
-          example: '2021-02-23T14:10:44.307062Z'
-        details:
-          type: object
-          description: Notification details. It's a set of key/value pairs
-          additionalProperties:
-            type: string
-    HealthCheckResponse:
-      title: Health check response
-      type: object
-      properties:
-        message:
-          type: string
-          description: response message
-          example: N/A
-        status:
-          type: string
-          description: Health Status
-          enum:
-          - OK
-          - ERROR
-        version:
-          type: string
-          description: application version
-          example: unknown
-    ChargebackNotification:
-      required:
-      - type
-      - notification_date
-      title: CHARGEBACK
-      type: object
-      properties:
-        type:
-          type: string
-          description: Notification Type
-          enum:
-          - CHARGEBACK
-          default: CHARGEBACK
-        sub_type:
-          type: string
-          description: Notification subtype
-          enum:
-          - FRAUD
-          - NON_FRAUD
-          - PENDING
-        message:
-          type: string
-          description: Descriptive message about notification
-          example: Notification about...
-        notification_date:
-          type: string
-          description: Notification date
-          example: '2021-02-23T14:10:44.307062Z'
-        details:
-          type: object
-          description: Notification details. It's a set of key/value pairs
-          additionalProperties:
-            type: string
-    StandardApiCancelResponse:
-      title: StandardApiResponse
-      type: object
-      properties:
-        analysis_type:
-          type: string
-          description: Resolution type
-          enum:
-          - AUTOMATIC
-          - MANUAL
-        evaluation_id:
-          type: string
-          description: antifraud provider identifier
-        id:
-          type: string
-          description: Client transaction identifier
-        score:
-          type: integer
-          description: Evaluation score
-        message:
-          type: string
-          description: Response message applies only for error cases
-        status:
-          type: string
-          description: Transaction status
-          enum:
-          - approved
-          - denied
-          - received
     BadResponse:
       title: Bad Response
       type: object
@@ -636,6 +656,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StrategyResponse'
+    StrategiesNotification:
+      title: StrategiesNotification
+      type: object
+      properties:
+        type:
+          type: string
+          description: Strategy type
+          enum:
+          - DocumentScan
+          - VerificationCode
+          - CollectAuthRecovery
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultsNotification'
     ResultsNotification:
       title: ResultsNotification
       type: object
@@ -668,38 +703,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ImageNotification'
-    StrategyResponse:
-      title: StrategyResponse
-      type: object
-      properties:
-        type:
-          type: string
-          description: Strategy type, see [Strategies](https://api-koin.readme.io/reference/strategies)
-          enum:
-          - VerificationCode
-          - DocumentScan
-          - ManualVerification
-          - CollectAuthRecovery
-        link:
-          type: string
-          description: Url for access the strategy page
-        channels:
-          type: string
-          description: Channels for the strategy
-          enum:
-          - Mail
-          - Phone
-        provider:
-          type: string
-          description: Provider for the strategy in case of CollectAuthRecovery strategy
-          enum:
-          - 3DS2
-        mode:
-          type: string
-          description: Mode for the strategy in case of CollectAuthRecovery strategy
-          enum:
-          - FRICTIONLESS
-          - CHALLENGE
-        code:
-          type: string
-          description: Code in case of verification code strategy
