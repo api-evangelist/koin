@@ -183,89 +183,6 @@ paths:
         samples-enabled: false
 components:
   schemas:
-    Payment:
-      title: Payment Data
-      type: object
-      required:
-      - paymentMethod
-      - personData
-      - transferData
-      properties:
-        paymentMethod:
-          title: paymentMethod
-          type: array
-          description: Payment methods
-          items:
-            title: paymentMethod
-            type: string
-            enum:
-            - CARD
-            - PIX
-        personData:
-          $ref: '#/components/schemas/PersonData'
-        companyData:
-          $ref: '#/components/schemas/CompanyData'
-        transferData:
-          $ref: '#/components/schemas/TransferData'
-        pricing:
-          title: PricingData
-          type: array
-          description: Pricing
-          items:
-            $ref: '#/components/schemas/PricingData'
-    PersonData:
-      title: Person Data
-      type: object
-      required:
-      - firstName
-      - lastName
-      - email
-      - cpf
-      - birthDate
-      - countryCode
-      - phone
-      - mcc
-      - address
-      - revenue
-      properties:
-        firstName:
-          type: string
-          description: Person first name
-          example: John
-        lastName:
-          type: string
-          description: Person last name
-          example: Doe
-        email:
-          type: string
-          description: Person email
-          example: test@example.com
-        cpf:
-          type: string
-          description: Person cpf
-          example: '57616508278'
-        birthDate:
-          type: string
-          description: Birthdate
-          example: '1990-05-06'
-        countryCode:
-          type: string
-          description: Phone country code
-          example: '55'
-        phone:
-          type: string
-          description: Phone number
-          example: (11)23456-3456
-        mcc:
-          type: string
-          description: Merchant Category Codes. Four-digit number
-          example: '8999'
-        address:
-          $ref: '#/components/schemas/Address'
-        revenue:
-          type: string
-          description: Person revenue
-          example: '500055'
     TransferData:
       title: Transfer Data
       type: object
@@ -322,6 +239,127 @@ components:
           enum:
           - CNPJ
           - CPF
+    PersonData:
+      title: Person Data
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      - cpf
+      - birthDate
+      - countryCode
+      - phone
+      - mcc
+      - address
+      - revenue
+      properties:
+        firstName:
+          type: string
+          description: Person first name
+          example: John
+        lastName:
+          type: string
+          description: Person last name
+          example: Doe
+        email:
+          type: string
+          description: Person email
+          example: test@example.com
+        cpf:
+          type: string
+          description: Person cpf
+          example: '57616508278'
+        birthDate:
+          type: string
+          description: Birthdate
+          example: '1990-05-06'
+        countryCode:
+          type: string
+          description: Phone country code
+          example: '55'
+        phone:
+          type: string
+          description: Phone number
+          example: (11)23456-3456
+        mcc:
+          type: string
+          description: Merchant Category Codes. Four-digit number
+          example: '8999'
+        address:
+          $ref: '#/components/schemas/Address'
+        revenue:
+          type: string
+          description: Person revenue
+          example: '500055'
+    StandardApiResponse:
+      title: StandardApiResponse
+      type: object
+      required:
+      - onboardingId
+      - referenceId
+      - status
+      properties:
+        onboardingId:
+          type: string
+          description: Onboarding identification
+          example: 31ff2cc8-199e-4c3c-ba2d-4d85b88bd9f2
+        referenceId:
+          type: string
+          description: Client transaction identifier
+          example: FGCCCEA53JYSHXX
+        status:
+          type: string
+          description: Onboarding status
+          enum:
+          - PENDING
+          - INPROGRESS
+          - ACTIONREQUIRED
+          - COMPLETED
+          - REJECT
+          - CANCELLED
+        message:
+          type: string
+          description: Information message
+          example: Test message
+        credentials:
+          $ref: '#/components/schemas/Credentials'
+        paymentAccounts:
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/PaymentAccount'
+    PaymentAccount:
+      title: Credentials
+      type: object
+      required:
+      - storeCode
+      properties:
+        paymentMethod:
+          type: string
+          description: Payment method for the extract
+          enum:
+          - CARD
+        account:
+          type: string
+          description: Payment account number
+          example: AP12345PI
+        evaluatesFraud:
+          type: boolean
+          description: Indicates if the account has antifraud
+          example: true
+    BadResponse:
+      title: BadResponse
+      type: object
+      properties:
+        error:
+          type: string
+          description: Request error
+          example: 'com.fasterxml.jackson.databind.exc.InvalidFormatException:'
+        errorMessage:
+          type: string
+          description: Error description
+          example: 'JSON parse error: Cannot deserialize value of type'
     Store:
       title: Store
       type: object
@@ -364,46 +402,89 @@ components:
           - vtex
           - woocommerce
           - wbuy
-    Credentials:
-      title: Credentials
+    Payment:
+      title: Payment Data
       type: object
       required:
-      - storeCode
+      - paymentMethod
+      - personData
+      - transferData
       properties:
-        storeCode:
-          type: string
-          description: Store code
-          example: STORE12
-        privateKey:
-          type: string
-          description: Authentication key
-          example: dqwg43yefnjnk5fe
-        orgId:
-          type: string
-          description: Fingerprint key
-          example: s4fes6ytr4
-    OnboardingRequest:
-      title: OnboardingRequest
+        paymentMethod:
+          title: paymentMethod
+          type: array
+          description: Payment methods
+          items:
+            title: paymentMethod
+            type: string
+            enum:
+            - CARD
+            - PIX
+        personData:
+          $ref: '#/components/schemas/PersonData'
+        companyData:
+          $ref: '#/components/schemas/CompanyData'
+        transferData:
+          $ref: '#/components/schemas/TransferData'
+        pricing:
+          title: PricingData
+          type: array
+          description: Pricing
+          items:
+            $ref: '#/components/schemas/PricingData'
+    Contact:
+      title: Contact
       type: object
       required:
-      - store
-      - contacts
-      - payments
-      - transaction
+      - contact
+      - type
+      - roles
       properties:
-        store:
-          $ref: '#/components/schemas/Store'
-        contacts:
+        contact:
+          type: string
+          description: Email address or Phone number
+          example: test@example.com
+        type:
+          type: string
+          description: Contact type
+          enum:
+          - EMAIL
+          - PHONE
+        roles:
+          title: roles
           type: array
+          description: Contact type
           items:
-            $ref: '#/components/schemas/Contact'
-        payments:
-          type: array
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/Payment'
-        transaction:
-          $ref: '#/components/schemas/Transaction'
+            title: role
+            type: string
+            enum:
+            - SUPPORT
+            - REPORT
+            - BACKOFFICE
+            - BILLING
+            - CHARGEBACKS
+            - CREDENTIALS
+    PricingDetail:
+      title: Pricing Detail Table
+      type: object
+      required:
+      - installment
+      - brand
+      - value
+      properties:
+        installment:
+          type: integer
+          description: Installment
+          example: 1
+        brand:
+          type: string
+          description: Card brand
+          example: VISA
+        value:
+          type: number
+          format: double
+          description: Pricing fee
+          example: '0.28'
     CompanyData:
       title: Company Data
       type: object
@@ -447,6 +528,60 @@ components:
           type: string
           description: Person revenue
           example: '500055'
+    Transaction:
+      title: Transaction
+      type: object
+      required:
+      - referenceId
+      properties:
+        referenceId:
+          type: string
+          description: Client transaction identifier
+          example: FGCCCEA53JYSHXX
+        callbackUrl:
+          type: string
+          description: Url to send notifications to client
+          example: http://domain/service
+    OnboardingRequest:
+      title: OnboardingRequest
+      type: object
+      required:
+      - store
+      - contacts
+      - payments
+      - transaction
+      properties:
+        store:
+          $ref: '#/components/schemas/Store'
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        payments:
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/Payment'
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+    Credentials:
+      title: Credentials
+      type: object
+      required:
+      - storeCode
+      properties:
+        storeCode:
+          type: string
+          description: Store code
+          example: STORE12
+        privateKey:
+          type: string
+          description: Authentication key
+          example: dqwg43yefnjnk5fe
+        orgId:
+          type: string
+          description: Fingerprint key
+          example: s4fes6ytr4
     PricingData:
       title: Pricing
       type: object
@@ -470,38 +605,6 @@ components:
           description: Pricing detail table
           items:
             $ref: '#/components/schemas/PricingDetail'
-    Contact:
-      title: Contact
-      type: object
-      required:
-      - contact
-      - type
-      - roles
-      properties:
-        contact:
-          type: string
-          description: Email address or Phone number
-          example: test@example.com
-        type:
-          type: string
-          description: Contact type
-          enum:
-          - EMAIL
-          - PHONE
-        roles:
-          title: roles
-          type: array
-          description: Contact type
-          items:
-            title: role
-            type: string
-            enum:
-            - SUPPORT
-            - REPORT
-            - BACKOFFICE
-            - BILLING
-            - CHARGEBACKS
-            - CREDENTIALS
     Address:
       title: Address
       type: object
@@ -522,106 +625,3 @@ components:
           type: string
           description: Company cep
           example: 05376-140
-    Transaction:
-      title: Transaction
-      type: object
-      required:
-      - referenceId
-      properties:
-        referenceId:
-          type: string
-          description: Client transaction identifier
-          example: FGCCCEA53JYSHXX
-        callbackUrl:
-          type: string
-          description: Url to send notifications to client
-          example: http://domain/service
-    BadResponse:
-      title: BadResponse
-      type: object
-      properties:
-        error:
-          type: string
-          description: Request error
-          example: 'com.fasterxml.jackson.databind.exc.InvalidFormatException:'
-        errorMessage:
-          type: string
-          description: Error description
-          example: 'JSON parse error: Cannot deserialize value of type'
-    PaymentAccount:
-      title: Credentials
-      type: object
-      required:
-      - storeCode
-      properties:
-        paymentMethod:
-          type: string
-          description: Payment method for the extract
-          enum:
-          - CARD
-        account:
-          type: string
-          description: Payment account number
-          example: AP12345PI
-        evaluatesFraud:
-          type: boolean
-          description: Indicates if the account has antifraud
-          example: true
-    StandardApiResponse:
-      title: StandardApiResponse
-      type: object
-      required:
-      - onboardingId
-      - referenceId
-      - status
-      properties:
-        onboardingId:
-          type: string
-          description: Onboarding identification
-          example: 31ff2cc8-199e-4c3c-ba2d-4d85b88bd9f2
-        referenceId:
-          type: string
-          description: Client transaction identifier
-          example: FGCCCEA53JYSHXX
-        status:
-          type: string
-          description: Onboarding status
-          enum:
-          - PENDING
-          - INPROGRESS
-          - ACTIONREQUIRED
-          - COMPLETED
-          - REJECT
-          - CANCELLED
-        message:
-          type: string
-          description: Information message
-          example: Test message
-        credentials:
-          $ref: '#/components/schemas/Credentials'
-        paymentAccounts:
-          type: array
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/PaymentAccount'
-    PricingDetail:
-      title: Pricing Detail Table
-      type: object
-      required:
-      - installment
-      - brand
-      - value
-      properties:
-        installment:
-          type: integer
-          description: Installment
-          example: 1
-        brand:
-          type: string
-          description: Card brand
-          example: VISA
-        value:
-          type: number
-          format: double
-          description: Pricing fee
-          example: '0.28'

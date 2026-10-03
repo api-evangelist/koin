@@ -81,6 +81,16 @@ components:
           description: List of error causes.
           items:
             type: string
+    TokenizeCardResponse:
+      title: Tokenize card response
+      type: object
+      required:
+      - secure_token
+      properties:
+        secure_token:
+          type: string
+          description: Secure token used for create payment service with payment method card.
+          example: 86198ce2640145ef2488e884b8ecb459d414700dc540f76ee6034824f6187e9ac3d100f3649650754d3a2592c0391c3f90d924d745fb7e6d0a9fae4cfa79c4e55f9ab1e00102c0a5c7a7e7c59cfff219c86c30c77b9e5509e224f293052f58c275123a
     TokenizeCard:
       title: Card
       required:
@@ -128,16 +138,6 @@ components:
               type: string
               description: Name of card holder, as it appears on the card.
               example: Jhon Doe Jones
-    TokenizeCardResponse:
-      title: Tokenize card response
-      type: object
-      required:
-      - secure_token
-      properties:
-        secure_token:
-          type: string
-          description: Secure token used for create payment service with payment method card.
-          example: 86198ce2640145ef2488e884b8ecb459d414700dc540f76ee6034824f6187e9ac3d100f3649650754d3a2592c0391c3f90d924d745fb7e6d0a9fae4cfa79c4e55f9ab1e00102c0a5c7a7e7c59cfff219c86c30c77b9e5509e224f293052f58c275123a
   examples:
     TokenizeCardExampleResponse:
       value:

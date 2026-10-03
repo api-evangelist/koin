@@ -98,17 +98,21 @@ components:
         status:
           type: Sent
   schemas:
-    ValidateAccountType:
-      title: Type
-      required:
-      - type
+    ErrorResponse:
+      title: Error Response
       type: object
       properties:
-        type:
+        code:
           type: string
-          description: Validation channel
-          enum:
-          - Whatsapp
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
     ValidateAccountResponse:
       title: Validate account successfully
       type: object
@@ -129,18 +133,14 @@ components:
             reason:
               type: string
               description: Reason for which it was not possible to validate the account. Only available in Failed status type.
-    ErrorResponse:
-      title: Error Response
+    ValidateAccountType:
+      title: Type
+      required:
+      - type
       type: object
       properties:
-        code:
+        type:
           type: string
-          description: Standardized error code.
-        message:
-          type: string
-          description: Error message.
-        causes:
-          type: array
-          description: List of error causes.
-          items:
-            type: string
+          description: Validation channel
+          enum:
+          - Whatsapp

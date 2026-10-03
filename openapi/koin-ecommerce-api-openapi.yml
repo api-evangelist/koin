@@ -418,492 +418,6 @@ paths:
                   value: '{ "code": 500, "message": "Critical error in service for caseId db9279fd-2cc2-4672-aa13-1f02af50c488" }'
 components:
   schemas:
-    DeviceData:
-      title: device
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseDeviceData'
-    Owner:
-      title: owner
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Person'
-    Cash:
-      title: Cash
-      properties:
-        details:
-          type: array
-          description: Cash networks
-          items:
-            type: string
-        method:
-          type: string
-          description: Payment method used for the buyer
-          enum:
-          - Cash
-          - CreditCard
-          - DebitCard
-          - Pix
-          - Wallet
-          - GiftCard
-          - Points
-          - Promissory
-        payer:
-          $ref: '#/components/schemas/Payer'
-        amount:
-          $ref: '#/components/schemas/PaymentAmount'
-          description: Payment amount
-      allOf:
-      - $ref: '#/components/schemas/Payment'
-    Payer:
-      title: payer
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Person'
-    StandardApiPreEvalResponse:
-      title: StandardApiResponse
-      type: object
-      properties:
-        analysis_type:
-          type: string
-          description: Resolution type
-          enum:
-          - AUTOMATIC
-          - MANUAL
-        evaluation_id:
-          type: string
-          description: antifraud provider identifier
-        id:
-          type: string
-          description: Client transaction identifier
-        score:
-          type: integer
-          description: Evaluation score
-        status:
-          type: string
-          description: Transaction status
-          enum:
-          - approved
-          - denied
-    BaseCardPayment:
-      title: BaseCard
-      type: object
-      required:
-      - payer
-      properties:
-        details:
-          $ref: '#/components/schemas/CardPaymentDetail'
-        method:
-          type: string
-          description: Payment method used for the buyer
-          enum:
-          - Cash
-          - CreditCard
-          - DebitCard
-          - PrePaidCard
-          - Transfer
-          - Pix
-          - Wallet
-          - GiftCard
-          - Points
-          - Promissory
-        payer:
-          $ref: '#/components/schemas/Payer'
-        amount:
-          $ref: '#/components/schemas/PaymentAmount'
-          description: Payment amount
-        subscription:
-          type: boolean
-          description: Indicates if it's a subscription or recurring payment
-        concept:
-          type: string
-          description: 'A brief description what is being payed '
-          example: Heladera con freezer
-        secure_token:
-          type: string
-          description: The Token returned by the payment tokenization endpoint
-          example: 286f701a5937a83c69bcfd58a9fdc87e30f20ee79101020f5ef824fa59d1e5dc5da2f0cc14fecbc7d27e8360c1a6309f5ccd99eaee14463d6dd59a46c0650c6f41ee2f0cf926a7a25388e5fcfab3fef4e1cd310bf543a1adcdb58d2207d8921608c0e2
-      allOf:
-      - $ref: '#/components/schemas/Payment'
-    Store:
-      title: store
-      type: object
-      properties:
-        code:
-          type: string
-          description: Merchant code name
-          example: Hellmans
-        category:
-          type: string
-          description: Merchant category name. Four-digit code as described in the ISO 18245 international standard. See [MCC](https://classification.codes/classifications/industry/mcc/)
-          example: '0763'
-        latitude:
-          type: number
-          description: Store latitude coordinate
-          format: double
-          example: -34.56532789616039
-        longitude:
-          type: number
-          description: Store longitude coordinate
-          format: double
-          example: -58.48945822129388
-        merchant_type:
-          type: string
-          description: Type of merchant or store
-          example: shopping
-    Provider:
-      title: provider
-      type: object
-      required:
-      - code
-      - name
-      properties:
-        code:
-          type: string
-          description: Provider code
-        name:
-          type: string
-          description: Provider name
-    Document:
-      title: document
-      required:
-      - number
-      - type
-      type: object
-      properties:
-        nationality:
-          type: string
-          description: Person nationality. Two-letter country code as described in the ISO 3166 international standard
-          example: UY
-        number:
-          type: string
-          description: Person document number
-          example: '35645888'
-        type:
-          type: string
-          description: Person document type
-          example: DNI
-    CarRental:
-      title: CarRental
-      type: object
-      properties:
-        car_category:
-          type: string
-        car_description:
-          type: string
-        company_name:
-          type: string
-        drivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
-        drop_off:
-          $ref: '#/components/schemas/DropOff'
-        pick_up:
-          $ref: '#/components/schemas/PickUp'
-      allOf:
-      - $ref: '#/components/schemas/Item'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - CarRental
-    StandardApiResponse:
-      title: StandardApiResponse
-      type: object
-      properties:
-        analysis_type:
-          type: string
-          description: Resolution type
-          enum:
-          - AUTOMATIC
-          - MANUAL
-        evaluation_id:
-          type: string
-          description: antifraud provider identifier
-        id:
-          type: string
-          description: Client transaction identifier
-        score:
-          type: integer
-          description: Evaluation score
-        status:
-          type: string
-          description: Transaction status
-          enum:
-          - approved
-          - denied
-          - received
-        strategies:
-          type: array
-          items:
-            $ref: '#/components/schemas/StrategyResponse'
-    Insurance:
-      title: Insurance
-      type: object
-      properties:
-        expiration_date:
-          type: string
-          format: 'date-time. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
-        installment:
-          type: number
-          format: bigdecimal
-        subscription_date:
-          type: string
-          format: 'date-time. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
-        type:
-          type: string
-    Lodging:
-      title: Lodging
-      type: object
-      required:
-      - checkin_date
-      - checkout_date
-      - nights
-      - address
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        checkin_date:
-          type: string
-          description: 'Checkin date. Date format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-10-02T14:10:44'
-        checkout_date:
-          type: string
-          description: 'Checkout date. Date format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: 2021-11-02T14:10
-        guests:
-          uniqueItems: true
-          description: guests
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
-        lodger:
-          description: lodger details
-          $ref: '#/components/schemas/Lodger'
-        nights:
-          type: integer
-          description: Number of nights
-          example: 8
-        refundable:
-          type: boolean
-          description: is refundable
-          example: true
-      allOf:
-      - $ref: '#/components/schemas/Item'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - Lodging
-    Client:
-      title: client
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Person'
-    TicketDestinationService:
-      title: TicketDestinationService
-      type: object
-      required:
-      - service
-      properties:
-        service:
-          $ref: '#/components/schemas/TicketService'
-          description: Event or attraction definition related to the ticket
-      allOf:
-      - $ref: '#/components/schemas/BaseDestinationService'
-    LicesingAmount:
-      title: licesing_amount
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Amount'
-    Flight:
-      title: Flight
-      type: object
-      required:
-      - id
-      - price
-      - quantity
-      - itinerary_type
-      - routes
-      - passengers
-      properties:
-        discount_amount:
-          $ref: '#/components/schemas/DiscountAmount'
-          description: Item price discount
-        id:
-          type: string
-          description: Item id
-          example: '13238487'
-        itinerary_type:
-          type: string
-          description: Itinerary type
-          enum:
-          - MULTIDESTINATION
-          - ONEWAY
-          - ROUND_TRIP
-        passengers:
-          uniqueItems: true
-          description: Passengers list
-          type: array
-          items:
-            $ref: '#/components/schemas/Passenger'
-        price:
-          $ref: '#/components/schemas/Price'
-          description: Item price
-        quantity:
-          type: integer
-          description: Item quantity
-          format: int32
-          example: 5
-        route_type:
-          type: string
-          description: Route type
-          enum:
-          - DOMESTIC
-          - INTERNATIONAL
-        routes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Route'
-        seller_id:
-          type: string
-          description: Item seller
-          example: Some Seller
-    Payment:
-      title: Payment
-      required:
-      - method
-      - amount
-      type: object
-      properties:
-        id:
-          type: string
-          description: Payment unique identifier
-          example: 02BF653185664752AA5F8B7415BD5043
-        method:
-          type: string
-          description: Payment method used for the buyer
-          enum:
-          - Cash
-          - CreditCard
-          - DebitCard
-          - Pix
-          - Wallet
-          - GiftCard
-          - Points
-          - Promissory
-        amount:
-          $ref: '#/components/schemas/PaymentAmount'
-          description: Payment amount
-    BaseDestinationService:
-      title: BaseDestinationService
-      type: object
-      required:
-      - passengers
-      properties:
-        passengers:
-          uniqueItems: true
-          type: array
-          description: List of passengers
-          items:
-            $ref: '#/components/schemas/Person'
-      allOf:
-      - $ref: '#/components/schemas/Item'
-    Course:
-      title: course
-      type: object
-      properties:
-        category:
-          type: string
-        end_date:
-          type: string
-          description: 'Course end date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
-        link:
-          type: string
-          description: Course link
-          example: https://link
-        monthly_fee:
-          type: number
-          description: Course monthly fee
-          example: '245.12'
-        name:
-          type: string
-        presential:
-          type: boolean
-        scholarship_percentage:
-          type: integer
-          description: Course scholarship percentage
-          example: 20
-        start_date:
-          type: string
-          description: 'Course start date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: 2021-012-23T14:10:44.307062Z
-        subcategory:
-          type: string
-    BadResponse:
-      title: Bad Response
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Status code
-          example: 400
-        message:
-          type: string
-          description: Error message
-          example: Validation errors
-        causes:
-          type: array
-          items:
-            type: string
-          example: '[device.ip must not be blank]'
-    Car:
-      title: car
-      type: object
-      properties:
-        brand:
-          type: string
-          description: Car brand
-          example: Tesla
-        identifier:
-          $ref: '#/components/schemas/CarIdentifier'
-        license_plate:
-          type: string
-          description: license plate
-          example: AAM 2312
-        model:
-          type: string
-          description: Car model
-          example: '3'
-        owner:
-          $ref: '#/components/schemas/Owner'
-        year:
-          type: string
-          description: Car year
-          example: '2018'
-    Location:
-      title: location
-      required:
-      - latitude
-      - longitude
-      type: object
-      properties:
-        latitude:
-          type: number
-          description: Device latitude
-          format: double
-          example: -34.56532789616039
-        longitude:
-          type: number
-          description: Device longitude
-          format: double
-          example: -58.48945822129388
     Student:
       title: student
       required:
@@ -953,178 +467,43 @@ components:
           type: string
           description: Student relationship with payer
           example: FATHER
-    CarIdentifier:
-      title: car_identifier
+    Store:
+      title: store
       type: object
       properties:
-        key:
+        code:
           type: string
-          description: Car identifier key
-          example: RENAVAM
-        value:
+          description: Merchant code name
+          example: Hellmans
+        category:
           type: string
-          description: Car identifier value
-          example: AA2123
-    Shipping:
-      title: shipping
-      required:
-      - price
-      - address
+          description: Merchant category name. Four-digit code as described in the ISO 18245 international standard. See [MCC](https://classification.codes/classifications/industry/mcc/)
+          example: '0763'
+        latitude:
+          type: number
+          description: Store latitude coordinate
+          format: double
+          example: -34.56532789616039
+        longitude:
+          type: number
+          description: Store longitude coordinate
+          format: double
+          example: -58.48945822129388
+        merchant_type:
+          type: string
+          description: Type of merchant or store
+          example: shopping
+    Asynchronous:
+      title: Asynchronous
       type: object
       properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        delivery:
-          $ref: '#/components/schemas/Delivery'
-        price:
-          $ref: '#/components/schemas/Price'
-    CarPenaltyFee:
-      title: CarPenaltyFee
-      properties:
-        car:
-          $ref: '#/components/schemas/Car'
-        fines:
-          type: array
-          items:
-            $ref: '#/components/schemas/Fine'
-      allOf:
-      - $ref: '#/components/schemas/Item'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - CarPenaltyFee
-    CreditCard:
-      title: CreditCard
-      type: object
-      properties:
-        installments:
-          type: integer
-          description: Number of installments.
-          format: int32
-          example: 12
-      allOf:
-      - $ref: '#/components/schemas/BaseCardPayment'
-    TransferDS:
-      title: Transfer
-      type: object
-      properties:
-        provider:
-          $ref: '#/components/schemas/Provider'
-        modality:
-          type: string
-          description: Transfer modality
-        description:
-          type: string
-          description: Description of the product
-        passengers_resume:
-          $ref: '#/components/schemas/PassengersResume'
-      allOf:
-      - $ref: '#/components/schemas/DestinationService'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - Transfer
-    Education:
-      title: Education
-      type: object
-      properties:
-        course:
-          description: Course details
-          $ref: '#/components/schemas/Course'
-        students:
-          uniqueItems: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Student'
-      allOf:
-      - $ref: '#/components/schemas/Item'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - Education
-    Transfer:
-      title: Transfer
-      type: object
-      required:
-      - accountNumber
-      - bankName
-      properties:
-        accountNumber:
-          type: string
-          description: Transfer account number
-          example: '235687943672'
-        bankName:
-          type: string
-          description: Transfer bank name
-          example: ITAU
-        payer:
-          $ref: '#/components/schemas/Payer'
+        payment_data:
+          $ref: '#/components/schemas/AsyncPaymentDetail'
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          description: Payment amount. Do not include when payment_data method is CreditCard or DebitCard.
       allOf:
       - $ref: '#/components/schemas/Payment'
-    DiscountAmount:
-      title: discount_amount
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Amount'
-    TransactionData:
-      title: transaction
-      required:
-      - reference_id
-      - country_code
-      - total_amount
-      type: object
-      properties:
-        reference_id:
-          type: string
-          description: Client transaction identifier
-          example: FGCCCEA53JYSHXX
-        business_id:
-          type: string
-          description: Unique identifier for the store where the transaction takes place.
-          example: 6LVHR8W0V7BYEQX
-        sequence:
-          type: string
-          description: Sequence number to enumerate retries
-          example: '1'
-        country_code:
-          type: string
-          description: Use the country code of the store site's location where the transaction takes place. This ensures alignment with the store's geographical context. Two-letter code as described in the ISO 3166 international standard
-          example: AR
-        listener_mode:
-          type: boolean
-          description: Indicates if the transaction is in listener mode. When `true`, the transaction is processed for data collection and model training purposes only, and the evaluation result is always ACCEPT.
-          example: true
-        total_amount:
-          $ref: '#/components/schemas/Amount'
-          description: Represents transaction total amount on local currency
-        redirected:
-          type: boolean
-          description: Represents if the payment had a redirection
-        asynchronous:
-          title: asynchronous
-          type: boolean
-          description: Indicates if corresponds to the second asynchronous evaluation
-        channel:
-          type: string
-          description: Represents sales channel
-        business_unit:
-          type: string
-          description: Represents business unit or business model
-        agency_id:
-          type: string
-          description: Represents the identifier of the agency for sales of external sellers
-        mode:
-          type: string
-          description: Represents the sale mode
-          enum:
-          - OFFLINE
-          - ONLINE
     GiftCard:
       title: GiftCard
       properties:
@@ -1149,60 +528,165 @@ components:
           description: Payment amount
       allOf:
       - $ref: '#/components/schemas/Payment'
-    Buyer:
-      title: buyer
+    DropOff:
+      title: drop_off
       type: object
       allOf:
-      - $ref: '#/components/schemas/PersonBuyer'
-    Address:
-      title: address
+      - $ref: '#/components/schemas/CarDelivery'
+    BaseCardPayment:
+      title: BaseCard
+      type: object
       required:
-      - city
-      - country_code
-      - state
+      - payer
+      properties:
+        details:
+          $ref: '#/components/schemas/CardPaymentDetail'
+        method:
+          type: string
+          description: Payment method used for the buyer
+          enum:
+          - Cash
+          - CreditCard
+          - DebitCard
+          - PrePaidCard
+          - Transfer
+          - Pix
+          - Wallet
+          - GiftCard
+          - Points
+          - Promissory
+        payer:
+          $ref: '#/components/schemas/Payer'
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          description: Payment amount
+        subscription:
+          type: boolean
+          description: Indicates if it's a subscription or recurring payment
+        concept:
+          type: string
+          description: 'A brief description what is being payed '
+          example: Heladera con freezer
+        secure_token:
+          type: string
+          description: The Token returned by the payment tokenization endpoint
+          example: 286f701a5937a83c69bcfd58a9fdc87e30f20ee79101020f5ef824fa59d1e5dc5da2f0cc14fecbc7d27e8360c1a6309f5ccd99eaee14463d6dd59a46c0650c6f41ee2f0cf926a7a25388e5fcfab3fef4e1cd310bf543a1adcdb58d2207d8921608c0e2
+      allOf:
+      - $ref: '#/components/schemas/Payment'
+    Points:
+      title: Points
+      required:
+      - quantity
+      - method
+      - amount
       type: object
       properties:
-        city:
-          type: string
-          description: Address city. It must be either three-letters city code or city name
-          example: Buenos Aires
-        complement:
-          type: string
-          description: Address complement
-          example: Complemento
-        country_code:
-          type: string
-          description: Address country. Two-letter code as described in the ISO 3166 international standard
-          example: AR
-        neighborhood:
-          type: string
-          description: Address neighborhood
-          example: Chacarita
-        number:
-          type: string
-          description: Address number
-          example: '2459'
-        state:
-          type: string
-          description: Address state. It must be either state code or state name
-          example: Buenos Aires
-        street:
-          type: string
-          description: Address street
-          example: Corrientes
-        zip_code:
-          type: string
-          description: Address zip code
-          example: '1425'
-        full_address:
-          type: string
-          description: Full address
-          example: Corrientes 747, San Nicolas
-    Price:
-      title: price
-      type: object
+        quantity:
+          type: integer
+          description: Points quantity spent
+          format: int32
+          example: 10
       allOf:
-      - $ref: '#/components/schemas/Amount'
+      - $ref: '#/components/schemas/Payment'
+    Provider:
+      title: provider
+      type: object
+      required:
+      - code
+      - name
+      properties:
+        code:
+          type: string
+          description: Provider code
+        name:
+          type: string
+          description: Provider name
+    BadResponse:
+      title: Bad Response
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Status code
+          example: 400
+        message:
+          type: string
+          description: Error message
+          example: Validation errors
+        causes:
+          type: array
+          items:
+            type: string
+          example: '[device.ip must not be blank]'
+    CarIdentifier:
+      title: car_identifier
+      type: object
+      properties:
+        key:
+          type: string
+          description: Car identifier key
+          example: RENAVAM
+        value:
+          type: string
+          description: Car identifier value
+          example: AA2123
+    BaseDestinationService:
+      title: BaseDestinationService
+      type: object
+      required:
+      - passengers
+      properties:
+        passengers:
+          uniqueItems: true
+          type: array
+          description: List of passengers
+          items:
+            $ref: '#/components/schemas/Person'
+      allOf:
+      - $ref: '#/components/schemas/Item'
+    Item:
+      title: Item
+      required:
+      - category
+      - id
+      - name
+      - price
+      - type
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/Category'
+        discount_amount:
+          $ref: '#/components/schemas/DiscountAmount'
+          description: Item price discount
+        id:
+          type: string
+          description: Item id
+          example: '13238487'
+        name:
+          type: string
+          description: item name
+          example: Some name
+        price:
+          $ref: '#/components/schemas/Price'
+          description: Item price
+        quantity:
+          type: integer
+          description: 'Item quantity. Not required: default value is 1'
+          format: int32
+          example: 5
+        seller_id:
+          type: string
+          description: Item seller
+          example: Some Seller
+        service_date:
+          type: string
+          description: Date which the service will take place
+          example: '2021-10-23T10:00:00.307062Z'
+        type:
+          type: string
+          description: Item type
+          example: Generic
     Route:
       title: route
       type: object
@@ -1262,11 +746,6 @@ components:
         phone:
           description: phone
           $ref: '#/components/schemas/Phone'
-    InsuranceAmount:
-      title: insurance_amount
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Amount'
     PassengersResume:
       title: PassengersResume
       type: object
@@ -1290,91 +769,25 @@ components:
           description: Infants count
           format: int32
           example: 2
-    Generic:
-      title: Generic
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Item'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - Generic
-    ArrivalAirport:
-      title: arrival
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseAirportData'
-    Financing:
-      title: Financing
-      type: object
-      properties:
-        recipient:
-          $ref: '#/components/schemas/Recipient'
-      allOf:
-      - $ref: '#/components/schemas/Item'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - Financing
-    Phone:
-      title: phone
+    Passenger:
+      title: passenger
       required:
-      - number
+      - first_name
+      - last_name
       type: object
-      properties:
-        area_code:
-          type: string
-          description: Phone area code. If the country code is also available, include the full combination (country code + area code) for better context, though the country code is optional.
-          example: '11'
-        number:
-          type: string
-          description: Phone number
-          example: '45669874'
-        type:
-          type: string
-          description: Phone type
-          example: Mobile
-    Points:
-      title: Points
-      required:
-      - quantity
-      - method
-      - amount
-      type: object
-      properties:
-        quantity:
-          type: integer
-          description: Points quantity spent
-          format: int32
-          example: 10
-      allOf:
-      - $ref: '#/components/schemas/Payment'
-    PersonBuyer:
-      title: Person
-      type: object
-      required:
-      - email
       properties:
         id:
           type: string
-          description: The unique identifier of the customer in the merchant system
+          description: Person id
           example: c1245228
         first_name:
           type: string
-          description: First name. Required if full_name is blank.
+          description: First name
           example: Alvaro
         last_name:
           type: string
-          description: Last name. Required if full_name is blank.
+          description: Last name
           example: Garrincha
-        full_name:
-          type: string
-          description: Full name. Is required if first_name and last_name are blank
-          example: Alvaro Garrincha
         document:
           $ref: '#/components/schemas/Document'
         gender:
@@ -1397,9 +810,382 @@ components:
         phone:
           description: phone
           $ref: '#/components/schemas/Phone'
-        profile:
-          description: profile
-          $ref: '#/components/schemas/Profile'
+    UnAuthorizedResponse:
+      title: UnAuthorized Response
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Validation errors
+    StandardApiResponse:
+      title: StandardApiResponse
+      type: object
+      properties:
+        analysis_type:
+          type: string
+          description: Resolution type
+          enum:
+          - AUTOMATIC
+          - MANUAL
+        evaluation_id:
+          type: string
+          description: antifraud provider identifier
+        id:
+          type: string
+          description: Client transaction identifier
+        score:
+          type: integer
+          description: Evaluation score
+        status:
+          type: string
+          description: Transaction status
+          enum:
+          - approved
+          - denied
+          - received
+        strategies:
+          type: array
+          items:
+            $ref: '#/components/schemas/StrategyResponse'
+    CarDelivery:
+      title: CarDelivery
+      type: object
+      required:
+      - date
+      - address
+      properties:
+        address:
+          description: Delivery address
+          $ref: '#/components/schemas/Address'
+        date:
+          type: string
+          description: 'Delivery date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
+    BaseAirportData:
+      title: BaseAirportData
+      type: object
+      properties:
+        airport_code:
+          type: string
+        date:
+          type: string
+          example: '2021-10-23T10:00:00.307062Z'
+        timezone:
+          type: number
+          format: double
+    FinanceAccount:
+      type: object
+      title: Account
+      properties:
+        ispb:
+          type: string
+          description: Brazilian Payment System Identifier (eight-number length).
+          example: '12345678'
+        agency:
+          type: string
+          description: Agency of the account.
+          example: '1500'
+        code:
+          type: string
+          description: Payer account number.
+          example: '123456789'
+        type:
+          type: string
+          description: Payer account type.
+          example: CC
+    DebitCard:
+      title: DebitCard
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/BaseCardPayment'
+    Car:
+      title: car
+      type: object
+      properties:
+        brand:
+          type: string
+          description: Car brand
+          example: Tesla
+        identifier:
+          $ref: '#/components/schemas/CarIdentifier'
+        license_plate:
+          type: string
+          description: license plate
+          example: AAM 2312
+        model:
+          type: string
+          description: Car model
+          example: '3'
+        owner:
+          $ref: '#/components/schemas/Owner'
+        year:
+          type: string
+          description: Car year
+          example: '2018'
+    CarPenaltyFee:
+      title: CarPenaltyFee
+      properties:
+        car:
+          $ref: '#/components/schemas/Car'
+        fines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fine'
+      allOf:
+      - $ref: '#/components/schemas/Item'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - CarPenaltyFee
+    Location:
+      title: location
+      required:
+      - latitude
+      - longitude
+      type: object
+      properties:
+        latitude:
+          type: number
+          description: Device latitude
+          format: double
+          example: -34.56532789616039
+        longitude:
+          type: number
+          description: Device longitude
+          format: double
+          example: -58.48945822129388
+    CellphoneInsurance:
+      type: object
+      title: CellphoneInsurance
+      properties:
+        client:
+          $ref: '#/components/schemas/Client'
+        device:
+          $ref: '#/components/schemas/Device'
+        insurance:
+          $ref: '#/components/schemas/Insurance'
+      allOf:
+      - $ref: '#/components/schemas/Item'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - CellphoneInsurance
+    Recipient:
+      title: Recipient
+      type: object
+      properties:
+        bankName:
+          type: string
+          description: Bank name
+        emv:
+          type: string
+          description: EMV
+        account:
+          $ref: '#/components/schemas/FinanceAccount'
+      allOf:
+      - $ref: '#/components/schemas/Person'
+    DeviceData:
+      title: device
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/BaseDeviceData'
+    Delivery:
+      title: delivery
+      type: object
+      properties:
+        by:
+          type: string
+          description: Shipping delivery company
+          example: DHL
+        date:
+          type: string
+          description: 'Shipping delivery date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
+        type:
+          type: string
+          description: Shipping delivery type
+          example: EXPRESS
+          enum:
+          - EXPRESS
+          - NORMAL
+    Financing:
+      title: Financing
+      type: object
+      properties:
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+      allOf:
+      - $ref: '#/components/schemas/Item'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - Financing
+    Address:
+      title: address
+      required:
+      - city
+      - country_code
+      - state
+      type: object
+      properties:
+        city:
+          type: string
+          description: Address city. It must be either three-letters city code or city name
+          example: Buenos Aires
+        complement:
+          type: string
+          description: Address complement
+          example: Complemento
+        country_code:
+          type: string
+          description: Address country. Two-letter code as described in the ISO 3166 international standard
+          example: AR
+        neighborhood:
+          type: string
+          description: Address neighborhood
+          example: Chacarita
+        number:
+          type: string
+          description: Address number
+          example: '2459'
+        state:
+          type: string
+          description: Address state. It must be either state code or state name
+          example: Buenos Aires
+        street:
+          type: string
+          description: Address street
+          example: Corrientes
+        zip_code:
+          type: string
+          description: Address zip code
+          example: '1425'
+        full_address:
+          type: string
+          description: Full address
+          example: Corrientes 747, San Nicolas
+    CarRental:
+      title: CarRental
+      type: object
+      properties:
+        car_category:
+          type: string
+        car_description:
+          type: string
+        company_name:
+          type: string
+        drivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        drop_off:
+          $ref: '#/components/schemas/DropOff'
+        pick_up:
+          $ref: '#/components/schemas/PickUp'
+      allOf:
+      - $ref: '#/components/schemas/Item'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - CarRental
+    Fine:
+      title: fine
+      type: object
+      properties:
+        car_owning_tax_type:
+          type: string
+          enum:
+          - IPVA
+          - SUCIVE
+        car_owning_tax_amount:
+          $ref: '#/components/schemas/CarOwningTaxAmount'
+          description: Carowning Tax amount
+        fine_issued_year:
+          type: integer
+          description: Fine issued year
+          example: 2020
+        insurance_amount:
+          $ref: '#/components/schemas/InsuranceAmount'
+          description: Insurance amount
+        licesing_amount:
+          $ref: '#/components/schemas/LicesingAmount'
+          description: Licesing amount
+        penalty_amount:
+          $ref: '#/components/schemas/PenaltyAmount'
+          description: Penalty amount
+    ArrivalAirport:
+      title: arrival
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/BaseAirportData'
+    PaymentAmount:
+      title: amount
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Amount'
+    DepartureAirport:
+      title: departure
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/BaseAirportData'
+    PickUp:
+      title: pick_up
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/CarDelivery'
+    Service:
+      title: Service
+      type: object
+      required:
+      - start_date
+      - end_date
+      - number_of_passengers
+      properties:
+        destination:
+          type: string
+          description: Service destination
+          example: Villa Serrana
+        end_date:
+          type: string
+          description: 'Service end date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
+        id:
+          type: string
+          description: Service id
+          example: idddd-eeee
+        name:
+          type: string
+          description: Service name
+          example: Cabalgata Villa Serrana
+        number_of_passengers:
+          type: integer
+          example: 10
+          description: Number of passengers
+        origin:
+          type: string
+          description: Service origin
+          example: Villa Serrana
+        start_date:
+          type: string
+          description: 'Service start date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
+        sub_type:
+          type: string
+          description: Service subType
+          example: Activity
     TravelInsurance:
       title: TravelInsurance
       type: object
@@ -1431,50 +1217,233 @@ components:
             type: string
             enum:
             - TravelInsurance
-    FinanceAccount:
-      type: object
-      title: Account
-      properties:
-        ispb:
-          type: string
-          description: Brazilian Payment System Identifier (eight-number length).
-          example: '12345678'
-        agency:
-          type: string
-          description: Agency of the account.
-          example: '1500'
-        code:
-          type: string
-          description: Payer account number.
-          example: '123456789'
-        type:
-          type: string
-          description: Payer account type.
-          example: CC
-    Delivery:
-      title: delivery
+    Device:
+      title: Device
       type: object
       properties:
-        by:
+        brand:
           type: string
-          description: Shipping delivery company
-          example: DHL
-        date:
+          description: Device brand
+          example: Motorola
+        imei:
           type: string
-          description: 'Shipping delivery date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
-        type:
+          description: International Mobile Station Equipment Identity
+          example: '490154203237518'
+        model:
           type: string
-          description: Shipping delivery type
-          example: EXPRESS
+          description: Device model
+          example: G9 plus
+    ClientInfo:
+      title: Client Information
+      type: object
+      properties:
+        creation_date:
+          type: string
+          format: date-time
+          description: Client creation date
+          example: '1978-04-29T17:10:35.387Z'
+        classification:
+          type: string
+          description: Client classification level
+          example: GOLD
+        customer_order:
+          $ref: '#/components/schemas/Amount'
+          description: Customer order amount
+        days_since_first_order:
+          type: integer
+          description: Days since first order
+          example: 45
+        days_since_last_order:
+          type: integer
+          description: Days since last order
+          example: 10
+        cancelled_orders:
+          type: integer
+          description: Number of cancelled orders
+          example: 3
+        average_order:
+          $ref: '#/components/schemas/Amount'
+          description: Average order value in six months
+        cash_orders:
+          type: integer
+          description: Number of cash paid orders
+          example: 3
+        card_orders:
+          type: integer
+          description: Number of card paid orders
+          example: 6
+        bank_orders:
+          type: integer
+          description: Number of bank check paid orders
+          example: 4
+        debit_orders:
+          type: integer
+          description: Number of debit paid orders
+          example: 2
+        super_segmentation:
+          type: string
+          description: Super segmentation category
+          example: potential
+        purchase_power:
+          type: string
+          description: Purchase power classification
+          example: pph
+        year_first_purchase:
+          type: integer
+          description: Year of first purchase
+          example: 2024
+        purchases_30_days:
+          type: integer
+          description: Number of purchases in last 30 days
+          example: 12
+        purchases_60_days:
+          type: integer
+          description: Number of purchases in last 60 days
+          example: 22
+        purchases_lifetime:
+          type: integer
+          description: Total lifetime purchases
+          example: 32
+    Amount:
+      title: total_amount
+      type: object
+      required:
+      - currency_code
+      - value
+      properties:
+        currency_code:
+          type: string
+          description: Three-letter currency code as described in the ISO 4217 international standard
+          example: USD
+        value:
+          type: number
+          description: Amount value
+          format: bigdecimal
+          example: 8008.99
+    Cash:
+      title: Cash
+      properties:
+        details:
+          type: array
+          description: Cash networks
+          items:
+            type: string
+        method:
+          type: string
+          description: Payment method used for the buyer
           enum:
-          - EXPRESS
-          - NORMAL
-    Lodger:
-      title: lodger
+          - Cash
+          - CreditCard
+          - DebitCard
+          - Pix
+          - Wallet
+          - GiftCard
+          - Points
+          - Promissory
+        payer:
+          $ref: '#/components/schemas/Payer'
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          description: Payment amount
+      allOf:
+      - $ref: '#/components/schemas/Payment'
+    CardPaymentDetail:
+      title: details
+      required:
+      - last_digits
+      type: object
+      properties:
+        bin:
+          type: string
+          description: Abbreviation for 'Bank Indetification Number'. It's a code that identifies the institution responsable for issuing the credit card. Required for Payment and Wire Transfer
+          example: '424242'
+        brand_name:
+          type: string
+          description: Brand card
+          example: Visa
+        expiration_month:
+          type: string
+          description: Card expiration month
+          example: '11'
+        expiration_year:
+          type: string
+          description: Card expiration year
+          example: '2022'
+        last_digits:
+          type: string
+          description: Credit card identifier number last digits
+          example: '7198'
+        eci:
+          type: string
+          description: Electronic Commerce Indicator. It's the code to notify about the authentication of the cardholder
+          example: '478'
+        pos_entry_mode:
+          type: string
+          description: POS (point of sale) system method used to enter the card data
+          example: MANUAL
+          enum:
+          - MANUAL
+          - MAGNETIC_STRIPE
+          - BARCODE
+          - CHIP
+    Flight:
+      title: Flight
+      type: object
+      required:
+      - id
+      - price
+      - quantity
+      - itinerary_type
+      - routes
+      - passengers
+      properties:
+        discount_amount:
+          $ref: '#/components/schemas/DiscountAmount'
+          description: Item price discount
+        id:
+          type: string
+          description: Item id
+          example: '13238487'
+        itinerary_type:
+          type: string
+          description: Itinerary type
+          enum:
+          - MULTIDESTINATION
+          - ONEWAY
+          - ROUND_TRIP
+        passengers:
+          uniqueItems: true
+          description: Passengers list
+          type: array
+          items:
+            $ref: '#/components/schemas/Passenger'
+        price:
+          $ref: '#/components/schemas/Price'
+          description: Item price
+        quantity:
+          type: integer
+          description: Item quantity
+          format: int32
+          example: 5
+        route_type:
+          type: string
+          description: Route type
+          enum:
+          - DOMESTIC
+          - INTERNATIONAL
+        routes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Route'
+        seller_id:
+          type: string
+          description: Item seller
+          example: Some Seller
+    LicesingAmount:
+      title: licesing_amount
       type: object
       allOf:
-      - $ref: '#/components/schemas/Person'
+      - $ref: '#/components/schemas/Amount'
     EcommerceAntiFraud:
       title: Ecommerce AntiFraud Data
       required:
@@ -1569,49 +1538,33 @@ components:
         strategies_data:
           $ref: '#/components/schemas/StrategiesData'
           description: Optional data for fraud prevention strategies
-    PaymentAmount:
-      title: amount
+    PrePaidCard:
+      title: PrePaidCard
       type: object
       allOf:
-      - $ref: '#/components/schemas/Amount'
-    Asynchronous:
-      title: Asynchronous
+      - $ref: '#/components/schemas/BaseCardPayment'
+    PersonBuyer:
+      title: Person
       type: object
-      properties:
-        payment_data:
-          $ref: '#/components/schemas/AsyncPaymentDetail'
-        amount:
-          $ref: '#/components/schemas/PaymentAmount'
-          description: Payment amount. Do not include when payment_data method is CreditCard or DebitCard.
-      allOf:
-      - $ref: '#/components/schemas/Payment'
-    Profile:
-      title: Profile
-      type: object
-      properties:
-        category:
-          type: string
-          description: Customer level for example Free, Basic, Pro, Gold, etc
-          example: Platinum
-    Passenger:
-      title: passenger
       required:
-      - first_name
-      - last_name
-      type: object
+      - email
       properties:
         id:
           type: string
-          description: Person id
+          description: The unique identifier of the customer in the merchant system
           example: c1245228
         first_name:
           type: string
-          description: First name
+          description: First name. Required if full_name is blank.
           example: Alvaro
         last_name:
           type: string
-          description: Last name
+          description: Last name. Required if full_name is blank.
           example: Garrincha
+        full_name:
+          type: string
+          description: Full name. Is required if first_name and last_name are blank
+          example: Alvaro Garrincha
         document:
           $ref: '#/components/schemas/Document'
         gender:
@@ -1634,79 +1587,61 @@ components:
         phone:
           description: phone
           $ref: '#/components/schemas/Phone'
-    Fine:
-      title: fine
-      type: object
-      properties:
-        car_owning_tax_type:
-          type: string
-          enum:
-          - IPVA
-          - SUCIVE
-        car_owning_tax_amount:
-          $ref: '#/components/schemas/CarOwningTaxAmount'
-          description: Carowning Tax amount
-        fine_issued_year:
-          type: integer
-          description: Fine issued year
-          example: 2020
-        insurance_amount:
-          $ref: '#/components/schemas/InsuranceAmount'
-          description: Insurance amount
-        licesing_amount:
-          $ref: '#/components/schemas/LicesingAmount'
-          description: Licesing amount
-        penalty_amount:
-          $ref: '#/components/schemas/PenaltyAmount'
-          description: Penalty amount
-    Item:
-      title: Item
+        profile:
+          description: profile
+          $ref: '#/components/schemas/Profile'
+    Document:
+      title: document
       required:
-      - category
-      - id
-      - name
-      - price
+      - number
       - type
       type: object
       properties:
-        category:
-          $ref: '#/components/schemas/Category'
-        discount_amount:
-          $ref: '#/components/schemas/DiscountAmount'
-          description: Item price discount
-        id:
+        nationality:
           type: string
-          description: Item id
-          example: '13238487'
-        name:
+          description: Person nationality. Two-letter country code as described in the ISO 3166 international standard
+          example: UY
+        number:
           type: string
-          description: item name
-          example: Some name
-        price:
-          $ref: '#/components/schemas/Price'
-          description: Item price
-        quantity:
-          type: integer
-          description: 'Item quantity. Not required: default value is 1'
-          format: int32
-          example: 5
-        seller_id:
-          type: string
-          description: Item seller
-          example: Some Seller
-        service_date:
-          type: string
-          description: Date which the service will take place
-          example: '2021-10-23T10:00:00.307062Z'
+          description: Person document number
+          example: '35645888'
         type:
           type: string
-          description: Item type
-          example: Generic
-    PenaltyAmount:
-      title: penalty_amount
-      type: object
+          description: Person document type
+          example: DNI
+    Promissory:
+      title: Promissory
+      properties:
+        installments:
+          type: integer
+          description: Number of installments
+          format: int32
+          example: 12
+        provider:
+          type: string
+          description: Promissory provider name
+          example: Prestamos SA.
+        method:
+          type: string
+          description: Payment method used for the buyer
+          enum:
+          - Cash
+          - CreditCard
+          - DebitCard
+          - Pix
+          - Wallet
+          - GiftCard
+          - Points
+          - Promissory
+        payer:
+          $ref: '#/components/schemas/Payer'
+        amount:
+          type: number
+          description: Payment amount. Two decimal places
+          format: bigdecimal
+          example: 3370
       allOf:
-      - $ref: '#/components/schemas/Amount'
+      - $ref: '#/components/schemas/Payment'
     BaseDeviceData:
       title: device
       type: object
@@ -1729,25 +1664,32 @@ components:
           type: string
           description: Value generated by the javascript/sdk snippet of our device fingerprint solution
           example: 5b8c20c3-45de-41bf-b243-87ad5d21bc3b
-    DepartureAirport:
-      title: departure
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseAirportData'
-    Category:
-      title: category
-      required:
-      - name
+    CreditCard:
+      title: CreditCard
       type: object
       properties:
-        id:
-          type: string
-          description: Item category id
-          example: '111'
-        name:
-          type: string
-          description: Item category name
-          example: Some category name
+        installments:
+          type: integer
+          description: Number of installments.
+          format: int32
+          example: 12
+      allOf:
+      - $ref: '#/components/schemas/BaseCardPayment'
+    Lodger:
+      title: lodger
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Person'
+    DestinationService:
+      title: DestinationService
+      type: object
+      required:
+      - service
+      properties:
+        service:
+          $ref: '#/components/schemas/Service'
+      allOf:
+      - $ref: '#/components/schemas/BaseDestinationService'
     PIX:
       title: Pix
       required:
@@ -1775,33 +1717,9 @@ components:
           type: string
           description: Pix payment key
           example: sbx@paymentKey
-    UnAuthorizedResponse:
-      title: UnAuthorized Response
+    Generic:
+      title: Generic
       type: object
-      properties:
-        code:
-          type: integer
-          description: Status code
-          example: 401
-        message:
-          type: string
-          description: Error message
-          example: Validation errors
-    DebitCard:
-      title: DebitCard
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseCardPayment'
-    CellphoneInsurance:
-      type: object
-      title: CellphoneInsurance
-      properties:
-        client:
-          $ref: '#/components/schemas/Client'
-        device:
-          $ref: '#/components/schemas/Device'
-        insurance:
-          $ref: '#/components/schemas/Insurance'
       allOf:
       - $ref: '#/components/schemas/Item'
       - type: object
@@ -1809,58 +1727,104 @@ components:
           type:
             type: string
             enum:
-            - CellphoneInsurance
-    Amount:
-      title: total_amount
+            - Generic
+    DiscountAmount:
+      title: discount_amount
       type: object
-      required:
-      - currency_code
-      - value
+      allOf:
+      - $ref: '#/components/schemas/Amount'
+    Payer:
+      title: payer
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Person'
+    Buyer:
+      title: buyer
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/PersonBuyer'
+    Insurance:
+      title: Insurance
+      type: object
       properties:
-        currency_code:
+        expiration_date:
           type: string
-          description: Three-letter currency code as described in the ISO 4217 international standard
-          example: USD
-        value:
+          format: 'date-time. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
+        installment:
           type: number
-          description: Amount value
           format: bigdecimal
-          example: 8008.99
-    StrategyResponse:
-      title: StrategyResponse
-      type: object
-      properties:
+        subscription_date:
+          type: string
+          format: 'date-time. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
         type:
           type: string
-          description: Strategy type, see [Strategies](https://api-koin.readme.io/reference/strategies)
-          enum:
-          - VerificationCode
-          - DocumentScan
-          - ManualVerification
-          - CollectAuthRecovery
-        link:
+    Phone:
+      title: phone
+      required:
+      - number
+      type: object
+      properties:
+        area_code:
           type: string
-          description: Url for access the strategy page
-        channels:
+          description: Phone area code. If the country code is also available, include the full combination (country code + area code) for better context, though the country code is optional.
+          example: '11'
+        number:
           type: string
-          description: Channels for the strategy
-          enum:
-          - Mail
-          - Phone
+          description: Phone number
+          example: '45669874'
+        type:
+          type: string
+          description: Phone type
+          example: Mobile
+    TransferDS:
+      title: Transfer
+      type: object
+      properties:
         provider:
+          $ref: '#/components/schemas/Provider'
+        modality:
           type: string
-          description: Provider for the strategy in case of CollectAuthRecovery strategy
+          description: Transfer modality
+        description:
+          type: string
+          description: Description of the product
+        passengers_resume:
+          $ref: '#/components/schemas/PassengersResume'
+      allOf:
+      - $ref: '#/components/schemas/DestinationService'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - Transfer
+    StandardApiPreEvalResponse:
+      title: StandardApiResponse
+      type: object
+      properties:
+        analysis_type:
+          type: string
+          description: Resolution type
           enum:
-          - 3DS2
-        mode:
+          - AUTOMATIC
+          - MANUAL
+        evaluation_id:
           type: string
-          description: Mode for the strategy in case of CollectAuthRecovery strategy
+          description: antifraud provider identifier
+        id:
+          type: string
+          description: Client transaction identifier
+        score:
+          type: integer
+          description: Evaluation score
+        status:
+          type: string
+          description: Transaction status
           enum:
-          - FRICTIONLESS
-          - CHALLENGE
-        code:
-          type: string
-          description: Code in case of verification code strategy
+          - approved
+          - denied
     Ticket:
       title: Ticket
       type: object
@@ -1898,151 +1862,153 @@ components:
             type: string
             enum:
             - Ticket
-    DropOff:
-      title: drop_off
+    Profile:
+      title: Profile
       type: object
-      allOf:
-      - $ref: '#/components/schemas/CarDelivery'
-    Promissory:
-      title: Promissory
       properties:
-        installments:
-          type: integer
-          description: Number of installments
-          format: int32
-          example: 12
-        provider:
+        category:
           type: string
-          description: Promissory provider name
-          example: Prestamos SA.
+          description: Customer level for example Free, Basic, Pro, Gold, etc
+          example: Platinum
+    Tour:
+      title: Tour
+      type: object
+      properties:
+        provider:
+          $ref: '#/components/schemas/Provider'
+        modality:
+          type: string
+          description: Tour modality
+        description:
+          type: string
+          description: Description of the product
+        passengers_resume:
+          $ref: '#/components/schemas/PassengersResume'
+      allOf:
+      - $ref: '#/components/schemas/DestinationService'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - Tour
+    Lodging:
+      title: Lodging
+      type: object
+      required:
+      - checkin_date
+      - checkout_date
+      - nights
+      - address
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        checkin_date:
+          type: string
+          description: 'Checkin date. Date format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-10-02T14:10:44'
+        checkout_date:
+          type: string
+          description: 'Checkout date. Date format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: 2021-11-02T14:10
+        guests:
+          uniqueItems: true
+          description: guests
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        lodger:
+          description: lodger details
+          $ref: '#/components/schemas/Lodger'
+        nights:
+          type: integer
+          description: Number of nights
+          example: 8
+        refundable:
+          type: boolean
+          description: is refundable
+          example: true
+      allOf:
+      - $ref: '#/components/schemas/Item'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - Lodging
+    Wallet:
+      title: Wallet
+      required:
+      - method
+      - amount
+      - provider
+      type: object
+      properties:
         method:
           type: string
           description: Payment method used for the buyer
           enum:
-          - Cash
-          - CreditCard
-          - DebitCard
-          - Pix
           - Wallet
-          - GiftCard
-          - Points
-          - Promissory
         payer:
           $ref: '#/components/schemas/Payer'
         amount:
-          type: number
-          description: Payment amount. Two decimal places
-          format: bigdecimal
-          example: 3370
-      allOf:
-      - $ref: '#/components/schemas/Payment'
-    CardPaymentDetail:
-      title: details
-      required:
-      - last_digits
-      type: object
-      properties:
-        bin:
+          $ref: '#/components/schemas/PaymentAmount'
+          description: Payment amount
+        provider:
           type: string
-          description: Abbreviation for 'Bank Indetification Number'. It's a code that identifies the institution responsable for issuing the credit card. Required for Payment and Wire Transfer
-          example: '424242'
-        brand_name:
-          type: string
-          description: Brand card
-          example: Visa
-        expiration_month:
-          type: string
-          description: Card expiration month
-          example: '11'
-        expiration_year:
-          type: string
-          description: Card expiration year
-          example: '2022'
-        last_digits:
-          type: string
-          description: Credit card identifier number last digits
-          example: '7198'
-        eci:
-          type: string
-          description: Electronic Commerce Indicator. It's the code to notify about the authentication of the cardholder
-          example: '478'
-        pos_entry_mode:
-          type: string
-          description: POS (point of sale) system method used to enter the card data
-          example: MANUAL
+          description: Wallet provider
           enum:
-          - MANUAL
-          - MAGNETIC_STRIPE
-          - BARCODE
-          - CHIP
-    Device:
-      title: Device
-      type: object
-      properties:
-        brand:
-          type: string
-          description: Device brand
-          example: Motorola
-        imei:
-          type: string
-          description: International Mobile Station Equipment Identity
-          example: '490154203237518'
-        model:
-          type: string
-          description: Device model
-          example: G9 plus
-    BaseAirportData:
-      title: BaseAirportData
-      type: object
-      properties:
-        airport_code:
-          type: string
-        date:
-          type: string
-          example: '2021-10-23T10:00:00.307062Z'
-        timezone:
-          type: number
-          format: double
-    Service:
-      title: Service
-      type: object
+          - APPLE_PAY
+          - GOOGLE_PAY
+          - NUPAY
+          - IFOOD_PAY
+          example: APPLE_PAY
+    Category:
+      title: category
       required:
-      - start_date
-      - end_date
-      - number_of_passengers
+      - name
+      type: object
       properties:
-        destination:
-          type: string
-          description: Service destination
-          example: Villa Serrana
-        end_date:
-          type: string
-          description: 'Service end date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
         id:
           type: string
-          description: Service id
-          example: idddd-eeee
+          description: Item category id
+          example: '111'
         name:
           type: string
-          description: Service name
-          example: Cabalgata Villa Serrana
-        number_of_passengers:
-          type: integer
-          example: 10
-          description: Number of passengers
-        origin:
+          description: Item category name
+          example: Some category name
+    Course:
+      title: course
+      type: object
+      properties:
+        category:
           type: string
-          description: Service origin
-          example: Villa Serrana
+        end_date:
+          type: string
+          description: 'Course end date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: '2021-02-23T14:10:44.307062Z'
+        link:
+          type: string
+          description: Course link
+          example: https://link
+        monthly_fee:
+          type: number
+          description: Course monthly fee
+          example: '245.12'
+        name:
+          type: string
+        presential:
+          type: boolean
+        scholarship_percentage:
+          type: integer
+          description: Course scholarship percentage
+          example: 20
         start_date:
           type: string
-          description: 'Service start date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
-        sub_type:
+          description: 'Course start date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
+          example: 2021-012-23T14:10:44.307062Z
+        subcategory:
           type: string
-          description: Service subType
-          example: Activity
     StrategiesData:
       title: Strategies Data
       type: object
@@ -2072,188 +2038,82 @@ components:
           type: string
           description: Merchant descriptor
           example: DAGS_TEST_3DS
-    PickUp:
-      title: pick_up
+    Client:
+      title: client
       type: object
-      allOf:
-      - $ref: '#/components/schemas/CarDelivery'
-    Recipient:
-      title: Recipient
-      type: object
-      properties:
-        bankName:
-          type: string
-          description: Bank name
-        emv:
-          type: string
-          description: EMV
-        account:
-          $ref: '#/components/schemas/FinanceAccount'
       allOf:
       - $ref: '#/components/schemas/Person'
-    Tour:
-      title: Tour
+    Payment:
+      title: Payment
+      required:
+      - method
+      - amount
       type: object
       properties:
+        id:
+          type: string
+          description: Payment unique identifier
+          example: 02BF653185664752AA5F8B7415BD5043
+        method:
+          type: string
+          description: Payment method used for the buyer
+          enum:
+          - Cash
+          - CreditCard
+          - DebitCard
+          - Pix
+          - Wallet
+          - GiftCard
+          - Points
+          - Promissory
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          description: Payment amount
+    Price:
+      title: price
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Amount'
+    CarOwningTaxAmount:
+      title: car_owning_tax_amount
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Amount'
+    StrategyResponse:
+      title: StrategyResponse
+      type: object
+      properties:
+        type:
+          type: string
+          description: Strategy type, see [Strategies](https://api-koin.readme.io/reference/strategies)
+          enum:
+          - VerificationCode
+          - DocumentScan
+          - ManualVerification
+          - CollectAuthRecovery
+        link:
+          type: string
+          description: Url for access the strategy page
+        channels:
+          type: string
+          description: Channels for the strategy
+          enum:
+          - Mail
+          - Phone
         provider:
-          $ref: '#/components/schemas/Provider'
-        modality:
           type: string
-          description: Tour modality
-        description:
+          description: Provider for the strategy in case of CollectAuthRecovery strategy
+          enum:
+          - 3DS2
+        mode:
           type: string
-          description: Description of the product
-        passengers_resume:
-          $ref: '#/components/schemas/PassengersResume'
-      allOf:
-      - $ref: '#/components/schemas/DestinationService'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - Tour
-    DestinationService:
-      title: DestinationService
-      type: object
-      required:
-      - service
-      properties:
-        service:
-          $ref: '#/components/schemas/Service'
-      allOf:
-      - $ref: '#/components/schemas/BaseDestinationService'
-    TicketService:
-      title: TicketService
-      type: object
-      required:
-      - address
-      - name
-      - sub_type
-      properties:
-        venue:
+          description: Mode for the strategy in case of CollectAuthRecovery strategy
+          enum:
+          - FRICTIONLESS
+          - CHALLENGE
+        code:
           type: string
-          description: Venue or place where the event takes place
-          example: Madison Square Garden
-        address:
-          $ref: '#/components/schemas/Address'
-        cluster:
-          type: string
-          description: Cluster of the event
-          example: Concert
-        segment:
-          type: string
-          description: Segment of the event
-          example: Festival
-        topic:
-          type: string
-          description: Topic of the event
-          example: Music
-        sub_topic:
-          type: string
-          description: Sub topic of the event
-          example: Rock
-        format:
-          type: string
-          description: Format of the event
-          example: Live
-        public_type:
-          type: string
-          description: Public type of the event
-          example: Public
-        season:
-          type: string
-          description: Season of the event
-          example: Summer
-        split:
-          type: boolean
-          description: Split of the event
-          example: true
-        visibility:
-          type: string
-          description: Visibility of the event
-          example: Public
-        quantity_ticket_sale:
-          type: integer
-          description: Quantity of ticket sale
-          example: 10
-        quantity_event_house:
-          type: integer
-          description: Quantity of event house
-          example: 100
-      allOf:
-      - $ref: '#/components/schemas/Service'
-    ClientInfo:
-      title: Client Information
-      type: object
-      properties:
-        creation_date:
-          type: string
-          format: date-time
-          description: Client creation date
-          example: '1978-04-29T17:10:35.387Z'
-        classification:
-          type: string
-          description: Client classification level
-          example: GOLD
-        customer_order:
-          $ref: '#/components/schemas/Amount'
-          description: Customer order amount
-        days_since_first_order:
-          type: integer
-          description: Days since first order
-          example: 45
-        days_since_last_order:
-          type: integer
-          description: Days since last order
-          example: 10
-        cancelled_orders:
-          type: integer
-          description: Number of cancelled orders
-          example: 3
-        average_order:
-          $ref: '#/components/schemas/Amount'
-          description: Average order value in six months
-        cash_orders:
-          type: integer
-          description: Number of cash paid orders
-          example: 3
-        card_orders:
-          type: integer
-          description: Number of card paid orders
-          example: 6
-        bank_orders:
-          type: integer
-          description: Number of bank check paid orders
-          example: 4
-        debit_orders:
-          type: integer
-          description: Number of debit paid orders
-          example: 2
-        super_segmentation:
-          type: string
-          description: Super segmentation category
-          example: potential
-        purchase_power:
-          type: string
-          description: Purchase power classification
-          example: pph
-        year_first_purchase:
-          type: integer
-          description: Year of first purchase
-          example: 2024
-        purchases_30_days:
-          type: integer
-          description: Number of purchases in last 30 days
-          example: 12
-        purchases_60_days:
-          type: integer
-          description: Number of purchases in last 60 days
-          example: 22
-        purchases_lifetime:
-          type: integer
-          description: Total lifetime purchases
-          example: 32
+          description: Code in case of verification code strategy
     AsyncPaymentDetail:
       title: Asynchronous payment
       type: object
@@ -2331,30 +2191,101 @@ components:
             example: 286f701a5937a83c69bcfd58a9fdc87e30f20ee79101020f5ef824fa59d1e5dc5da2f0cc14fecbc7d27e8360c1a6309f5ccd99eaee14463d6dd59a46c0650c6f41ee2f0cf926a7a25388e5fcfab3fef4e1cd310bf543a1adcdb58d2207d8921608c0e2
       - $ref: '#/components/schemas/GiftCard'
       - $ref: '#/components/schemas/Points'
-    PrePaidCard:
-      title: PrePaidCard
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseCardPayment'
-    CarOwningTaxAmount:
-      title: car_owning_tax_amount
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Amount'
-    CarDelivery:
-      title: CarDelivery
+    Transfer:
+      title: Transfer
       type: object
       required:
-      - date
-      - address
+      - accountNumber
+      - bankName
       properties:
-        address:
-          description: Delivery address
-          $ref: '#/components/schemas/Address'
-        date:
+        accountNumber:
           type: string
-          description: 'Delivery date. Format "yyyy-MM-dd''T''HH:mm:ss.SSS''Z''" as described in the ISO 8601 '
-          example: '2021-02-23T14:10:44.307062Z'
+          description: Transfer account number
+          example: '235687943672'
+        bankName:
+          type: string
+          description: Transfer bank name
+          example: ITAU
+        payer:
+          $ref: '#/components/schemas/Payer'
+      allOf:
+      - $ref: '#/components/schemas/Payment'
+    TicketService:
+      title: TicketService
+      type: object
+      required:
+      - address
+      - name
+      - sub_type
+      properties:
+        venue:
+          type: string
+          description: Venue or place where the event takes place
+          example: Madison Square Garden
+        address:
+          $ref: '#/components/schemas/Address'
+        cluster:
+          type: string
+          description: Cluster of the event
+          example: Concert
+        segment:
+          type: string
+          description: Segment of the event
+          example: Festival
+        topic:
+          type: string
+          description: Topic of the event
+          example: Music
+        sub_topic:
+          type: string
+          description: Sub topic of the event
+          example: Rock
+        format:
+          type: string
+          description: Format of the event
+          example: Live
+        public_type:
+          type: string
+          description: Public type of the event
+          example: Public
+        season:
+          type: string
+          description: Season of the event
+          example: Summer
+        split:
+          type: boolean
+          description: Split of the event
+          example: true
+        visibility:
+          type: string
+          description: Visibility of the event
+          example: Public
+        quantity_ticket_sale:
+          type: integer
+          description: Quantity of ticket sale
+          example: 10
+        quantity_event_house:
+          type: integer
+          description: Quantity of event house
+          example: 100
+      allOf:
+      - $ref: '#/components/schemas/Service'
+    TicketDestinationService:
+      title: TicketDestinationService
+      type: object
+      required:
+      - service
+      properties:
+        service:
+          $ref: '#/components/schemas/TicketService'
+          description: Event or attraction definition related to the ticket
+      allOf:
+      - $ref: '#/components/schemas/BaseDestinationService'
+    Owner:
+      title: owner
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Person'
     Segment:
       title: Segment
       type: object
@@ -2380,30 +2311,99 @@ components:
           description: Segment order
           type: integer
           example: 1
-    Wallet:
-      title: Wallet
+    Shipping:
+      title: shipping
       required:
-      - method
-      - amount
-      - provider
+      - price
+      - address
       type: object
       properties:
-        method:
+        address:
+          $ref: '#/components/schemas/Address'
+        delivery:
+          $ref: '#/components/schemas/Delivery'
+        price:
+          $ref: '#/components/schemas/Price'
+    PenaltyAmount:
+      title: penalty_amount
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Amount'
+    Education:
+      title: Education
+      type: object
+      properties:
+        course:
+          description: Course details
+          $ref: '#/components/schemas/Course'
+        students:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Student'
+      allOf:
+      - $ref: '#/components/schemas/Item'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - Education
+    TransactionData:
+      title: transaction
+      required:
+      - reference_id
+      - country_code
+      - total_amount
+      type: object
+      properties:
+        reference_id:
           type: string
-          description: Payment method used for the buyer
-          enum:
-          - Wallet
-        payer:
-          $ref: '#/components/schemas/Payer'
-        amount:
-          $ref: '#/components/schemas/PaymentAmount'
-          description: Payment amount
-        provider:
+          description: Client transaction identifier
+          example: FGCCCEA53JYSHXX
+        business_id:
           type: string
-          description: Wallet provider
+          description: Unique identifier for the store where the transaction takes place.
+          example: 6LVHR8W0V7BYEQX
+        sequence:
+          type: string
+          description: Sequence number to enumerate retries
+          example: '1'
+        country_code:
+          type: string
+          description: Use the country code of the store site's location where the transaction takes place. This ensures alignment with the store's geographical context. Two-letter code as described in the ISO 3166 international standard
+          example: AR
+        listener_mode:
+          type: boolean
+          description: Indicates if the transaction is in listener mode. When `true`, the transaction is processed for data collection and model training purposes only, and the evaluation result is always ACCEPT.
+          example: true
+        total_amount:
+          $ref: '#/components/schemas/Amount'
+          description: Represents transaction total amount on local currency
+        redirected:
+          type: boolean
+          description: Represents if the payment had a redirection
+        asynchronous:
+          title: asynchronous
+          type: boolean
+          description: Indicates if corresponds to the second asynchronous evaluation
+        channel:
+          type: string
+          description: Represents sales channel
+        business_unit:
+          type: string
+          description: Represents business unit or business model
+        agency_id:
+          type: string
+          description: Represents the identifier of the agency for sales of external sellers
+        mode:
+          type: string
+          description: Represents the sale mode
           enum:
-          - APPLE_PAY
-          - GOOGLE_PAY
-          - NUPAY
-          - IFOOD_PAY
-          example: APPLE_PAY
+          - OFFLINE
+          - ONLINE
+    InsuranceAmount:
+      title: insurance_amount
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Amount'
