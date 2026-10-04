@@ -360,118 +360,23 @@ paths:
         samples-enabled: false
 components:
   schemas:
-    ChangeProfileAdd:
-      title: ADD
-      oneOf:
-      - $ref: '#/components/schemas/ChangeProfileAddEmail'
-      - $ref: '#/components/schemas/ChangeProfileAddPhone'
-      - $ref: '#/components/schemas/ChangeProfileAddAccount'
-      - $ref: '#/components/schemas/ChangeProfileAddCard'
-      - $ref: '#/components/schemas/ChangeProfileAddPersonalInfo'
-    LoginDetails:
-      title: Login Details
+    Card:
+      title: card
       type: object
       required:
-      - user_id
+      - details
       properties:
-        email:
+        id:
           type: string
-          description: Email contact
-          example: email@domain.com
-        user_id:
-          type: string
-          description: User identification
-          example: user12
-        authentication_type:
-          type: string
-          description: Authentication type
-          example: PASSWORD
-          enum:
-          - PASSWORD
-          - MAGIC_LINK
-          - SOCIAL_NETWORK
-        authentication_result:
-          type: string
-          description: Result of the authentication
-          example: SUCCESS
-          enum:
-          - SUCCESS
-          - FAILED
-        captcha:
-          type: boolean
-          description: Captcha displayed
-        document:
-          $ref: '#/components/schemas/ATODocument'
-    SignupDetails:
-      title: Sign up Details
-      type: object
-      required:
-      - user_id
-      properties:
-        user_id:
-          type: string
-          description: User identification
-          example: user12
-        authentication_type:
-          type: string
-          description: Authentication type
-          enum:
-          - PASSWORD
-          - MAGIC_LINK
-          - SOCIAL_NETWORK
-        account_numbers:
-          type: array
-          items:
-            type: string
-          description: Account numbers
-          example: '12345'
-      allOf:
-      - $ref: '#/components/schemas/CommonsDetails'
-    DeviceData:
-      title: device
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseDeviceData'
-    PersonalInfo:
-      title: personal_info
-      required:
-      - first_name
-      - last_name
-      - birth_date
-      type: object
-      properties:
-        first_name:
-          type: string
-          description: First name
-          example: Juan
-        last_name:
-          type: string
-          description: Last name
-          example: Travolta
-        birth_date:
-          type: string
-          description: Birthdate
-          example: '1987-10-25'
-    EnrollmentDetails:
-      title: Enrollment Details
-      type: object
-      required:
-      - user_id
-      properties:
-        card_details:
+          description: Identification Card
+        details:
           $ref: '#/components/schemas/CardDetails'
-        user_id:
-          type: string
-          description: User identification
-          example: user12
-      allOf:
-      - $ref: '#/components/schemas/CommonsDetails'
-    ChangeProfileDeleteCard:
-      title: CARD
+    ChangeProfileDeletePhone:
+      title: PHONE
       type: object
       properties:
-        card:
-          $ref: '#/components/schemas/Card'
+        phone:
+          $ref: '#/components/schemas/Phone'
         type:
           type: string
           description: Type of the operation
@@ -481,14 +386,270 @@ components:
           type: string
           description: Field of the operation
           enum:
-          - CARD
+          - PHONE
       allOf:
       - $ref: '#/components/schemas/ChangeProfileBase'
-    ChangeProfileConfirm:
-      title: CONFIRM
+    AttemptAddCardDetails:
+      title: Attempt Add Card Details
+      type: object
+      required:
+      - user_id
+      properties:
+        card:
+          $ref: '#/components/schemas/Card'
+        user_id:
+          type: string
+          description: User identification
+          example: user12
+    BadResponse:
+      title: Bad Response
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Status code
+          example: 400
+        message:
+          type: string
+          description: Error message
+          example: Validation errors
+        causes:
+          type: array
+          items:
+            type: string
+          example: '[device.ip must not be blank]'
+    UserActivationDetails:
+      title: User activation Details
+      type: object
+      required:
+      - user_id
+      properties:
+        user_id:
+          type: string
+          description: User identification
+          example: user12
+    ChangeProfileConfirmPhone:
+      title: PHONE
+      type: object
+      properties:
+        phone:
+          $ref: '#/components/schemas/Phone'
+        type:
+          type: string
+          description: Type of the operation
+          enum:
+          - CONFIRM
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - PHONE
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    ChangeProfileAddEmail:
+      title: EMAIL
+      type: object
+      properties:
+        value:
+          type: string
+          description: Email address to add
+          example: email@domain.com
+        type:
+          type: string
+          description: Type of the operation
+          example: ADD
+          enum:
+          - ADD
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - EMAIL
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    ChangeProfileDeleteEmail:
+      title: EMAIL
+      type: object
+      properties:
+        value:
+          type: string
+          description: Email address to remove
+          example: email@domain.com
+        type:
+          type: string
+          description: Type of the operation
+          enum:
+          - DELETE
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - EMAIL
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    BaseATOData:
+      title: BaseATOData
+      type: object
+      required:
+      - type
+      properties:
+        device:
+          $ref: '#/components/schemas/DeviceData'
+        sla_date:
+          type: string
+          description: The date that the evaluation is expected to be resolved
+          example: '2021-07-23T16:00:00.307062Z'
+        callback_url:
+          type: string
+          description: A publicly accessible HTTPS endpoint where your application will receive asynchronous notifications about the status of the evaluation.
+          example: http://domain/service
+        type:
+          type: string
+          description: The type of the evaluation
+          enum:
+          - LOGIN
+          - CHANGE_PASSWORD
+          - CHANGE_PROFILE
+          - SIGN_UP
+          - USER_ACTIVATION
+          - GENERAL_CHECKPOINT
+          - ENROLLMENT
+          - ATTEMPT_CHANGE_PASSWORD
+          - ATTEMPT_RESET_PASSWORD
+          - ATTEMPT_ADD_CARD
+        details:
+          oneOf:
+          - $ref: '#/components/schemas/LoginDetails'
+          - $ref: '#/components/schemas/ChangePasswordDetails'
+          - $ref: '#/components/schemas/ChangeProfileDetails'
+          - $ref: '#/components/schemas/SignupDetails'
+          - $ref: '#/components/schemas/UserActivationDetails'
+          - $ref: '#/components/schemas/GeneralCheckpointDetails'
+          - $ref: '#/components/schemas/EnrollmentDetails'
+          - $ref: '#/components/schemas/AttemptAddCardDetails'
+    ChangeProfileAddAccount:
+      title: ACCOUNT
+      type: object
+      properties:
+        value:
+          type: string
+          description: Account number to add
+          example: 5555-5555-5555-5555
+        type:
+          type: string
+          description: Type of the operation
+          example: ADD
+          enum:
+          - ADD
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - ACCOUNT
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    StrategyResponse:
+      title: StrategyResponse
+      type: object
+      properties:
+        type:
+          type: string
+          description: Strategy type, see [Strategies](https://api-koin.readme.io/reference/strategies)
+          enum:
+          - VerificationCode
+          - DocumentScan
+          - ManualVerification
+          - CollectAuthRecovery
+        link:
+          type: string
+          description: Url for access the strategy page
+        channels:
+          type: string
+          description: Channels for the strategy
+          enum:
+          - Mail
+          - Phone
+        provider:
+          type: string
+          description: Provider for the strategy in case of CollectAuthRecovery strategy
+          enum:
+          - 3DS2
+        mode:
+          type: string
+          description: Mode for the strategy in case of CollectAuthRecovery strategy
+          enum:
+          - FRICTIONLESS
+          - CHALLENGE
+        code:
+          type: string
+          description: Code in case of verification code strategy
+    ChangeProfileDetails:
       oneOf:
-      - $ref: '#/components/schemas/ChangeProfileConfirmEmail'
-      - $ref: '#/components/schemas/ChangeProfileConfirmPhone'
+      - $ref: '#/components/schemas/ChangeProfileAdd'
+      - $ref: '#/components/schemas/ChangeProfileDelete'
+      - $ref: '#/components/schemas/ChangeProfileUpdate'
+      - $ref: '#/components/schemas/ChangeProfileConfirm'
+    ChangeProfileUpdate:
+      title: UPDATE
+      oneOf:
+      - $ref: '#/components/schemas/ChangeProfileUpdateEmail'
+      - $ref: '#/components/schemas/ChangeProfileUpdatePhone'
+    ATODocument:
+      title: document
+      required:
+      - number
+      type: object
+      properties:
+        nationality:
+          type: string
+          description: Person nationality. Two-letter country code as described in the ISO 3166 international standard
+          example: UY
+        number:
+          type: string
+          description: Person document number
+          example: '35645888'
+        type:
+          type: string
+          description: Person document type
+          example: DNI
+          enum:
+          - DNI
+          - CPF
+          - CNPJ
+          - CUIL
+          - CI
+    ImageNotification:
+      title: ImageNotification
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Image identifier
+          example: '123456789'
+        category:
+          type: string
+          description: Image category
+          example: IDENTITY_CARD_FRONT
+        url:
+          type: string
+          description: Image url
+          example: https://url.com/1.jpeg
+        created:
+          type: string
+          description: Image created date
+          example: '2021-02-23T14:10:44.307062Z'
+    UnAuthorizedResponse:
+      title: UnAuthorized Response
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Validation errors
     Address:
       title: address
       required:
@@ -533,261 +694,99 @@ components:
           type: string
           description: Full address
           example: Corrientes 747, San Nicolas
-    ChangeProfileConfirmEmail:
-      title: EMAIL
-      type: object
-      properties:
-        value:
-          type: string
-          description: Email address to confirm
-          example: email@domain.com
-        type:
-          type: string
-          description: Type of the operation
-          enum:
-          - CONFIRM
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - EMAIL
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    CommonsDetails:
-      title: Commons Details
-      type: object
-      required:
-      - first_name
-      - last_name
-      - birth_date
-      - email
-      properties:
-        first_name:
-          type: string
-          description: First name
-          example: Alvaro
-        last_name:
-          type: string
-          description: Last name
-          example: Garrincha
-        birth_date:
-          type: string
-          description: Birthdate
-          example: '1990-05-06'
-        email:
-          type: string
-          description: Email contact
-          example: email@domain.com
-        gender:
-          type: string
-          description: Gender
-          enum:
-          - FEMALE
-          - MALE
-          - OTHER
-        phones:
-          type: array
-          items:
-            $ref: '#/components/schemas/Phone'
-        document:
-          $ref: '#/components/schemas/ATODocument'
-        address:
-          $ref: '#/components/schemas/Address'
-    ResultsNotification:
-      title: ResultsNotification
-      type: object
-      properties:
-        channel:
-          type: string
-          description: Channel applied to strategy
-          example: Mail
-        provider:
-          type: string
-          description: Provider for the strategy. Used in case of CollectAuthRecovery strategy
-          enum:
-          - 3DS2
-        mode:
-          type: string
-          description: Mode for the strategy. Used in case of CollectAuthRecovery strategy
-          enum:
-          - FRICTIONLESS
-          - CHALLENGE
-        status:
-          type: string
-          description: 'Strategy status '
-          enum:
-          - Accept
-          - Reject
-        reason:
-          type: string
-          description: Extra additional information of the strategy applied
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageNotification'
-    ChangeProfileUpdate:
-      title: UPDATE
-      oneOf:
-      - $ref: '#/components/schemas/ChangeProfileUpdateEmail'
-      - $ref: '#/components/schemas/ChangeProfileUpdatePhone'
-    BadResponse:
-      title: Bad Response
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Status code
-          example: 400
-        message:
-          type: string
-          description: Error message
-          example: Validation errors
-        causes:
-          type: array
-          items:
-            type: string
-          example: '[device.ip must not be blank]'
-    ChangeProfileBase:
-      title: Change profile base
+    GeneralCheckpointDetails:
+      title: General Checkpoint Details
       type: object
       required:
       - user_id
+      - action
       properties:
-        result:
-          type: string
-          description: Result of the operation
-          enum:
-          - SUCCESS
-          - FAILED
         user_id:
           type: string
           description: User identification
           example: user12
-    ATODocument:
-      title: document
-      required:
-      - number
+        action:
+          type: string
+          description: Action where checkpoint is called
+          example: BNPL_PIX
+    ChangeProfileAddPhone:
+      title: PHONE
       type: object
       properties:
-        nationality:
-          type: string
-          description: Person nationality. Two-letter country code as described in the ISO 3166 international standard
-          example: UY
-        number:
-          type: string
-          description: Person document number
-          example: '35645888'
-        type:
-          type: string
-          description: Person document type
-          example: DNI
-          enum:
-          - DNI
-          - CPF
-          - CNPJ
-          - CUIL
-          - CI
-    Card:
-      title: card
-      type: object
-      required:
-      - details
-      properties:
-        id:
-          type: string
-          description: Identification Card
-        details:
-          $ref: '#/components/schemas/CardDetails'
-    ChangeProfileDetails:
-      oneOf:
-      - $ref: '#/components/schemas/ChangeProfileAdd'
-      - $ref: '#/components/schemas/ChangeProfileDelete'
-      - $ref: '#/components/schemas/ChangeProfileUpdate'
-      - $ref: '#/components/schemas/ChangeProfileConfirm'
-    ChangeProfileDeleteEmail:
-      title: EMAIL
-      type: object
-      properties:
-        value:
-          type: string
-          description: Email address to remove
-          example: email@domain.com
+        phone:
+          $ref: '#/components/schemas/Phone'
         type:
           type: string
           description: Type of the operation
+          example: ADD
           enum:
-          - DELETE
+          - ADD
         field:
           type: string
           description: Field of the operation
           enum:
-          - EMAIL
+          - PHONE
       allOf:
       - $ref: '#/components/schemas/ChangeProfileBase'
-    BaseDeviceData:
-      title: device
+    Phone:
+      title: phone
+      required:
+      - number
       type: object
       properties:
-        ipv4:
+        area_code:
           type: string
-          description: The original ip address v4 from browser. Not required for Payment Antifraud Data with redirection payment. Required if ipv6 is blank
-          example: 70.56.69.13
-        ipv6:
+          description: Phone area code. If the country code is also available, include the full combination (country code + area code) for better context, though the country code is optional.
+          example: '11'
+        number:
           type: string
-          description: The original ip address v6 from browser. Not required for Payment Antifraud Data with redirection payment. Required if ipv4 is blank
-          example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-        location:
-          $ref: '#/components/schemas/Location'
-        merchant_device:
-          type: string
-          description: Id of the device, identified by the merchant by their internal systems
-          example: 234c20c3-45de-41bf-b243-87ad5$RTbc3b
-        session_id:
-          type: string
-          description: Value generated by javascript/sdk snippet of our device fingerprint solution
-          example: 5b8c20c3-45de-41bf-b243-87ad5d21bc3b
-    ChangeProfileDelete:
-      title: DELETE
-      oneOf:
-      - $ref: '#/components/schemas/ChangeProfileDeleteEmail'
-      - $ref: '#/components/schemas/ChangeProfileDeletePhone'
-      - $ref: '#/components/schemas/ChangeProfileDeleteAccount'
-      - $ref: '#/components/schemas/ChangeProfileDeleteCard'
-    StrategyResponse:
-      title: StrategyResponse
-      type: object
-      properties:
+          description: Phone number
+          example: '45669874'
         type:
           type: string
-          description: Strategy type, see [Strategies](https://api-koin.readme.io/reference/strategies)
+          description: Phone type
+          example: Mobile
+    ChangeProfileAddCard:
+      title: CARD
+      type: object
+      properties:
+        card:
+          $ref: '#/components/schemas/Card'
+        type:
+          type: string
+          description: Type of the operation
+          example: ADD
           enum:
-          - VerificationCode
-          - DocumentScan
-          - ManualVerification
-          - CollectAuthRecovery
-        link:
+          - ADD
+        field:
           type: string
-          description: Url for access the strategy page
-        channels:
-          type: string
-          description: Channels for the strategy
+          description: Field of the operation
           enum:
-          - Mail
-          - Phone
-        provider:
-          type: string
-          description: Provider for the strategy in case of CollectAuthRecovery strategy
-          enum:
-          - 3DS2
-        mode:
-          type: string
-          description: Mode for the strategy in case of CollectAuthRecovery strategy
-          enum:
-          - FRICTIONLESS
-          - CHALLENGE
-        code:
-          type: string
-          description: Code in case of verification code strategy
+          - CARD
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    Location:
+      title: location
+      required:
+      - latitude
+      - longitude
+      type: object
+      properties:
+        latitude:
+          type: number
+          description: Device latitude
+          format: double
+          example: -34.56532789616039
+        longitude:
+          type: number
+          description: Device longitude
+          format: double
+          example: -58.48945822129388
+    DeviceData:
+      title: device
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/BaseDeviceData'
     CardDetails:
       title: Card Details
       type: object
@@ -834,18 +833,292 @@ components:
           - CREDIT
           - DEBIT
           - PREPAID
-    UnAuthorizedResponse:
-      title: UnAuthorized Response
+    ChangeProfileAddPersonalInfo:
+      title: PERSONAL_INFO
       type: object
       properties:
-        code:
-          type: integer
-          description: Status code
-          example: 401
+        personal_info:
+          $ref: '#/components/schemas/PersonalInfo'
+        type:
+          type: string
+          description: Type of the operation
+          example: ADD
+          enum:
+          - ADD
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - PERSONAL_INFO
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    ChangeProfileUpdateEmail:
+      title: EMAIL
+      type: object
+      properties:
+        newValue:
+          type: string
+          description: New value email address to set
+          example: email@domain.com
+        oldValue:
+          type: string
+          description: Email address that will be replaced
+          example: email@domain.com
+        type:
+          type: string
+          description: Type of the operation
+          enum:
+          - UPDATE
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - EMAIL
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    ChangeProfileConfirmEmail:
+      title: EMAIL
+      type: object
+      properties:
+        value:
+          type: string
+          description: Email address to confirm
+          example: email@domain.com
+        type:
+          type: string
+          description: Type of the operation
+          enum:
+          - CONFIRM
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - EMAIL
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
+    LoginDetails:
+      title: Login Details
+      type: object
+      required:
+      - user_id
+      properties:
+        email:
+          type: string
+          description: Email contact
+          example: email@domain.com
+        user_id:
+          type: string
+          description: User identification
+          example: user12
+        authentication_type:
+          type: string
+          description: Authentication type
+          example: PASSWORD
+          enum:
+          - PASSWORD
+          - MAGIC_LINK
+          - SOCIAL_NETWORK
+        authentication_result:
+          type: string
+          description: Result of the authentication
+          example: SUCCESS
+          enum:
+          - SUCCESS
+          - FAILED
+        captcha:
+          type: boolean
+          description: Captcha displayed
+        document:
+          $ref: '#/components/schemas/ATODocument'
+    ResultsNotification:
+      title: ResultsNotification
+      type: object
+      properties:
+        channel:
+          type: string
+          description: Channel applied to strategy
+          example: Mail
+        provider:
+          type: string
+          description: Provider for the strategy. Used in case of CollectAuthRecovery strategy
+          enum:
+          - 3DS2
+        mode:
+          type: string
+          description: Mode for the strategy. Used in case of CollectAuthRecovery strategy
+          enum:
+          - FRICTIONLESS
+          - CHALLENGE
+        status:
+          type: string
+          description: 'Strategy status '
+          enum:
+          - Accept
+          - Reject
+        reason:
+          type: string
+          description: Extra additional information of the strategy applied
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageNotification'
+    ChangePasswordDetails:
+      title: Change Password Details
+      type: object
+      required:
+      - user_id
+      properties:
+        user_id:
+          type: string
+          description: User identification
+          example: user12
+        result:
+          type: string
+          description: Result of the operation
+          example: SUCCESS
+          enum:
+          - SUCCESS
+          - FAILED
+        email:
+          type: string
+          description: Email contact
+          example: email@domain.com
+    ChangeProfileDelete:
+      title: DELETE
+      oneOf:
+      - $ref: '#/components/schemas/ChangeProfileDeleteEmail'
+      - $ref: '#/components/schemas/ChangeProfileDeletePhone'
+      - $ref: '#/components/schemas/ChangeProfileDeleteAccount'
+      - $ref: '#/components/schemas/ChangeProfileDeleteCard'
+    CommonsDetails:
+      title: Commons Details
+      type: object
+      required:
+      - first_name
+      - last_name
+      - birth_date
+      - email
+      properties:
+        first_name:
+          type: string
+          description: First name
+          example: Alvaro
+        last_name:
+          type: string
+          description: Last name
+          example: Garrincha
+        birth_date:
+          type: string
+          description: Birthdate
+          example: '1990-05-06'
+        email:
+          type: string
+          description: Email contact
+          example: email@domain.com
+        gender:
+          type: string
+          description: Gender
+          enum:
+          - FEMALE
+          - MALE
+          - OTHER
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/Phone'
+        document:
+          $ref: '#/components/schemas/ATODocument'
+        address:
+          $ref: '#/components/schemas/Address'
+    ChangeProfileBase:
+      title: Change profile base
+      type: object
+      required:
+      - user_id
+      properties:
+        result:
+          type: string
+          description: Result of the operation
+          enum:
+          - SUCCESS
+          - FAILED
+        user_id:
+          type: string
+          description: User identification
+          example: user12
+    ATONotification:
+      title: notification
+      required:
+      - type
+      - notification_date
+      - strategies
+      type: object
+      properties:
+        type:
+          type: string
+          description: Notification type
+          enum:
+          - STATUS
         message:
           type: string
-          description: Error message
-          example: Validation errors
+          description: Descriptive message about notification
+          example: Notification about...
+        notification_date:
+          type: string
+          description: Notification date
+          example: '2021-02-23T14:10:44.307062Z'
+        details:
+          type: object
+          description: Notification details. It's a set of key/value pairs
+          additionalProperties:
+            type: string
+        strategies:
+          title: StrategiesNotification
+          type: object
+          properties:
+            type:
+              type: string
+              description: Strategy type
+              enum:
+              - DocumentScan
+              - VerificationCode
+              - CollectAuthRecovery
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResultsNotification'
+    EnrollmentDetails:
+      title: Enrollment Details
+      type: object
+      required:
+      - user_id
+      properties:
+        card_details:
+          $ref: '#/components/schemas/CardDetails'
+        user_id:
+          type: string
+          description: User identification
+          example: user12
+      allOf:
+      - $ref: '#/components/schemas/CommonsDetails'
+    ChangeProfileDeleteCard:
+      title: CARD
+      type: object
+      properties:
+        card:
+          $ref: '#/components/schemas/Card'
+        type:
+          type: string
+          description: Type of the operation
+          enum:
+          - DELETE
+        field:
+          type: string
+          description: Field of the operation
+          enum:
+          - CARD
+      allOf:
+      - $ref: '#/components/schemas/ChangeProfileBase'
     StandardApiResponse:
       title: StandardApiResponse
       type: object
@@ -896,65 +1169,31 @@ components:
           - PHONE
       allOf:
       - $ref: '#/components/schemas/ChangeProfileBase'
-    ChangeProfileDeletePhone:
-      title: PHONE
+    SignupDetails:
+      title: Sign up Details
       type: object
-      properties:
-        phone:
-          $ref: '#/components/schemas/Phone'
-        type:
-          type: string
-          description: Type of the operation
-          enum:
-          - DELETE
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - PHONE
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    ATONotification:
-      title: notification
       required:
-      - type
-      - notification_date
-      - strategies
-      type: object
+      - user_id
       properties:
-        type:
+        user_id:
           type: string
-          description: Notification type
+          description: User identification
+          example: user12
+        authentication_type:
+          type: string
+          description: Authentication type
           enum:
-          - STATUS
-        message:
-          type: string
-          description: Descriptive message about notification
-          example: Notification about...
-        notification_date:
-          type: string
-          description: Notification date
-          example: '2021-02-23T14:10:44.307062Z'
-        details:
-          type: object
-          description: Notification details. It's a set of key/value pairs
-          additionalProperties:
+          - PASSWORD
+          - MAGIC_LINK
+          - SOCIAL_NETWORK
+        account_numbers:
+          type: array
+          items:
             type: string
-        strategies:
-          title: StrategiesNotification
-          type: object
-          properties:
-            type:
-              type: string
-              description: Strategy type
-              enum:
-              - DocumentScan
-              - VerificationCode
-              - CollectAuthRecovery
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/ResultsNotification'
+          description: Account numbers
+          example: '12345'
+      allOf:
+      - $ref: '#/components/schemas/CommonsDetails'
     ChangeProfileDeleteAccount:
       title: ACCOUNT
       type: object
@@ -975,297 +1214,58 @@ components:
           - ACCOUNT
       allOf:
       - $ref: '#/components/schemas/ChangeProfileBase'
-    GeneralCheckpointDetails:
-      title: General Checkpoint Details
-      type: object
+    ChangeProfileAdd:
+      title: ADD
+      oneOf:
+      - $ref: '#/components/schemas/ChangeProfileAddEmail'
+      - $ref: '#/components/schemas/ChangeProfileAddPhone'
+      - $ref: '#/components/schemas/ChangeProfileAddAccount'
+      - $ref: '#/components/schemas/ChangeProfileAddCard'
+      - $ref: '#/components/schemas/ChangeProfileAddPersonalInfo'
+    PersonalInfo:
+      title: personal_info
       required:
-      - user_id
-      - action
-      properties:
-        user_id:
-          type: string
-          description: User identification
-          example: user12
-        action:
-          type: string
-          description: Action where checkpoint is called
-          example: BNPL_PIX
-    AttemptAddCardDetails:
-      title: Attempt Add Card Details
-      type: object
-      required:
-      - user_id
-      properties:
-        card:
-          $ref: '#/components/schemas/Card'
-        user_id:
-          type: string
-          description: User identification
-          example: user12
-    ChangeProfileAddPhone:
-      title: PHONE
+      - first_name
+      - last_name
+      - birth_date
       type: object
       properties:
-        phone:
-          $ref: '#/components/schemas/Phone'
-        type:
+        first_name:
           type: string
-          description: Type of the operation
-          example: ADD
-          enum:
-          - ADD
-        field:
+          description: First name
+          example: Juan
+        last_name:
           type: string
-          description: Field of the operation
-          enum:
-          - PHONE
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    ChangePasswordDetails:
-      title: Change Password Details
-      type: object
-      required:
-      - user_id
-      properties:
-        user_id:
+          description: Last name
+          example: Travolta
+        birth_date:
           type: string
-          description: User identification
-          example: user12
-        result:
-          type: string
-          description: Result of the operation
-          example: SUCCESS
-          enum:
-          - SUCCESS
-          - FAILED
-        email:
-          type: string
-          description: Email contact
-          example: email@domain.com
-    Location:
-      title: location
-      required:
-      - latitude
-      - longitude
+          description: Birthdate
+          example: '1987-10-25'
+    ChangeProfileConfirm:
+      title: CONFIRM
+      oneOf:
+      - $ref: '#/components/schemas/ChangeProfileConfirmEmail'
+      - $ref: '#/components/schemas/ChangeProfileConfirmPhone'
+    BaseDeviceData:
+      title: device
       type: object
       properties:
-        latitude:
-          type: number
-          description: Device latitude
-          format: double
-          example: -34.56532789616039
-        longitude:
-          type: number
-          description: Device longitude
-          format: double
-          example: -58.48945822129388
-    ChangeProfileAddAccount:
-      title: ACCOUNT
-      type: object
-      properties:
-        value:
+        ipv4:
           type: string
-          description: Account number to add
-          example: 5555-5555-5555-5555
-        type:
+          description: The original ip address v4 from browser. Not required for Payment Antifraud Data with redirection payment. Required if ipv6 is blank
+          example: 70.56.69.13
+        ipv6:
           type: string
-          description: Type of the operation
-          example: ADD
-          enum:
-          - ADD
-        field:
+          description: The original ip address v6 from browser. Not required for Payment Antifraud Data with redirection payment. Required if ipv4 is blank
+          example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+        location:
+          $ref: '#/components/schemas/Location'
+        merchant_device:
           type: string
-          description: Field of the operation
-          enum:
-          - ACCOUNT
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    ChangeProfileUpdateEmail:
-      title: EMAIL
-      type: object
-      properties:
-        newValue:
+          description: Id of the device, identified by the merchant by their internal systems
+          example: 234c20c3-45de-41bf-b243-87ad5$RTbc3b
+        session_id:
           type: string
-          description: New value email address to set
-          example: email@domain.com
-        oldValue:
-          type: string
-          description: Email address that will be replaced
-          example: email@domain.com
-        type:
-          type: string
-          description: Type of the operation
-          enum:
-          - UPDATE
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - EMAIL
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    ImageNotification:
-      title: ImageNotification
-      type: object
-      properties:
-        document_id:
-          type: string
-          description: Image identifier
-          example: '123456789'
-        category:
-          type: string
-          description: Image category
-          example: IDENTITY_CARD_FRONT
-        url:
-          type: string
-          description: Image url
-          example: https://url.com/1.jpeg
-        created:
-          type: string
-          description: Image created date
-          example: '2021-02-23T14:10:44.307062Z'
-    BaseATOData:
-      title: BaseATOData
-      type: object
-      required:
-      - type
-      properties:
-        device:
-          $ref: '#/components/schemas/DeviceData'
-        sla_date:
-          type: string
-          description: The date that the evaluation is expected to be resolved
-          example: '2021-07-23T16:00:00.307062Z'
-        callback_url:
-          type: string
-          description: A publicly accessible HTTPS endpoint where your application will receive asynchronous notifications about the status of the evaluation.
-          example: http://domain/service
-        type:
-          type: string
-          description: The type of the evaluation
-          enum:
-          - LOGIN
-          - CHANGE_PASSWORD
-          - CHANGE_PROFILE
-          - SIGN_UP
-          - USER_ACTIVATION
-          - GENERAL_CHECKPOINT
-          - ENROLLMENT
-          - ATTEMPT_CHANGE_PASSWORD
-          - ATTEMPT_RESET_PASSWORD
-          - ATTEMPT_ADD_CARD
-        details:
-          oneOf:
-          - $ref: '#/components/schemas/LoginDetails'
-          - $ref: '#/components/schemas/ChangePasswordDetails'
-          - $ref: '#/components/schemas/ChangeProfileDetails'
-          - $ref: '#/components/schemas/SignupDetails'
-          - $ref: '#/components/schemas/UserActivationDetails'
-          - $ref: '#/components/schemas/GeneralCheckpointDetails'
-          - $ref: '#/components/schemas/EnrollmentDetails'
-          - $ref: '#/components/schemas/AttemptAddCardDetails'
-    ChangeProfileAddPersonalInfo:
-      title: PERSONAL_INFO
-      type: object
-      properties:
-        personal_info:
-          $ref: '#/components/schemas/PersonalInfo'
-        type:
-          type: string
-          description: Type of the operation
-          example: ADD
-          enum:
-          - ADD
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - PERSONAL_INFO
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    ChangeProfileConfirmPhone:
-      title: PHONE
-      type: object
-      properties:
-        phone:
-          $ref: '#/components/schemas/Phone'
-        type:
-          type: string
-          description: Type of the operation
-          enum:
-          - CONFIRM
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - PHONE
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    Phone:
-      title: phone
-      required:
-      - number
-      type: object
-      properties:
-        area_code:
-          type: string
-          description: Phone area code. If the country code is also available, include the full combination (country code + area code) for better context, though the country code is optional.
-          example: '11'
-        number:
-          type: string
-          description: Phone number
-          example: '45669874'
-        type:
-          type: string
-          description: Phone type
-          example: Mobile
-    ChangeProfileAddCard:
-      title: CARD
-      type: object
-      properties:
-        card:
-          $ref: '#/components/schemas/Card'
-        type:
-          type: string
-          description: Type of the operation
-          example: ADD
-          enum:
-          - ADD
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - CARD
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    ChangeProfileAddEmail:
-      title: EMAIL
-      type: object
-      properties:
-        value:
-          type: string
-          description: Email address to add
-          example: email@domain.com
-        type:
-          type: string
-          description: Type of the operation
-          example: ADD
-          enum:
-          - ADD
-        field:
-          type: string
-          description: Field of the operation
-          enum:
-          - EMAIL
-      allOf:
-      - $ref: '#/components/schemas/ChangeProfileBase'
-    UserActivationDetails:
-      title: User activation Details
-      type: object
-      required:
-      - user_id
-      properties:
-        user_id:
-          type: string
-          description: User identification
-          example: user12
+          description: Value generated by javascript/sdk snippet of our device fingerprint solution
+          example: 5b8c20c3-45de-41bf-b243-87ad5d21bc3b
