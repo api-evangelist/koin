@@ -256,6 +256,21 @@ components:
         message:
           type: string
           description: Message associated with the error code (applies only for error cases)
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
     RefundResponse:
       title: Refund Response
       required:
@@ -307,21 +322,6 @@ components:
         message:
           type: string
           description: Message associated with the error code (applies only for error cases)
-    ErrorResponse:
-      title: Error Response
-      type: object
-      properties:
-        code:
-          type: string
-          description: Standardized error code.
-        message:
-          type: string
-          description: Error message.
-        causes:
-          type: array
-          description: List of error causes.
-          items:
-            type: string
   examples:
     UnknownError:
       value:

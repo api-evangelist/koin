@@ -48,6 +48,21 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      title: Error Response
+      type: object
+      properties:
+        code:
+          type: string
+          description: Standardized error code.
+        message:
+          type: string
+          description: Error message.
+        causes:
+          type: array
+          description: List of error causes.
+          items:
+            type: string
     NotificationSale:
       title: Notification
       required:
@@ -111,18 +126,3 @@ components:
               pattern: d{1,10}.d{2}
               description: Payment total amount
               example: 1500.56
-    ErrorResponse:
-      title: Error Response
-      type: object
-      properties:
-        code:
-          type: string
-          description: Standardized error code.
-        message:
-          type: string
-          description: Error message.
-        causes:
-          type: array
-          description: List of error causes.
-          items:
-            type: string
