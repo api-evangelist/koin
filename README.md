@@ -64,60 +64,162 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Koin is a Brazilian payments and fraud-prevention provider operating across Latin America. It gives
-merchants a single private-key API covering BNPL ("Pix Parcelado" — installment payments with no
-card), instant Pix pay-in and payout, card payments with anti-fraud, crypto payouts, refunds,
-cancellations and account validation. Its Antifraud API scores e-commerce, wire-transfer and
-account-takeover events with mandatory device fingerprinting, 3-D Secure 2 and strategy-based
-recovery.
+Koin is a Brazilian payments and fraud-prevention provider operating across Latin America, offering merchants a single private-key API for BNPL ("Pix Parcelado" / installment payments without a card), instant Pix, card payments with anti-fraud, crypto and Pix payouts, refunds, cancellations and account-validation. Its Antifraud API scores e-commerce, wire-transfer and account-takeover events with device fingerprinting, 3-D Secure and strategy-based recovery, while an Onboarding API registers merchants. Koin publishes a ReadMe-hosted developer portal with OpenAPI 3 contracts, first-party Magento 2, WooCommerce, VTEX, Shopify, Wake, Nuvemshop and Tiendanube plugins, and iOS/Android checkout SDKs. Founded in Brazil and backed by Speedinvest (2018), Koin was acquired by Despegar in 2020.
 
-Founded in Brazil, backed by Speedinvest (2018), acquired by Despegar in 2020.
+**Areas:** Payments · Fraud Prevention · Buy Now Pay Later · Pix · E-Commerce · Financial Services · Brazil · Latin America · Checkout · Company
 
-- Website: https://www.koin.com.br/
-- Developer portal: https://api-docs.koin.com.br/
-- Platform integration docs: https://docs.koin.com.br/
-- GitHub: https://github.com/koinlatam
-- Status: https://koin.statuspage.io/
+## Koin on APIs.io
 
-## APIs
+Everything profiled for Koin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/koin/](https://apis.io/providers/koin/)** — or go straight to one of the APIs or properties below.
 
-| API | Operations | Contract |
-|---|---|---|
-| Payments API | 18 | `openapi/koin-payments-openapi.json` |
-| Antifraud API (5 contracts) | 10 | `openapi/koin-antifraud-*-openapi.json` |
-| Onboarding API | 2 | `openapi/koin-onboarding-openapi.json` |
-| BNPL Payment Request API (legacy) | 3 | `openapi/koin-bnpl-openapi.json` |
+### APIs (14)
 
-## Artifacts
+- [Koin Access API](https://apis.io/apis/koin/koin-access-api/) — The Access API from Koin — 1 operation(s) for access.
+- [Koin Account Take Over Services API](https://apis.io/apis/koin/koin-account-take-over-services-api/) — The Account Take Over Services API from Koin — 2 operation(s) for account take over services.
+- [Koin Availability Services API](https://apis.io/apis/koin/koin-availability-services-api/) — The Availability Services API from Koin — 1 operation(s) for availability services.
+- [Koin Communication Services API](https://apis.io/apis/koin/koin-communication-services-api/) — The Communication Services API from Koin — 1 operation(s) for communication services.
+- [Koin Ecommerce API](https://apis.io/apis/koin/koin-ecommerce-api/) — The Ecommerce API from Koin — 2 operation(s) for ecommerce.
+- [Koin Notification Services Sales API](https://apis.io/apis/koin/koin-notification-services-sales-api/) — The Notification Services Sales API from Koin — 1 operation(s) for notification services sales.
+- [Koin Onboarding Services API](https://apis.io/apis/koin/koin-onboarding-services-api/) — Onboarding Service
+- [Koin Payment Services API](https://apis.io/apis/koin/koin-payment-services-api/) — The Payment Services API from Koin — 5 operation(s) for payment services.
+- [Koin Payout Services API](https://apis.io/apis/koin/koin-payout-services-api/) — The Payout Services API from Koin — 4 operation(s) for payout services.
+- [Koin Recipient Services Account API](https://apis.io/apis/koin/koin-recipient-services-account-api/) — The Recipient Services Account API from Koin — 1 operation(s) for recipient services account.
+- [Koin Refund Services API](https://apis.io/apis/koin/koin-refund-services-api/) — The Refund Services API from Koin — 2 operation(s) for refund services.
+- [Koin Support Services API](https://apis.io/apis/koin/koin-support-services-api/) — The Support Services API from Koin — 3 operation(s) for support services.
+- [Koin Tokenize Services API](https://apis.io/apis/koin/koin-tokenize-services-api/) — The Tokenize Services API from Koin — 1 operation(s) for tokenize services.
+- [Koin Payment Request API](https://apis.io/apis/koin/koin-payment-request-api/) — The Payment Request API from Koin — 2 operation(s) for payment request.
 
-| Artifact | Path |
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Koin Payments Webhooks](https://apis.io/asyncapis/koin/koin-payments-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [koin](https://apis.io/servers/koin/koin/)
+
+#### Collections (16)
+
+Postman and Open Collection request collections.
+
+- [Antifraud Access API](https://apis.io/collections/koin/open-koin-access-api/)
+- [Antifraud Access Account Take Over Services API](https://apis.io/collections/koin/open-koin-account-take-over-services-api/)
+- [Antifraud Access Availability Services API](https://apis.io/collections/koin/open-koin-availability-services-api/)
+- [Antifraud Access Communication Services API](https://apis.io/collections/koin/open-koin-communication-services-api/)
+- [Antifraud Access Ecommerce API](https://apis.io/collections/koin/open-koin-ecommerce-api/)
+- [Antifraud Access Notification Services Sales API](https://apis.io/collections/koin/open-koin-notification-services-sales-api/)
+- [Antifraud Access Onboarding Services API](https://apis.io/collections/koin/open-koin-onboarding-services-api/)
+- [Antifraud Access Payment Service Provider API](https://apis.io/collections/koin/open-koin-payment-service-provider-api/)
+- [Antifraud Access Payment Services API](https://apis.io/collections/koin/open-koin-payment-services-api/)
+- [Antifraud Access PaymentRequest API](https://apis.io/collections/koin/open-koin-paymentrequest-api/)
+- [Antifraud Access Payout Services API](https://apis.io/collections/koin/open-koin-payout-services-api/)
+- [Antifraud Access Recipient Services Account API](https://apis.io/collections/koin/open-koin-recipient-services-account-api/)
+- [Antifraud Access Refund Services API](https://apis.io/collections/koin/open-koin-refund-services-api/)
+- [Antifraud Access Support Services API](https://apis.io/collections/koin/open-koin-support-services-api/)
+- [Antifraud Access Tokenize Services API](https://apis.io/collections/koin/open-koin-tokenize-services-api/)
+- [Antifraud Access WireTransfer API](https://apis.io/collections/koin/open-koin-wiretransfer-api/)
+
+#### Overlays (8)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Koin Antifraud Ato Overlay](https://apis.io/overlays/koin/koin-antifraud-ato-overlay/)
+- [Koin Antifraud Ecommerce Overlay](https://apis.io/overlays/koin/koin-antifraud-ecommerce-overlay/)
+- [Koin Antifraud Evaluations Overlay](https://apis.io/overlays/koin/koin-antifraud-evaluations-overlay/)
+- [Koin Antifraud Lifecycle Overlay](https://apis.io/overlays/koin/koin-antifraud-lifecycle-overlay/)
+- [Koin Antifraud Wire Transfer Overlay](https://apis.io/overlays/koin/koin-antifraud-wire-transfer-overlay/)
+- [Koin Bnpl Overlay](https://apis.io/overlays/koin/koin-bnpl-overlay/)
+- [Koin Onboarding Overlay](https://apis.io/overlays/koin/koin-onboarding-overlay/)
+- [Koin Payments Overlay](https://apis.io/overlays/koin/koin-payments-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Koin Authentication](https://apis.io/security/koin/koin-authentication/)
+- [Koin Domain Security](https://apis.io/security/koin/koin-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Koin Plans Pricing](https://apis.io/plans/koin/koin-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.koin.com.br/)
+- [Documentation](https://api-docs.koin.com.br/docs/security-scheme)
+- [Getting started](https://api-docs.koin.com.br/docs/integration-requirements)
+- [API reference](https://api-docs.koin.com.br/reference/introduction)
+- [Pricing](https://www.koin.com.br/plataforma-de-pagamentos-b2b)
+- [Sign up](https://koin-prod.us.auth0.com/u/login)
+- [Support](https://www.koin.com.br/atendimento)
+- [Blog](https://www.koin.com.br/conteudos)
+- [Terms of service](https://termos.koin.com.br/)
+- [Privacy policy](https://www.koin.com.br/politica-de-privacidade)
+- [GitHub](https://github.com/koinlatam)
+- [Status](https://koin.statuspage.io/)
+
+## API Evangelist rating
+
+**Kin Score 54.6** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| OpenAPI (8 specs, 33 operations) | `openapi/` |
-| Overlays (our enhancements) | `overlays/` |
-| Authentication | `authentication/koin-authentication.yml` |
-| Conventions + idempotency | `conventions/koin-conventions.yml` |
-| Error catalog | `errors/koin-problem-types.yml` |
-| Decline / business codes | `errors/koin-decline-codes.yml` |
-| Webhook catalog | `asyncapi/koin-payments-webhooks.yml` |
-| Sandbox + test values | `sandbox/koin-sandbox.yml` |
-| Lifecycle + status page | `lifecycle/koin-lifecycle.yml` |
-| Changelog | `changelog/koin-changelog.yml` |
-| Packages / SDKs | `packages/koin-packages.yml` |
-| Embedded components | `components/koin-components.yml` |
-| Data model | `data-model/koin-data-model.yml` |
-| Conformance | `conformance/koin-conformance.yml` |
-| MCP (candidate) | `mcp/koin-mcp.yml` |
-| Agent Skills | `skills/` |
-| llms.txt (verbatim) | `llms/koin-llms.txt` |
-| Domain security | `security/koin-domain-security.yml` |
-| Well-known (verified absent) | `well-known/koin-well-known.yml` |
+| Discoverability | 78.6 |
+| Contract quality | 56.8 |
+| Contract governance | 4.5 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 57.7 |
+| Access clarity | 69.7 |
 
-## Notes
+**Agent readiness 37.8** — agent-ready
 
-- Authentication is a single bearer private key (`sk_` + 32 characters) covering payments, antifraud
-  and BNPL. There is no OAuth surface, so no `scopes/` artifact is produced.
-- Idempotency is reference-id based, not header based, and Koin makes replay-safe processing a
-  contractual integration requirement.
-- Koin publishes no AsyncAPI, no `/.well-known/` documents, no security.txt, no vulnerability
-  disclosure program, no trust center and no deprecation policy. These are recorded as verified
-  absences rather than gaps.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 31.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/koin/](https://apis.io/providers/koin/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Koin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/koin/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
